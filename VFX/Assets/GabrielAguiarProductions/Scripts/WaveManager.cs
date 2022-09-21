@@ -11,6 +11,7 @@ public class WaveManager : MonoBehaviour
     private float timer = 10f;
     private int waveIndex = 0;
     private PlayerManager playerManager;
+    private bool canSpawnNext = false;
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class WaveManager : MonoBehaviour
         pathManager = GetComponent<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
-        StartCoroutine(SpawnWave(waveIndex));
+        SpawnWave(waveIndex);
         waveIndex++;
         Debug.Log(waves.Count);
         Debug.Log(waves[0].enemyGroup.Count);
@@ -28,34 +29,44 @@ public class WaveManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer <= 0f)
+        if(timer <= 0f && canSpawnNext)
         {
             if(waveIndex == waves.Count) { return; }
-            timer = timeBetweenWave;
-            StartCoroutine(SpawnWave(waveIndex));
+            //timer = timeBetweenWave;
+            canSpawnNext = false;
+            SpawnWave(waveIndex);
             waveIndex++;
         }
 
         timer -= Time.deltaTime;
     }
 
-    IEnumerator SpawnWave(int waveNum)
+    void SpawnWave(int waveNum)
     {
+        Debug.Log("Spawning the wave: " + waveNum);
         for(int i = 0; i < waves[waveNum].enemyGroup.Count; i++)
         {
-        
-            for(int j = 0; j < waves[waveNum].enemyGroup[i].amount; j++)        //j is for enemy amount, i is for enemyGroup index
-            {
-                SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
-                yield return new WaitForSeconds(1f / waves[waveNum].enemyGroup[i].rate);
-            }
+            StartCoroutine(SpawnEnemy(waveNum, i));
         }
     }
 
-    void SpawnEnemy(GameObject prefab)
+    IEnumerator SpawnEnemy(int waveNum, int groupNum)
     {
-        GameObject enemy = Instantiate(prefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-        enemy.GetComponent<EnemyHealth>().playerManager = playerManager;
+        for(int j = 0; j < waves[waveNum].enemyGroup[groupNum].amount; j++)        //j is for enemy amount, i is for enemyGroup index
+        {
+            //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
+            GameObject enemy = Instantiate(waves[waveNum].enemyGroup[groupNum].enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            enemy.GetComponent<EnemyHealth>().playerManager = playerManager;
+            yield return new WaitForSeconds(1f / waves[waveNum].enemyGroup[groupNum].rate);
+        }
+
+        if(groupNum == waves[waveNum].enemyGroup.Count-1)
+        {
+            Debug.Log("Last of wave " + waveNum + "group num: " + groupNum);
+            timer = timeBetweenWave;
+            canSpawnNext = true;
+        }
+
         //enemyCount++;
     }
 }
