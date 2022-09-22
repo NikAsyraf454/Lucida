@@ -25,7 +25,7 @@ public class TowerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+        if (PauseMenu.isPaused || Input.GetMouseButtonDown(1))
         {
             towerInstance = null;
             //close ui of tower info

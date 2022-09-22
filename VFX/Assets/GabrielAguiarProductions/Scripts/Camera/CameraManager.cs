@@ -28,8 +28,12 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        UpdateCameraPosition();
-        UpdateCameraZoom();
+        if(PauseMenu.isPaused == false)
+        {
+            UpdateCameraPosition();
+            UpdateCameraZoom();
+        }
+
     }
 
     public void UpdateCameraPosition()
