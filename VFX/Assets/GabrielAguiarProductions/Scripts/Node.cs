@@ -10,7 +10,7 @@ public class Node : MonoBehaviour
     private Renderer rend;
     public PathManager pathManager;
     public TowerManager towerManager;
-    private bool canBuild = true;
+    public bool canBuild = true;
 
     private void Start()
     {

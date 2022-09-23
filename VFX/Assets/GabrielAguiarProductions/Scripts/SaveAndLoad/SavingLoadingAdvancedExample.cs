@@ -8,16 +8,16 @@ public class SavingLoadingAdvancedExample : MonoBehaviour
 {
     private string SavePath => $"{Application.persistentDataPath}/save.txt";
 
-    [ContextMenu("Save")]
-    private void Save()
+    // [ContextMenu("Save")]
+    public void Save()
     {
         var state = LoadFile();
         CaptureState(state);
         SaveFile(state);
     }
 
-    [ContextMenu("Load")]
-    private void Load()
+    // [ContextMenu("Load")]
+    public void Load()
     {
         var state = LoadFile();
         RestoreState(state);

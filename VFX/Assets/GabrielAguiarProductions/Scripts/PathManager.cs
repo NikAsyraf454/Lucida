@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class PathManager : MonoBehaviour
+public class PathManager : MonoBehaviour, ISaveable
 {
-    public List<GameObject> buildings;
+    public List<Node> nodeList;
+    public List<bool> canBuiltTemp;
     public List<GameObject> waypoints;
     [SerializeField]
     private GameObject basePrefab;
     [SerializeField]
     private GameObject pathPrefab;
     [SerializeField]
-    private GameObject grassPrefab;
+    private GameObject nodePrefab;
     [SerializeField]
     private GameObject waypointPrefab;
     [SerializeField]
@@ -44,7 +46,7 @@ public class PathManager : MonoBehaviour
                 }
                 else if(tilePlacement[i,j] == 2)
                 {
-                    SpawnTile(grassPrefab, new Vector3(i,0,j));
+                    SpawnTile(nodePrefab, new Vector3(i,0,j));
                 }
             }
         }
@@ -99,9 +101,9 @@ public class PathManager : MonoBehaviour
     }
 
 	void NewPath (){
-        Random.InitState(randomSeed);
+        UnityEngine.Random.InitState(randomSeed);
         randomSeed++;
-        switch(Random.Range(1,4))
+        switch(UnityEngine.Random.Range(1,4))
         {
             case 1:     //turn left
                 if(leftTurn > 0)
@@ -147,6 +149,11 @@ public class PathManager : MonoBehaviour
     void SpawnTile(GameObject prefab, Vector3 pos)
     {
         GameObject temp = Instantiate(prefab, pos, Quaternion.identity, this.gameObject.transform);
+        Node node = temp.GetComponentInChildren<Node>();
+        if(prefab == nodePrefab)
+        {
+            nodeList.Add(node);
+        }
     }
 
     void SpawnWaypoint(int x, int z)
@@ -165,13 +172,59 @@ public class PathManager : MonoBehaviour
         return waypoints.Count;
     }
 
-    public GameObject GetBuildings(int buildingsIndex)
-    {
-        return buildings[buildingsIndex];
-    }
+    // public GameObject GetBuildings(int buildingsIndex)
+    // {
+    //     return buildings[buildingsIndex];
+    // }
 
     public List<GameObject> GetWaypointList()
     {
         return waypoints;
     }
+
+
+    #region Save and Load
+        
+    
+    public object CaptureState()
+    {
+        List<bool> temp = new List<bool>();
+        //int i = 0;
+        foreach(Node node in nodeList)
+        {
+            temp.Add(node.canBuild);
+        }
+
+        return new SaveData
+        {
+            canBuiltList = temp
+        };
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (SaveData)state;
+
+        canBuiltTemp = saveData.canBuiltList;
+        UpdateLoadProperties();
+    }
+
+    private void UpdateLoadProperties()         //if any properties needed to be updated for UI or etc
+    {
+        int i = 0;
+        foreach(Node node in nodeList)
+        {
+            node.canBuild = canBuiltTemp[i];
+            i++;
+        }
+    }
+
+    [Serializable]
+    private struct SaveData
+    {
+        public List<bool> canBuiltList;
+        // public int xp;
+    }
+    
+    #endregion
 }

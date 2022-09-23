@@ -25,6 +25,9 @@ public class LevelSystem : MonoBehaviour, ISaveable
         xp = saveData.xp;
     }
 
+    // private void UpdateLoadProperties()         //if any properties needed to be updated for UI or etc
+    // {}
+
     [Serializable]
     private struct SaveData
     {

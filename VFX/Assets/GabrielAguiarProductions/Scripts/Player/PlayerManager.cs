@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ISaveable
 {
 
     [SerializeField] private int currentPlayerHealth = 0;
@@ -92,5 +92,44 @@ public class PlayerManager : MonoBehaviour
     {
         ClientOnScoreUpdated?.Invoke(newScore);
     }
+
+    #region Save and Load
+        
+    public object CaptureState()
+    {
+        return new SaveData
+        {
+            currentPlayerHealth = currentPlayerHealth,
+            currentPlayerResources = currentPlayerResources,
+            currentPlayerScore = currentPlayerScore
+        };
+    }
+
+    public void RestoreState(object state)
+    {
+        var saveData = (SaveData)state;
+
+        currentPlayerHealth = saveData.currentPlayerHealth;
+        currentPlayerResources = saveData.currentPlayerResources;
+        currentPlayerScore = saveData.currentPlayerScore;
+        UpdateLoadProperties();
+    }
+
+    private void UpdateLoadProperties()
+    {
+        ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+        ClientHandleResourcesUpdated(0, currentPlayerResources);
+        ClientHandleScoreUpdated(0, currentPlayerScore);
+    }
+
+    [Serializable]
+    private struct SaveData
+    {
+        public int currentPlayerHealth;
+        public int currentPlayerResources;
+        public int currentPlayerScore;
+    }
+    
+    #endregion
 
 }
