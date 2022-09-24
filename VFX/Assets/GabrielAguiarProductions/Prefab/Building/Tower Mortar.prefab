@@ -171,8 +171,8 @@ MonoBehaviour:
   maxTowerPrice: 200
   currentTowerPrice: 0
   purchasePriceIncrement: 75
-  level: 0
-  damageDeal: 20
+  _level: 0
+  _damageDeal: 30
   isUnlocked: 1
   isSpawned: 0
   towerId: 1

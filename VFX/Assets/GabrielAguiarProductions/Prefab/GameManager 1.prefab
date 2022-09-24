@@ -118,7 +118,6 @@ GameObject:
   - component: {fileID: 4329831950611236339}
   - component: {fileID: 2477620477634519622}
   - component: {fileID: 2477620479008930307}
-  - component: {fileID: 2477620479008930308}
   - component: {fileID: 920624550586883384}
   m_Layer: 0
   m_Name: GameManager 1
@@ -156,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nodeList: []
+  canBuiltTemp: 
   waypoints: []
   basePrefab: {fileID: 3963553011387649518, guid: e31a22698d179c1428c4ea7ec687fb6b,
     type: 3}
@@ -262,20 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 84471f7b-5776-41cb-aa0b-0adeefe34d3d
---- !u!114 &2477620479008930308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2477620479550125248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec00d0013edb6042ae404eb30961b7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
-  xp: 100
 --- !u!114 &920624550586883384
 MonoBehaviour:
   m_ObjectHideFlags: 0

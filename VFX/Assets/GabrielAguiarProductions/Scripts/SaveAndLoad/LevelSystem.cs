@@ -8,6 +8,8 @@ public class LevelSystem : MonoBehaviour, ISaveable
     [SerializeField] private int level = 1;
     [SerializeField] private int xp = 100;
 
+    #region Save and Load
+
     public object CaptureState()
     {
         return new SaveData
@@ -34,4 +36,6 @@ public class LevelSystem : MonoBehaviour, ISaveable
         public int level;
         public int xp;
     }
+
+    #endregion
 }
