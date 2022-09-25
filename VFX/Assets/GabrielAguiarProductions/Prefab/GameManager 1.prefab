@@ -179,23 +179,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f27469425138c848901c0594902097d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyPrefabList:
+  - {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b, type: 3}
+  - {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce, type: 3}
+  enemyList: []
   waves:
   - enemyGroup:
-    - enemyPrefab: {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b,
-        type: 3}
+    - enemyId: 0
       amount: 5
       rate: 0.2
-    - enemyPrefab: {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce,
-        type: 3}
+    - enemyId: 1
       amount: 3
       rate: 0.1
   - enemyGroup:
-    - enemyPrefab: {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b,
-        type: 3}
+    - enemyId: 0
       amount: 5
       rate: 0.5
-    - enemyPrefab: {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce,
-        type: 3}
+    - enemyId: 1
       amount: 3
       rate: 0.1
 --- !u!114 &3008501430176670577
@@ -210,11 +210,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2be35c76562044c90cdda20bef34e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  temp: 
+  tempPosition: []
   towerButton: {fileID: 0}
   towerPrefabList:
   - {fileID: 1077020381243097579, guid: 8e3607c58b9f2e241b8e096bc7c498d4, type: 3}
   - {fileID: 7153913654782071670, guid: 7d63c1cd23e12624e9f00818401963fb, type: 3}
   towerLevelList: []
+  spawnedTowerList: []
   towerInstance: {fileID: 0}
   playerManager: {fileID: 0}
 --- !u!114 &4329831950611236339

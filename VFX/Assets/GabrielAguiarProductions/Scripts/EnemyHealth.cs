@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     [SerializeField] private int maxHealth = 100;
 
    //[SyncVar(hook = nameof(HandleHealthUpdated))]
-    [SerializeField] private int currentHealth;
+    [SerializeField] private int _currentHealth;
 
     [SerializeField] private int resourceDrop;
     [SerializeField] private int scoreValue;
@@ -20,9 +20,11 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
 
     public event Action<int, int> ClientOnHealthUpdated;
 
+    public int CurrentHealth { get{return _currentHealth; } set{ _currentHealth = CurrentHealth; } }
+
     private void Start()
     {
-        currentHealth = maxHealth;
+        _currentHealth = maxHealth;
 
     }
 
@@ -33,12 +35,12 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     
     public void DealDamage(int damageAmount)
     {
-        if (currentHealth == 0) { return; }
+        if (_currentHealth == 0) { return; }
 
-        currentHealth = Mathf.Max(currentHealth - damageAmount, 0);
-        HandleHealthUpdated(maxHealth, currentHealth);
+        _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
+        HandleHealthUpdated(maxHealth, _currentHealth);
 
-        if (currentHealth != 0) { return; }
+        if (_currentHealth != 0) { return; }
 
         //death of enemy
         EnemyDeath();

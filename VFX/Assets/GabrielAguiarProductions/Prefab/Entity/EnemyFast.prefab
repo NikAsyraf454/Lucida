@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1f8de7f943a6f44bd91fa2ca6add04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyId: 1
   pathManager: {fileID: 0}
   pathIndex: 0
   enemySpeed: 5
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   maxHealth: 50
-  currentHealth: 0
+  _currentHealth: 0
   resourceDrop: 15
   scoreValue: 40
 --- !u!1001 &7076728427481137235

@@ -170,6 +170,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         public List<float> towerPosition;
         public List<int> level;
         public List<int> damageDeal; 
+        //public List<float> towerTimer;
     }
 
     #endregion

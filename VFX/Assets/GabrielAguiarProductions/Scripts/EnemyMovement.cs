@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public int enemyId;
     [SerializeField] private PathManager pathManager;
     [SerializeField] public int pathIndex = 0;
     [SerializeField]
     public float enemySpeed = 1f;
     [SerializeField] private GameObject target;
     private int pathsAmount;
-    [SerializeField] private EnemyHealth enemyHealth;
+    [SerializeField] public EnemyHealth enemyHealth;
     private PlayerManager playerManager;
     private List<GameObject> waypoints;
     
