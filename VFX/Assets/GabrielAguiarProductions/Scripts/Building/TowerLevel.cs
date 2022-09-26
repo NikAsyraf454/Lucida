@@ -5,19 +5,21 @@ using System;
 
 public class TowerLevel : MonoBehaviour
 {
+    [SerializeField] public int towerId;
     [SerializeField] private string towerName;
     [SerializeField] private int maxTowerPrice;
     [SerializeField] private int currentTowerPrice;
     [SerializeField] private int purchasePriceIncrement;
     [SerializeField] private int _level;
     [SerializeField] private int _damageDeal;
+    [SerializeField] private float _fireRate;
     [SerializeField] private bool isUnlocked;
     [SerializeField] private bool isSpawned = false;        //for UI
-    [SerializeField] public int towerId;
     
 
     public int Level { get{return _level; } set{ _level = Level; } }
     public int DamageDeal { get{return _damageDeal; } set{ _damageDeal = DamageDeal; } }
+    public float FireRate { get{return _fireRate; } set{ _fireRate = FireRate; } }
 
     // Start is called before the first frame update
     void Start()

@@ -147,13 +147,13 @@ MonoBehaviour:
   firePoint: {fileID: 2436582219720142902}
   effectToSpawn: {fileID: 7848766475769544068, guid: a7bc08f401d87de4abb564f8d4ef0dbf,
     type: 3}
-  fireRate: 0.1
   enemyList: []
   pathManager: {fileID: 0}
   collided: 0
   isMortar: 1
   mortarOffset: 20
   predictionMultiplier: 2
+  towerLevel: {fileID: 0}
   enemyHealthList: []
 --- !u!114 &1845486230965735197
 MonoBehaviour:
@@ -173,6 +173,7 @@ MonoBehaviour:
   purchasePriceIncrement: 75
   _level: 0
   _damageDeal: 30
+  _fireRate: 0.1
   isUnlocked: 1
   isSpawned: 0
   towerId: 1

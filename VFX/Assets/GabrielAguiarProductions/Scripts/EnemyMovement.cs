@@ -15,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     private PlayerManager playerManager;
     private List<GameObject> waypoints;
     
+    
     void Start()
     {
         pathManager = GameObject.Find("GameManager").GetComponent<PathManager>();

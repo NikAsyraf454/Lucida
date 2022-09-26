@@ -9,8 +9,6 @@ public class RotateToEnemyScript : MonoBehaviour
 	public GameObject firePoint;
 	public GameObject effectToSpawn;
 	private float timeToFire = 0f;
-	[SerializeField]
-	private float fireRate;
     public List<GameObject> enemyList;
 	[SerializeField]
     private PathManager pathManager;
@@ -24,7 +22,7 @@ public class RotateToEnemyScript : MonoBehaviour
 	private float predictionMultiplier;
 	private WaitForSeconds updateTime = new WaitForSeconds (0.01f); 
 	private EnemyMovement enemyMovement;
-	private TowerLevel towerLevel;
+	[SerializeField] private TowerLevel towerLevel;
 	public List<EnemyHealth> enemyHealthList;			//needs to be public, idk why
 
 	void Start () {	
@@ -106,7 +104,7 @@ public class RotateToEnemyScript : MonoBehaviour
 			transform.LookAt(enemyMovement.transform.position);
 
 		if (Time.time >= timeToFire) {
-			timeToFire = Time.time + 1f / fireRate;
+			timeToFire = Time.time + 1f / towerLevel.FireRate;
 			SpawnVFX();
 		}
 		/*yield return updateTime;
