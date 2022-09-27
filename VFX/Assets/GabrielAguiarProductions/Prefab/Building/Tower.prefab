@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 2561572308297093024}
   - component: {fileID: 1472752140390561838}
   - component: {fileID: 3876475086108714215}
-  m_Layer: 2
+  - component: {fileID: 3934623717857816032}
+  - component: {fileID: 1856121242377233696}
+  m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,6 +148,32 @@ MonoBehaviour:
   _fireRate: 0.5
   isUnlocked: 1
   isSpawned: 0
+--- !u!65 &3934623717857816032
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077020381243097579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 1.0590899, z: 1.2580305}
+  m_Center: {x: -5.705995e-17, y: 0.02954492, z: 0.1290152}
+--- !u!114 &1856121242377233696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077020381243097579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d62123e10470bb469ca53b8529bdcb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temp: {fileID: 1799011083421043332}
 --- !u!1 &1128714963411464421
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +323,7 @@ Transform:
   m_Children:
   - {fileID: 5594661290879257209}
   - {fileID: 3860459868671129036}
+  - {fileID: 401403098505086779}
   m_Father: {fileID: 7999804761481898074}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -406,6 +435,37 @@ MonoBehaviour:
   _fireRate: 0.5
   isUnlocked: 1
   isSpawned: 0
+--- !u!1 &3692403797195391853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 401403098505086779}
+  m_Layer: 2
+  m_Name: Mesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &401403098505086779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692403797195391853}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7223436930239997622}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5152751009317454333
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,9 +643,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.14528298, b: 0.14528298, a: 1}
-    m_PressedColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
-    m_SelectedColor: {r: 0.5692932, g: 0.6037736, b: 0.07632609, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -856,6 +916,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TowerStats
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612433684437567405, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2637216483647798825, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}

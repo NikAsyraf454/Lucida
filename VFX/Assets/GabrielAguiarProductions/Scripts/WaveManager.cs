@@ -20,7 +20,6 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void Start()
     {
-        Debug.Log("here");
         pathManager = GetComponent<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
