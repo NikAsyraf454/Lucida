@@ -5,9 +5,6 @@ using System;
 
 public class TowerManager : MonoBehaviour, ISaveable
 {
-    public List<int> temp;
-    public List<float> tempPosition;
-
     public TowerButton towerButton;
     public List<GameObject> towerPrefabList;
 
@@ -64,7 +61,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     private void SpawnTower(Vector3 position)
     {
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
-        spawnedTowerList.Add(tower.GetComponent<TowerLevel>());
+        spawnedTowerList.Add(tower.GetComponentInChildren<TowerLevel>());
 
         towerLevelList[towerInstanceId].SetNewTowerPrice();
         towerButton.UpdateShopItemText(towerInstanceId);
@@ -88,7 +85,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         foreach(GameObject tower in towerPrefabList)
         {
-            towerLevelList.Add(tower.GetComponent<TowerLevel>());
+            towerLevelList.Add(tower.GetComponentInChildren<TowerLevel>());
         }
     }
 
@@ -113,6 +110,8 @@ public class TowerManager : MonoBehaviour, ISaveable
         //temp = new List<int>();
         //tempPosition = new List<float[]>();
         //tempPosition = new List<float[3]>();
+        List<int> temp = new List<int>();
+        List<float> tempPosition = new List<float>();
         List<int> levels = new List<int>();
         List<int> damageDeal = new List<int>();
         foreach( TowerLevel towerLevel in spawnedTowerList)
@@ -136,6 +135,8 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public void RestoreState(object state)
     {
+        List<int> temp = new List<int>();
+        List<float> tempPosition = new List<float>();
         List<int> levels = new List<int>();
         List<int> damageDeal = new List<int>();
         var saveData = (SaveData)state;

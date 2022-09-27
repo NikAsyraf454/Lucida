@@ -16,6 +16,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     private int groupIndex = 0;
     private PlayerManager playerManager;
     private bool canSpawnNext = false;
+    public List<EnemyHealth> enemyHealthList;
 
     void Start()
     {
@@ -81,7 +82,24 @@ public class WaveManager : MonoBehaviour, ISaveable
         GameObject enemy = Instantiate(enemyPrefabList[id], pos, rotation);
         enemy.GetComponent<EnemyHealth>().playerManager = playerManager;
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
+        enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
+        enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
     }
+
+    private void RemoveEnemy(GameObject other)
+	{
+        enemyList.Remove(other.GetComponent<EnemyMovement>());
+		enemyHealthList.Remove(other.GetComponent<EnemyHealth>());
+    }
+
+    private void OnDestroy()
+    {
+		foreach(EnemyHealth enemyHealth in enemyHealthList)
+		{
+			enemyHealth.ServerOnDie -= RemoveEnemy;
+			enemyHealthList.Remove(enemyHealth);
+		}
+	}
 
     #region Save and Load
 
@@ -101,6 +119,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 
             enemyPathIndex.Add(enemyMovement.pathIndex);
             enemyHealth.Add(enemyMovement.enemyHealth.CurrentHealth);
+            Debug.Log("saving:" + enemyMovement.enemyHealth.CurrentHealth);
             enemySpeed.Add(enemyMovement.enemySpeed);
         }
         return new SaveData
@@ -139,7 +158,8 @@ public class WaveManager : MonoBehaviour, ISaveable
         {
             SpawnEnemy(i, new Vector3(enemyPos[j*3], enemyPos[j*3+1], enemyPos[j*3+2]), Quaternion.identity);
             enemyList[j].pathIndex = enemyPathIndex[j];
-            enemyList[j].enemyHealth.CurrentHealth = enemyHealth[j];
+            enemyHealthList[j].CurrentHealth = enemyHealth[j];
+            Debug.Log("Load:" + enemyHealth[j]);
             enemyList[j].enemySpeed = enemySpeed[j];
             j++;
         }
