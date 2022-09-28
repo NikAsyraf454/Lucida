@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4240854768314018888}
   - component: {fileID: 2561572308297093024}
   - component: {fileID: 1472752140390561838}
-  - component: {fileID: 3876475086108714215}
   - component: {fileID: 3934623717857816032}
   - component: {fileID: 1856121242377233696}
   m_Layer: 0
@@ -126,28 +125,6 @@ MonoBehaviour:
   predictionMultiplier: 0
   towerLevel: {fileID: 0}
   enemyHealthList: []
---- !u!114 &3876475086108714215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077020381243097579}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f898622cdc5e47041b769876d4008c49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerId: 0
-  towerName: Regular Tower
-  maxTowerPrice: 50
-  currentTowerPrice: 0
-  purchasePriceIncrement: 15
-  _level: 0
-  _damageDeal: 10
-  _fireRate: 0.5
-  isUnlocked: 1
-  isSpawned: 0
 --- !u!65 &3934623717857816032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   temp: {fileID: 1799011083421043332}
+  towerLevel: {fileID: 8140949567980840269}
+  towerName: {fileID: 247993285042610858}
+  level: {fileID: 0}
+  damageDeal: {fileID: 7234728010133327713}
+  fireRate: {fileID: 251864810563815625}
+  sellPrice: {fileID: 3187098430271064522}
 --- !u!1 &1128714963411464421
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,11 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerId: 0
-  towerName: Regular Tower
-  maxTowerPrice: 50
-  currentTowerPrice: 0
+  _towerName: Tower
+  _maxTowerPrice: 50
+  _currentTowerPrice: 0
   purchasePriceIncrement: 15
-  _level: 0
+  _level: 1
   _damageDeal: 10
   _fireRate: 0.5
   isUnlocked: 1
@@ -677,7 +660,7 @@ GameObject:
   - component: {fileID: 762309428056326525}
   - component: {fileID: 3187098430271064522}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: SellText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -920,7 +903,7 @@ PrefabInstance:
     - target: {fileID: 1612433684437567405, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2637216483647798825, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
@@ -941,6 +924,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7940509590873004830, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+        type: 3}
+      propertyPath: m_Name
+      value: FireRateValue Text (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386412342138935829, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageValue Text (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8588975564313888614, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
@@ -969,6 +962,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55823f2b54345e04ba65f7d4fa6c308c, type: 3}
+--- !u!114 &247993285042610858 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1001717201539854211, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051551930872745257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &251864810563815625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1002351483525006816, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051551930872745257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1799011083421043330 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
@@ -998,6 +1015,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7234728010133327713 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7705999964112618056, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1051551930872745257}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8765684018398841423 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8588975564313888614, guid: 55823f2b54345e04ba65f7d4fa6c308c,

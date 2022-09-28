@@ -61,8 +61,8 @@ public class TowerButton : MonoBehaviour
     public void SetShopItemText(GameObject shopItem, TowerLevel towerLevel)
     {
         TMP_Text[] text = shopItem.GetComponentsInChildren<TMP_Text>();
-        text[0].text = towerLevel.GetTowerName();
-        text[1].text = $" ${towerLevel.GetCurrentTowerPrice().ToString()}";
+        text[0].text = towerLevel.TowerName;
+        text[1].text = $" ${towerLevel.CurrentTowerPrice.ToString()}";
     }
 
     public void UpdateShopItemText(int towerLevelId)
@@ -73,8 +73,8 @@ public class TowerButton : MonoBehaviour
             if(towerLevelList[i].towerId != towerLevelId) {continue;}
 
             TMP_Text[] text = shopItemList[i].GetComponentsInChildren<TMP_Text>();
-            text[0].text = towerLevelList[i].GetTowerName();
-            text[1].text = $" ${towerLevelList[i].GetCurrentTowerPrice().ToString()}";
+            text[0].text = towerLevelList[i].TowerName;
+            text[1].text = $" ${towerLevelList[i].CurrentTowerPrice.ToString()}";
         }
     }
 }

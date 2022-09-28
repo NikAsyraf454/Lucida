@@ -102,7 +102,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
 --- !u!1 &2477620479550125248
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
     - enemyId: 1
       amount: 3
       rate: 0.1
+  enemyHealthList: []
 --- !u!114 &3008501430176670577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,8 +211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c2be35c76562044c90cdda20bef34e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temp: 
-  tempPosition: []
   towerButton: {fileID: 0}
   towerPrefabList:
   - {fileID: 1077020381243097579, guid: 8e3607c58b9f2e241b8e096bc7c498d4, type: 3}

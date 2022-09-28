@@ -51,9 +51,9 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public bool BuildTower(Vector3 position)
     {
-        if (playerManager.GetResources() < towerLevelList[towerInstanceId].GetCurrentTowerPrice()) { return true; }
+        if (playerManager.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
 
-        playerManager.BuildTowerResource(towerLevelList[towerInstanceId].GetCurrentTowerPrice());
+        playerManager.BuildTowerResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
         SpawnTower(position);
         return false;
     }
