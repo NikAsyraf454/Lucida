@@ -134,12 +134,14 @@ public class RotateToEnemyScript : MonoBehaviour
 
 		if(isMortar)
 		{
-			vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
+			vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal * towerLevel.Level;
+			towerLevel.XpIncrease(3);		//increase xp of tower every shot
 		}
 		else
 		{
 			vfx.GetComponent<ProjectileMoveScript>().target = enemyMovement.gameObject;			//pass enemy and damage value to projectile
-			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;
+			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal * towerLevel.Level;
+			towerLevel.XpIncrease(1);		//increase xp of tower every shot
 		}
 
 		var ps = vfx.GetComponent<ParticleSystem> ();
