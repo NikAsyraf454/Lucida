@@ -245,6 +245,7 @@ MonoBehaviour:
   damageDeal: {fileID: 4262638173555551121}
   fireRate: {fileID: 6647253312025357369}
   sellPrice: {fileID: 9073629362784591891}
+  cost: {fileID: 9216731266499814676}
   xpBarImage: {fileID: 630332286500745069}
 --- !u!1 &7811865482407636611
 GameObject:
@@ -451,6 +452,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2236792986233214551, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7597076053883844938}
+    - target: {fileID: 2236792986233214551, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: IncreaseTowerLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 3627305212216978774, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -538,6 +549,18 @@ MonoBehaviour:
 --- !u!114 &9073629362784591891 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3187098430271064522, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5897139314115439065}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9216731266499814676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3332295074613710029, guid: 55823f2b54345e04ba65f7d4fa6c308c,
     type: 3}
   m_PrefabInstance: {fileID: 5897139314115439065}
   m_PrefabAsset: {fileID: 0}

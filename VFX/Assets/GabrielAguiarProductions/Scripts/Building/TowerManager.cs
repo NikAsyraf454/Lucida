@@ -5,6 +5,7 @@ using System;
 
 public class TowerManager : MonoBehaviour, ISaveable
 {
+    public static TowerManager Instance;
     public TowerButton towerButton;
     public List<GameObject> towerPrefabList;
 
@@ -14,12 +15,14 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public GameObject towerInstance = null;
     private int towerInstanceId;
-    [SerializeField] private PlayerManager playerManager;
+    public bool canDisplayInfo = true;
+    // [SerializeField] private PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerManager = GetComponent<PlayerManager>();
+        Instance = this;
+        // playerManager = GetComponent<PlayerManager>();
         CacheTowerLevels();
         towerButton = GameObject.FindGameObjectWithTag("TowerShop").GetComponent<TowerButton>();
         CheckTowerAvailability();
@@ -41,6 +44,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         {
                 towerLevel.ResetTowerLevel();
                 towerLevel.ServerOnTowerDestroyed -= RemoveTower;
+                towerLevel.ServerOnUpgradeTowerLevel -= ImproveTower;
                 spawnedTowerList.Remove(towerLevel);
         }
     }
@@ -53,9 +57,9 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public bool BuildTower(Vector3 position)
     {
-        if (playerManager.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
+        if (PlayerManager.Instance.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
 
-        playerManager.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
+        PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
         SpawnTower(position);
         return false;
     }
@@ -65,36 +69,32 @@ public class TowerManager : MonoBehaviour, ISaveable
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
         spawnedTowerList.Add(tower.GetComponentInChildren<TowerLevel>());
         spawnedTowerList[spawnedTowerList.Count-1].ServerOnTowerDestroyed += RemoveTower;
+        spawnedTowerList[spawnedTowerList.Count-1].ServerOnUpgradeTowerLevel += ImproveTower;
         towerLevelList[towerInstanceId].SetNewTowerPrice();
         towerButton.UpdateShopItemText(towerInstanceId);
     }
 
     public void RemoveTower(TowerLevel towerLevel)
     {
-        playerManager.IncreaseResource(towerLevel.MaxTowerPrice);
+        PlayerManager.Instance.IncreaseResource(towerLevel.MaxTowerPrice);
         spawnedTowerList.Remove(towerLevel);
         foreach(TowerLevel towerLevel1 in spawnedTowerList)
         {
             if(towerLevel1.gameObject == towerLevel.gameObject)
                 towerLevel1.ServerOnTowerDestroyed -= RemoveTower;
+                // towerLevel1.ServerOnUpgradeTowerLevel -= ImproveTower;
         }
-        // Destroy(towerLevel.gameObject);
     }
 
-
-/*     public int GetRegularTowerPrice()
+    public void ImproveTower(TowerLevel towerLevel)
     {
-        return towerLevelList[0].GetCurrentTowerPrice();
+        int cost = (towerLevel.Level * 10) - towerLevel.TowerXp;
+        if(PlayerManager.Instance.GetResources() < cost) {return;}
+        PlayerManager.Instance.ReduceResource(cost);
+        towerLevel.XpIncrease(cost);
+
     }
 
-    public int GetMortarTowerPrice()
-    {
-        return towerLevelList[1].GetCurrentTowerPrice();
-    } */
-
-    //public void NullTowerInstance
-
-    //public void checkTowerAvailability()
 
     public void CacheTowerLevels()
     {

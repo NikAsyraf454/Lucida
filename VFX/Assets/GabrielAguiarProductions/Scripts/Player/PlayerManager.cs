@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, ISaveable
 {
-
+    public static PlayerManager Instance;
     [SerializeField] private int currentPlayerHealth = 0;
     [SerializeField] private int maxPlayerHealth;
 
@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         currentPlayerHealth = maxPlayerHealth;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         currentPlayerResources = maxPlayerResources;

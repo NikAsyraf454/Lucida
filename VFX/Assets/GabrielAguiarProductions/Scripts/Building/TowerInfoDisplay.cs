@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class TowerInfoDisplay : MonoBehaviour
 {
-    private bool isDisplayed;
+    private bool isDisplayed = false;
     [SerializeField] private GameObject statsPanel;
     [SerializeField] private TowerLevel towerLevel;
-    [SerializeField] private TMP_Text towerName, level, damageDeal, fireRate, sellPrice;
+    [SerializeField] private TMP_Text towerName, level, damageDeal, fireRate, sellPrice, cost;
     [SerializeField] private Image xpBarImage = null;
 
     private void Awake()
@@ -42,15 +42,17 @@ public class TowerInfoDisplay : MonoBehaviour
 
     void OnMouseDown()
     {
-        if(isDisplayed)
+        if(isDisplayed && !TowerManager.Instance.canDisplayInfo)
         {
             isDisplayed = false;
             statsPanel.SetActive(false);
+            TowerManager.Instance.canDisplayInfo = true;
         }
-        else
+        else if(TowerManager.Instance.canDisplayInfo)
         {
             statsPanel.SetActive(true);
             isDisplayed = true;
+            TowerManager.Instance.canDisplayInfo = false;
         }
     }
 
@@ -60,5 +62,6 @@ public class TowerInfoDisplay : MonoBehaviour
         fireRate.SetText(towerLevel.FireRate.ToString() + "/s");
         level.SetText("Level " + towerLevel.Level);
         xpBarImage.fillAmount = (float)towerLevel.TowerXp / (towerLevel.Level*10);
+        cost.SetText("Cost: -$" + ((towerLevel.Level * 10) - towerLevel.TowerXp).ToString());
     }
 }

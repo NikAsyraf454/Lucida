@@ -28,6 +28,7 @@ public class TowerLevel : MonoBehaviour
 
     public event Action<TowerLevel> ServerOnTowerXp;
     public event Action<TowerLevel> ServerOnTowerDestroyed;
+    public event Action<TowerLevel> ServerOnUpgradeTowerLevel;
 
 
     // Start is called before the first frame update
@@ -97,6 +98,12 @@ public class TowerLevel : MonoBehaviour
         if(TowerXp >= Level*10) { _level++; _towerXp = 0; }
 
         ServerOnTowerXp.Invoke(this);
+    }
+
+    public void IncreaseTowerLevel()
+    {
+        // int cost = (_level * 10) - _towerXp;
+        ServerOnUpgradeTowerLevel.Invoke(this);
     }
 
     public void SellTower()

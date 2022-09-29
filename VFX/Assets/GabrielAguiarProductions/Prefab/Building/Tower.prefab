@@ -67,6 +67,7 @@ MonoBehaviour:
   damageDeal: {fileID: 8821358602847572183}
   fireRate: {fileID: 2122292289623807871}
   sellPrice: {fileID: 4368542113735433045}
+  cost: {fileID: 4513808033719623250}
   xpBarImage: {fileID: 5328690620494681131}
 --- !u!1 &1128714963411464421
 GameObject:
@@ -415,21 +416,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -488,11 +474,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1612433684437567403, guid: 55823f2b54345e04ba65f7d4fa6c308c,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1612433684437567405, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
       propertyPath: m_Name
@@ -503,21 +484,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3627305212216978774, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    - target: {fileID: 2236792986233214551, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8140949567980840269}
     - target: {fileID: 3627305212216978774, guid: 55823f2b54345e04ba65f7d4fa6c308c,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SellTower
-      objectReference: {fileID: 0}
-    - target: {fileID: 8588975564313888614, guid: 55823f2b54345e04ba65f7d4fa6c308c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.0000076
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8140949567980840269}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55823f2b54345e04ba65f7d4fa6c308c, type: 3}
 --- !u!1 &502845349397615922 stripped
@@ -571,6 +547,18 @@ MonoBehaviour:
 --- !u!114 &4368542113735433045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3187098430271064522, guid: 55823f2b54345e04ba65f7d4fa6c308c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1196537802713191071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4513808033719623250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3332295074613710029, guid: 55823f2b54345e04ba65f7d4fa6c308c,
     type: 3}
   m_PrefabInstance: {fileID: 1196537802713191071}
   m_PrefabAsset: {fileID: 0}
