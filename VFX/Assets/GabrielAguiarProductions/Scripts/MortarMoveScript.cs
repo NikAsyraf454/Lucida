@@ -36,6 +36,8 @@ public class MortarMoveScript : MonoBehaviour
 
     void OnCollisionEnter (Collision co) 
 	{
+		// if (co.gameObject.tag != "Floor") {return;}
+
 		foreach(EnemyHealth enemyHealth in enemyHealthInRange)
 		{
 			enemyHealth.DealDamage(damageDeal);
@@ -111,6 +113,13 @@ public class MortarMoveScript : MonoBehaviour
 		}
 	}
 
-	//OnTriggerExit() delete enemy thats not in range (optional)
+	void OnTriggerExit(Collider co) //delete enemy thats not in range (optional)
+	{
+		if (co.gameObject.tag == "Enemy")
+		{
+			enemyHealthInRange.Remove(co.gameObject.GetComponent<EnemyHealth>());
+			//Debug.Log(co.gameObject.name);
+		}
+	}
     
 }

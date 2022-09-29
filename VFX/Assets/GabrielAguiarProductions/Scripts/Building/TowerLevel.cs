@@ -27,13 +27,15 @@ public class TowerLevel : MonoBehaviour
     public int TowerXp { get{return _towerXp; } set{ _towerXp = TowerXp; } }
 
     public event Action<TowerLevel> ServerOnTowerXp;
+    public event Action<TowerLevel> ServerOnTowerDestroyed;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //isSpawned = false;
         //currentTowerPrice = maxTowerPrice;
-        _level = UnityEngine.Random.Range(1,4);
+        // _level = UnityEngine.Random.Range(1,4);
     }
 
     // Update is called once per frame
@@ -82,6 +84,8 @@ public class TowerLevel : MonoBehaviour
     {
         SetSpawnedStatus(false);
         _currentTowerPrice = 0;
+        _level = 1;
+        _towerXp = 0;
         //isUnlocked might change
     }
 
@@ -93,6 +97,12 @@ public class TowerLevel : MonoBehaviour
         if(TowerXp >= Level*10) { _level++; _towerXp = 0; }
 
         ServerOnTowerXp.Invoke(this);
+    }
+
+    public void SellTower()
+    {
+        ServerOnTowerDestroyed.Invoke(this);
+        Destroy(transform.parent.gameObject);
     }
 
     // public int GetTowerLevel()

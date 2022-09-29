@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         //update UI playerhealth display
     }
 
-    public void MobDropResource(int resourceAmount)
+    public void IncreaseResource(int resourceAmount)
     {
         int temp = currentPlayerResources;
         currentPlayerResources += resourceAmount * resourceMultiplier;
@@ -66,7 +66,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     }*/
 
-    public void BuildTowerResource(int resourceAmount)
+    public void ReduceResource(int resourceAmount)
     {
         int temp = currentPlayerResources;
         currentPlayerResources -= resourceAmount;

@@ -40,6 +40,8 @@ public class TowerManager : MonoBehaviour, ISaveable
         foreach(TowerLevel towerLevel in towerLevelList)
         {
                 towerLevel.ResetTowerLevel();
+                towerLevel.ServerOnTowerDestroyed -= RemoveTower;
+                spawnedTowerList.Remove(towerLevel);
         }
     }
 
@@ -53,7 +55,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         if (playerManager.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
 
-        playerManager.BuildTowerResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
+        playerManager.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
         SpawnTower(position);
         return false;
     }
@@ -62,10 +64,23 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
         spawnedTowerList.Add(tower.GetComponentInChildren<TowerLevel>());
-
+        spawnedTowerList[spawnedTowerList.Count-1].ServerOnTowerDestroyed += RemoveTower;
         towerLevelList[towerInstanceId].SetNewTowerPrice();
         towerButton.UpdateShopItemText(towerInstanceId);
     }
+
+    public void RemoveTower(TowerLevel towerLevel)
+    {
+        playerManager.IncreaseResource(towerLevel.MaxTowerPrice);
+        spawnedTowerList.Remove(towerLevel);
+        foreach(TowerLevel towerLevel1 in spawnedTowerList)
+        {
+            if(towerLevel1.gameObject == towerLevel.gameObject)
+                towerLevel1.ServerOnTowerDestroyed -= RemoveTower;
+        }
+        // Destroy(towerLevel.gameObject);
+    }
+
 
 /*     public int GetRegularTowerPrice()
     {

@@ -149,4 +149,5 @@ MonoBehaviour:
   shotSFX: {fileID: 0}
   hitSFX: {fileID: 0}
   trails: []
-  enemyInRange: []
+  enemyHealthInRange: []
+  damageDeal: 0

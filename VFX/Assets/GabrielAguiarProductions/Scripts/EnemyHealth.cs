@@ -44,7 +44,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
 
         //death of enemy
         EnemyDeath();
-        playerManager.MobDropResource(resourceDrop);
+        playerManager.IncreaseResource(resourceDrop);
         playerManager.ScoreIncrease(scoreValue);
         //ServerOnDie?.Invoke();
     }

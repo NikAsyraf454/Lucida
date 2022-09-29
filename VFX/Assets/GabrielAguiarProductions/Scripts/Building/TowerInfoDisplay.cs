@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TowerInfoDisplay : MonoBehaviour
 {
     private bool isDisplayed;
-    [SerializeField] private GameObject temp;
+    [SerializeField] private GameObject statsPanel;
     [SerializeField] private TowerLevel towerLevel;
     [SerializeField] private TMP_Text towerName, level, damageDeal, fireRate, sellPrice;
     [SerializeField] private Image xpBarImage = null;
@@ -45,11 +45,11 @@ public class TowerInfoDisplay : MonoBehaviour
         if(isDisplayed)
         {
             isDisplayed = false;
-            temp.SetActive(false);
+            statsPanel.SetActive(false);
         }
         else
         {
-            temp.SetActive(true);
+            statsPanel.SetActive(true);
             isDisplayed = true;
         }
     }
