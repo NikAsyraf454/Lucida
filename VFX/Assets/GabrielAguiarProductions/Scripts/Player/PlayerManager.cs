@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public event Action<int> ClientOnScoreUpdated;
 
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         int temp = currentPlayerHealth;
         currentPlayerHealth--;
         ClientHandlePlayerHealthUpdated(temp, currentPlayerHealth);
-        //update UI playerhealth display
+        if(currentPlayerHealth <= 0) { MenuManager.Instance.PlayerLose(); }
     }
 
     public void IncreaseResource(int resourceAmount)

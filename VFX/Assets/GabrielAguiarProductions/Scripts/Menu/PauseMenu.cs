@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenuPrefab;
+    // [SerializeField] private GameObject pauseMenuPrefab;
     public static bool isPaused = false;
 
     // Start is called before the first frame update
@@ -18,7 +18,9 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused){ ResumeGame(); return; }
+            if(MenuManager.Instance.gameEnded){return;}
+
+            if(isPaused ){ ResumeGame(); return; }
             PauseGame();
         }
     }
@@ -26,14 +28,14 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0;
-        pauseMenuPrefab.SetActive(true);
+        MenuManager.Instance.pauseMenuPrefab.SetActive(true);
         isPaused = true;
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1;
-        pauseMenuPrefab.SetActive(false);
+        MenuManager.Instance.pauseMenuPrefab.SetActive(false);
         isPaused = false;
     }
 
