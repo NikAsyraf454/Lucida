@@ -50,9 +50,9 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     public void IncreaseResource(int resourceAmount)
     {
-        int temp = currentPlayerResources;
+        // int temp = currentPlayerResources;
         currentPlayerResources += resourceAmount * resourceMultiplier;
-        ClientHandleResourcesUpdated(temp, currentPlayerResources);
+        ClientHandleResourcesUpdated(0, currentPlayerResources);
 
     }
 
