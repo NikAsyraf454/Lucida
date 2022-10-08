@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject pauseMenuPrefab;
     public GameObject winMenuPrefab;
     public GameObject loseMenuPrefab;
-    // [SerializeField] private GameObject graphMenuPrefab;
+    [SerializeField] private GameObject graphMenuPrefab;
 
     public bool gameEnded;
 
@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     {
         Instance = this;
         gameEnded = false;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -42,7 +43,16 @@ public class MenuManager : MonoBehaviour
 
     public void RestartGame()
     {
-        // SceneManager.GetActiveScene();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void GraphMenu()
+    {
+        graphMenuPrefab.SetActive(true);
+    }
+
+    public void CloseGraph()
+    {
+        graphMenuPrefab.SetActive(false);
     }
 }

@@ -14,6 +14,7 @@ public class DebugController : MonoBehaviour
     public static DebugCommand ROSEBUD;
     public static DebugCommand<int> SET_GOLD;
     public static DebugCommand HELP;
+    public static DebugCommand<int> DAMAGEPLAYER;
 
     public List<object> commandList;
 
@@ -50,6 +51,11 @@ public class DebugController : MonoBehaviour
             PlayerManager.Instance.IncreaseResource(x);
         });
 
+        DAMAGEPLAYER = new DebugCommand<int>("damageplayer", "Sets amount of player to reduce", "damageplayer <damageamount>", (x) =>
+        {
+            PlayerManager.Instance.ReducePlayerHealth(x);
+        });
+
         HELP = new DebugCommand("help", "Shows a list of commands", "help", () =>
         {
             showHelp = true;
@@ -59,6 +65,7 @@ public class DebugController : MonoBehaviour
         {
             ROSEBUD,
             SET_GOLD,
+            DAMAGEPLAYER,
             HELP
         };
 

@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             else
             {
                 enemyHealth.EnemyDeath();
-                playerManager.ReducePlayerHealth();
+                playerManager.ReducePlayerHealth(1);
             }
         }
     }

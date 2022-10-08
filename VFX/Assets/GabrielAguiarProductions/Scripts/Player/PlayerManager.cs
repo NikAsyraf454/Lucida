@@ -42,11 +42,13 @@ public class PlayerManager : MonoBehaviour, ISaveable
         
     }
 
-    public void ReducePlayerHealth()
+    public void ReducePlayerHealth(int damageAmount)
     {
         int temp = currentPlayerHealth;
-        currentPlayerHealth--;
+        currentPlayerHealth -= damageAmount;
         ClientHandlePlayerHealthUpdated(temp, currentPlayerHealth);
+
+        // if(currentPlayerHealth <= 5) { SecondChance(); } //second chance for player (eliminate all enemy in wave or map)
         if(currentPlayerHealth <= 0) { MenuManager.Instance.PlayerLose(); }
     }
 

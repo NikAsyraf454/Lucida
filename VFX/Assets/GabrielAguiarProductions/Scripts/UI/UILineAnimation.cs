@@ -60,8 +60,9 @@ public class UILineAnimation : MonoBehaviour
             {
                 line.points[index] = value;
                 line.SetVerticesDirty();
-            }, start, end, time);
-        });
+            }, start, end, time).setIgnoreTimeScale(true);
+            
+        }).setIgnoreTimeScale(true);
 
     }
 
