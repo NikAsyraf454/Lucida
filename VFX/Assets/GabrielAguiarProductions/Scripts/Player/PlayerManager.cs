@@ -6,13 +6,13 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour, ISaveable
 {
     public static PlayerManager Instance;
-    [SerializeField] private int currentPlayerHealth = 0;
+    public int currentPlayerHealth = 0;
     [SerializeField] private int maxPlayerHealth;
 
-    [SerializeField] private int currentPlayerResources = 0;
+    public int currentPlayerResources = 0;
     [SerializeField] private int maxPlayerResources;
 
-    [SerializeField] private int currentPlayerScore = 0;
+    public int currentPlayerScore = 0;
     [SerializeField] private int maxPlayerScore;
 
     [SerializeField] private int resourceMultiplier = 1;
@@ -81,6 +81,11 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public int GetResources()
     {
         return currentPlayerResources;
+    }
+
+    public int GetFinalScore()
+    {
+        return currentPlayerScore * resourceMultiplier;
     }
 
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)

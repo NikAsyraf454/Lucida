@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class MenuManager : MonoBehaviour
 {
@@ -11,8 +12,12 @@ public class MenuManager : MonoBehaviour
     public GameObject winMenuPrefab;
     public GameObject loseMenuPrefab;
     [SerializeField] private GameObject graphMenuPrefab;
+    [SerializeField] private CSVReader cSVReader;
+    [SerializeField] private CSVWriter cSVWriter;
 
     public bool gameEnded;
+
+    string filename => $"{Application.persistentDataPath}/performance.csv";
 
     void Start()
     {
@@ -32,6 +37,7 @@ public class MenuManager : MonoBehaviour
         gameEnded = true;
         Time.timeScale = 0;
         loseMenuPrefab.SetActive(true);
+        LoadCSV();
     }
 
     public void PlayerWin()
@@ -39,6 +45,7 @@ public class MenuManager : MonoBehaviour
         gameEnded = true;
         Time.timeScale = 0;
         winMenuPrefab.SetActive(true);
+        LoadCSV();
     }
 
     public void RestartGame()
@@ -55,4 +62,27 @@ public class MenuManager : MonoBehaviour
     {
         graphMenuPrefab.SetActive(false);
     }
+
+    [ContextMenu("CSV")]
+    public void LoadCSV()
+    {
+        if(!File.Exists(filename)) { cSVWriter.WriteEmptyCSV(); }
+
+        cSVWriter.WriteCSV(cSVReader.ReadCSV());
+        
+    }
+}
+
+[System.Serializable]
+public class Score
+{
+    public int health;
+    public int level;
+    public int score;
+}
+
+[System.Serializable]
+public class ScoreList
+{
+    public Score[] scores;
 }

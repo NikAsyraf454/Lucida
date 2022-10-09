@@ -5,6 +5,7 @@ using System;
 
 public class WaveManager : MonoBehaviour, ISaveable
 {
+    public static WaveManager Instance;
     [SerializeField] private List<GameObject> enemyPrefabList;
     public List<EnemyMovement> enemyList;
     public List<Waves> waves;
@@ -12,7 +13,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     private GameObject spawnPoint;
     private float timeBetweenWave = 5f;
     private float timer = 10f;
-    private int waveIndex = 0;
+    public int waveIndex = 0;
     private int groupIndex = 0;
     private PlayerManager playerManager;
     private bool canSpawnNext = false;
@@ -20,6 +21,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void Start()
     {
+        Instance = this;
         pathManager = GetComponent<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
