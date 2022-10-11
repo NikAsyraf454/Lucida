@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     public void ReducePlayerHealth(int damageAmount)
     {
+        CameraShake.Shake(0.25f, 4f);
         int temp = currentPlayerHealth;
         currentPlayerHealth -= damageAmount;
         ClientHandlePlayerHealthUpdated(temp, currentPlayerHealth);

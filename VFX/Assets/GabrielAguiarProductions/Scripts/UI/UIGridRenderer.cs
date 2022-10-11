@@ -13,6 +13,13 @@ public class UIGridRenderer : Graphic
     float cellWidth;
     float cellHeight;
 
+    public void UpdateGridSize(Vector2Int size)
+    {
+        gridSize = size;
+        // var vh = new VertexHelper();
+        // OnPopulateMesh(vh);
+    }
+
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
