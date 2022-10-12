@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResumeGame();
     }
 
     // Update is called once per frame

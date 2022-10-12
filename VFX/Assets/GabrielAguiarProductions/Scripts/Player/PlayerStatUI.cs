@@ -10,6 +10,7 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TMP_Text healthText = null;
     [SerializeField] private TMP_Text resourcesText = null;
     [SerializeField] private TMP_Text scoreText = null;
+    [SerializeField] private GameObject[] healthBar;
 
     private void Awake()
     {
@@ -40,6 +41,14 @@ public class PlayerStatUI : MonoBehaviour
     {
         //resourcesText.text = $"Health: {health}";
         healthText.text = $"{health}";
+        for(int i = 0; i < health; i++)
+        {
+            healthBar[i].gameObject.SetActive(true);
+        }
+        for(int i = health; i < 20; i++)
+        {
+            healthBar[i].gameObject.SetActive(false);
+        }
     }
 
     private void ClientHandleResourcesUpdated(int resources)
