@@ -4,9 +4,17 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SavingLoadingAdvancedExample : MonoBehaviour
+public class SaveManager : MonoBehaviour
 {
+    public static SaveManager Instance;
+
     private string SavePath => $"{Application.persistentDataPath}/save.txt";
+
+    void Start()
+    {
+        Instance = this;
+        if(File.Exists(SavePath)){ Load(); }
+    }
 
     // [ContextMenu("Save")]
     public void Save()
@@ -21,6 +29,11 @@ public class SavingLoadingAdvancedExample : MonoBehaviour
     {
         var state = LoadFile();
         RestoreState(state);
+    }
+
+    public void DeleteSave()
+    {
+        File.Delete(SavePath);
     }
 
     private Dictionary<string, object> LoadFile()

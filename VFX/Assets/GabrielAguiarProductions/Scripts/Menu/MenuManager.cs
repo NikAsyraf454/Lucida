@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0;
         loseMenuPrefab.SetActive(true);
         LoadCSV();
+        SaveManager.Instance.DeleteSave();
     }
 
     public void PlayerWin()
@@ -48,6 +49,7 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 0;
         winMenuPrefab.SetActive(true);
         LoadCSV();
+        SaveManager.Instance.DeleteSave();
     }
 
     public void RestartGame()

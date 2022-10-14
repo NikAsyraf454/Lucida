@@ -123,7 +123,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SavingLoadingAdvancedExample, Assembly-CSharp
+        m_TargetAssemblyTypeName: SaveManager, Assembly-CSharp
         m_MethodName: Save
         m_Mode: 1
         m_Arguments:
@@ -527,7 +527,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SavingLoadingAdvancedExample, Assembly-CSharp
+        m_TargetAssemblyTypeName: SaveManager, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 1
         m_Arguments:
