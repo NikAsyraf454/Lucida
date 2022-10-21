@@ -13,7 +13,7 @@ public class SaveManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        if(File.Exists(SavePath)){ Load(); }
+        if(File.Exists(SavePath)){ LoadDelay(2.0f); }
     }
 
     // [ContextMenu("Save")]
@@ -76,5 +76,19 @@ public class SaveManager : MonoBehaviour
                 saveable.RestoreState(value);
             }
         }
+    }
+
+    void LoadDelay(float delayTime)
+    {
+        StartCoroutine(DelayLoading(delayTime));
+    }
+    
+    IEnumerator DelayLoading(float delayTime)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(delayTime);
+        
+        Load();
+        //Do the action after the delay time has finished.
     }
 }

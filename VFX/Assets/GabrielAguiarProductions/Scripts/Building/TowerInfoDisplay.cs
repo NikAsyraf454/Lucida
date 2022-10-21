@@ -37,7 +37,7 @@ public class TowerInfoDisplay : MonoBehaviour
 
     void OnMouseEnter()
     {
-        Debug.Log("tower stats");
+        // Debug.Log("tower stats");
     }
 
     void OnMouseDown()

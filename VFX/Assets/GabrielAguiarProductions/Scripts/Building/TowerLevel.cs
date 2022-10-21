@@ -93,7 +93,7 @@ public class TowerLevel : MonoBehaviour
     public void XpIncrease(int increaseAmount)
     {
         _towerXp += increaseAmount;
-        Debug.Log(TowerXp + " " + increaseAmount);
+        // Debug.Log(TowerXp + " " + increaseAmount);
 
         if(TowerXp >= Level*10) { _level++; _towerXp = 0; }
 

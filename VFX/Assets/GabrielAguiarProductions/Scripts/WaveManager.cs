@@ -11,12 +11,13 @@ public class WaveManager : MonoBehaviour, ISaveable
     public List<Waves> waves;
     private PathManager pathManager;
     private GameObject spawnPoint;
-    private float timeBetweenWave = 5f;
+    [SerializeField] private float timeBetweenWave = 5f;
     private float timer = 10f;
     public int waveIndex = 0;
     private int groupIndex = 0;
     private PlayerManager playerManager;
     private bool canSpawnNext = false;
+    private bool lastOfWave = false;
     public List<EnemyHealth> enemyHealthList;
 
     void Start()
@@ -33,16 +34,15 @@ public class WaveManager : MonoBehaviour, ISaveable
         // Debug.Log(waves[0].enemyGroup[0].amount);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(timer <= 0f && canSpawnNext)
         {
             if(waveIndex == waves.Count) { return; }
-            //timer = timeBetweenWave;
+            
             canSpawnNext = false;
+            lastOfWave = false;
             SpawnWave();
-            //waveIndex++;
         }
 
         timer -= Time.deltaTime;
@@ -65,15 +65,17 @@ public class WaveManager : MonoBehaviour, ISaveable
         {
             //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
             SpawnEnemy(waves[waveIndex].enemyGroup[groupNum].enemyId, spawnPoint.transform.position, spawnPoint.transform.rotation);
+
+            if(groupNum == waves[waveIndex].enemyGroup.Count-1 && j == waves[waveIndex].enemyGroup[groupNum].amount-1)
+            {
+                Debug.Log("Last of wave " + waveIndex + "group num: " + groupNum);
+                lastOfWave = true;
+            }
+
             yield return new WaitForSeconds(1f / waves[waveIndex].enemyGroup[groupNum].rate);
         }
 
-        if(groupNum == waves[waveIndex].enemyGroup.Count-1)
-        {
-            Debug.Log("Last of wave " + waveIndex + "group num: " + groupNum);
-            timer = timeBetweenWave;
-            canSpawnNext = true;
-        }
+        
 
         //enemyCount++;
     }
@@ -91,6 +93,16 @@ public class WaveManager : MonoBehaviour, ISaveable
 	{
         enemyList.Remove(other.GetComponent<EnemyMovement>());
 		enemyHealthList.Remove(other.GetComponent<EnemyHealth>());
+
+        if(enemyHealthList.Count <= 0 && lastOfWave)
+        {
+            timer = timeBetweenWave;
+            canSpawnNext = true;
+            Debug.Log("timerstart: " + timer);
+
+            Debug.Log("Saving...");
+            SaveManager.Instance.Save();
+        }
     }
 
     private void OnDestroy()
@@ -111,6 +123,8 @@ public class WaveManager : MonoBehaviour, ISaveable
         List<int> enemyPathIndex = new List<int>();
         List<int> enemyHealth = new List<int>();
         List<float> enemySpeed = new List<float>();
+        int waveNum;
+        float timerSave;
         foreach(EnemyMovement enemyMovement in enemyList)
         {
             enemyId.Add(enemyMovement.enemyId);
@@ -123,13 +137,18 @@ public class WaveManager : MonoBehaviour, ISaveable
             Debug.Log("saving:" + enemyMovement.enemyHealth.CurrentHealth);
             enemySpeed.Add(enemyMovement.enemySpeed);
         }
+
+        waveNum = waveIndex;
+        timerSave = timer;
         return new SaveData
         {
             enemyId = enemyId,
             enemyPos = enemyPos,
             enemypPathIndex = enemyPathIndex,
             enemyHealth = enemyHealth,
-            enemySpeed = enemySpeed
+            enemySpeed = enemySpeed,
+            waveNum = waveNum,
+            timerSave = timerSave
         };
     }
 
@@ -147,7 +166,6 @@ public class WaveManager : MonoBehaviour, ISaveable
         List<int> enemyPathIndex = new List<int>();
         List<int> enemyHealth = new List<int>();
         List<float> enemySpeed = new List<float>();
-
         enemyId = saveData.enemyId;
         enemyPos = saveData.enemyPos;
         enemyPathIndex = saveData.enemypPathIndex;
@@ -164,7 +182,10 @@ public class WaveManager : MonoBehaviour, ISaveable
             enemyList[j].enemySpeed = enemySpeed[j];
             j++;
         }
-
+        
+        //load wave savings
+        waveIndex = saveData.waveNum;
+        timer = saveData.timerSave;
     }
 
     [Serializable]
@@ -175,6 +196,9 @@ public class WaveManager : MonoBehaviour, ISaveable
         public List<int> enemypPathIndex;
         public List<int> enemyHealth;
         public List<float> enemySpeed;
+        //wave saving
+        public int waveNum;
+        public float timerSave;
         //public List<float> waves or spawning sequence;
     }
 

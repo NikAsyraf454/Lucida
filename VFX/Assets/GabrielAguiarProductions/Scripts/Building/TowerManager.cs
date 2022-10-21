@@ -129,6 +129,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         List<float> tempPosition = new List<float>();
         List<int> levels = new List<int>();
         List<int> damageDeal = new List<int>();
+        List<int> exps = new List<int>();
         foreach( TowerLevel towerLevel in spawnedTowerList)
         {
             temp.Add(towerLevel.towerId);
@@ -137,6 +138,7 @@ public class TowerManager : MonoBehaviour, ISaveable
             tempPosition.Add(towerLevel.gameObject.transform.position.z);
             levels.Add(towerLevel.Level);
             damageDeal.Add(towerLevel.DamageDeal);
+            exps.Add(towerLevel.TowerXp);
 
         }
         return new SaveData
@@ -144,36 +146,39 @@ public class TowerManager : MonoBehaviour, ISaveable
             towerIdList = temp,
             towerPosition = tempPosition,
             level = levels,
-            damageDeal = damageDeal
+            damageDeal = damageDeal,
+            exps = exps
         };
     }
 
     public void RestoreState(object state)
     {
-        List<int> temp = new List<int>();
-        List<float> tempPosition = new List<float>();
-        List<int> levels = new List<int>();
-        List<int> damageDeal = new List<int>();
-        var saveData = (SaveData)state;
-
-        temp = saveData.towerIdList;
-        tempPosition = saveData.towerPosition;
-        levels = saveData.level;
-        damageDeal = saveData.damageDeal;
         
-        UpdateLoadProperties(temp, tempPosition, levels, damageDeal);
+        var saveData = (SaveData)state;
+        UpdateLoadProperties(saveData);
     }
 
-    private void UpdateLoadProperties(List<int> towerIdList, List<float> towerPosition, List<int> levels, List<int> damageDeal)         //if any properties needed to be updated for UI or etc
+    private void UpdateLoadProperties(SaveData saveData)         //if any properties needed to be updated for UI or etc
     {
+        List<int> towerIdList = new List<int>();
+        List<float> towerPosition = new List<float>();
+        List<int> levels = new List<int>();
+        List<int> damageDeal = new List<int>();
+        List<int> exps = new List<int>();
 
+        towerIdList = saveData.towerIdList;
+        towerPosition = saveData.towerPosition;
+        levels = saveData.level;
+        damageDeal = saveData.damageDeal;
+        exps = saveData.exps;
         int j = 0;
         foreach(int i in towerIdList)
         {
             SetTowerInstance(i);
-            SpawnTower(new Vector3(towerPosition[j*3],towerPosition[j*3+1],towerPosition[j*3+2]));
+            SpawnTower(new Vector3(towerPosition[(j*3)],towerPosition[(j*3)+1],towerPosition[(j*3)+2]));
             spawnedTowerList[j].Level = levels[j];
             spawnedTowerList[j].DamageDeal = damageDeal[j];
+            spawnedTowerList[j].TowerXp = exps[j];
             j++;
         }
 
@@ -186,6 +191,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         public List<float> towerPosition;
         public List<int> level;
         public List<int> damageDeal; 
+        public List<int> exps;
         //public List<float> towerTimer;
     }
 
