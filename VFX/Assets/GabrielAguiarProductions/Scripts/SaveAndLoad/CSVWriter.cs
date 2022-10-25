@@ -31,9 +31,9 @@ public class CSVWriter : MonoBehaviour
         }
 
         Score temp = new Score();
-        temp.health = PlayerManager.Instance.currentPlayerHealth;
-        temp.level = WaveManager.Instance.waveIndex;
-        temp.score = PlayerManager.Instance.GetFinalScore();
+        temp.health = PlayerManager.Instance.currentPlayerHealth < 0 ? 0 : PlayerManager.Instance.currentPlayerHealth;
+        temp.level = WaveManager.Instance.waveIndex < 0 ? 0 : WaveManager.Instance.waveIndex;
+        temp.score = PlayerManager.Instance.GetFinalScore() < 0 ? 0 : PlayerManager.Instance.GetFinalScore();
         highScoreList.scores[(highScoreList.scores.Length-1)] = temp;
         // highScoreList.scores[(highScoreList.scores.Length-1)].health = PlayerManager.Instance.currentPlayerHealth;
         // highScoreList.scores[highScoreList.scores.Length-1].level = WaveManager.Instance.waveIndex;

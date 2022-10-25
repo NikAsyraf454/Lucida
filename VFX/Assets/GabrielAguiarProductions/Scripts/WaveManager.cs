@@ -7,6 +7,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 {
     public static WaveManager Instance;
     [SerializeField] private List<GameObject> enemyPrefabList;
+    [SerializeField] private List<EnemyDetails> enemyDetailsList;
     public List<EnemyMovement> enemyList;
     public List<Waves> waves;
     private PathManager pathManager;
@@ -19,6 +20,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     private bool canSpawnNext = false;
     private bool lastOfWave = false;
     public List<EnemyHealth> enemyHealthList;
+    [SerializeField] private int wavesEnded;
 
     void Start()
     {
@@ -27,67 +29,81 @@ public class WaveManager : MonoBehaviour, ISaveable
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
         canSpawnNext = true;
-        //SpawnWave();
-        //waveIndex++;
-        // Debug.Log(waves.Count);
-        // Debug.Log(waves[0].enemyGroup.Count);
-        // Debug.Log(waves[0].enemyGroup[0].amount);
+        //difficultyAdjustment()
     }
 
     void Update()
     {
+        if(MenuManager.Instance.gameEnded) { return; }
+
+        // if(waveIndex >= waves.Count) {
+        //     MenuManager.Instance.PlayerWin();
+        //     Debug.Log("Win"); 
+        //     return;
+        // }
+
         if(timer <= 0f && canSpawnNext)
-        {
-            if(waveIndex == waves.Count) { return; }
-            
+        {   
             canSpawnNext = false;
             lastOfWave = false;
             SpawnWave();
         }
 
         timer -= Time.deltaTime;
+        if (timer <= 0.0f) { return; }
+        TimerUI.Instance.SetTimer(timer);
     }
 
     void SpawnWave()
     {
         Debug.Log("Spawning the wave: " + waveIndex);
+        wavesEnded = waves[waveIndex].enemyGroup.Count;
         for(groupIndex = 0; groupIndex < waves[waveIndex].enemyGroup.Count; groupIndex++)
         {
-            StartCoroutine(SpawnGroup(groupIndex, 0));
+            StartCoroutine(SpawnGroup(groupIndex));
         }
 
-        waveIndex++;
+        
     }
 
-    IEnumerator SpawnGroup(int groupNum, int j)
+    IEnumerator SpawnGroup(int groupNum)
     {
-        for(; j < waves[waveIndex].enemyGroup[groupNum].amount; j++)        //j is for enemy amount, i is for enemyGroup index
+        for(int j = 0; j < waves[waveIndex].enemyGroup[groupNum].amount; j++)        //j is for enemy amount, i is for enemyGroup index
         {
             //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
             SpawnEnemy(waves[waveIndex].enemyGroup[groupNum].enemyId, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            
+            if(groupNum == waves[waveIndex].enemyGroup.Count-2)Debug.Log("Spawning " + (j+1) + "/" + waves[waveIndex].enemyGroup[groupNum].amount);
+            
+            if(j == waves[waveIndex].enemyGroup[groupNum].amount-1)
+            {
+                wavesEnded--;
+            }
 
-            if(groupNum == waves[waveIndex].enemyGroup.Count-1 && j == waves[waveIndex].enemyGroup[groupNum].amount-1)
+            if(wavesEnded <= 0 && !lastOfWave)
             {
                 Debug.Log("Last of wave " + waveIndex + "group num: " + groupNum);
                 lastOfWave = true;
+                waveIndex++;
             }
 
             yield return new WaitForSeconds(1f / waves[waveIndex].enemyGroup[groupNum].rate);
         }
-
-        
-
-        //enemyCount++;
     }
 
     private void SpawnEnemy(int id, Vector3 pos, Quaternion rotation)
     {
-        GameObject enemy = Instantiate(enemyPrefabList[id], pos, rotation);
+        GameObject enemy = Instantiate(enemyDetailsList[id].prefab, pos, rotation);
         enemy.GetComponent<EnemyHealth>().playerManager = playerManager;
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
         enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
     }
+
+    // private void difficultyAdjustment()
+    // {
+
+    // }
 
     private void RemoveEnemy(GameObject other)
 	{
@@ -96,10 +112,15 @@ public class WaveManager : MonoBehaviour, ISaveable
 
         if(enemyHealthList.Count <= 0 && lastOfWave)
         {
+            if(waveIndex >= waves.Count) 
+            {
+                MenuManager.Instance.PlayerWin(); 
+                return;
+            }
+
             timer = timeBetweenWave;
             canSpawnNext = true;
-            Debug.Log("timerstart: " + timer);
-
+            // TimerUI.Instance.SetTimer(timer);
             Debug.Log("Saving...");
             SaveManager.Instance.Save();
         }

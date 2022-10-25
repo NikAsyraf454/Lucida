@@ -57,6 +57,12 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
+    public void PauseGame()
+    {
+        PauseMenu pause = GetComponent<PauseMenu>();
+        pause.PauseGame();
+    }
+
     public void GraphMenu()
     {
         graphMenuPrefab.SetActive(true);
