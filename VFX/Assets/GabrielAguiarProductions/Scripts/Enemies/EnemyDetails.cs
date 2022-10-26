@@ -6,7 +6,7 @@ public class EnemyDetails
     public int enemyId;
     public GameObject prefab;
     public Vector2 spawnTimeRange;
-    public int startAmount;
+    public int amount;
     public int spawnAfterLevel;
     public int health;
 }

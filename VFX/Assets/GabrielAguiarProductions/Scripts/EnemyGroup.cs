@@ -5,5 +5,5 @@ public class EnemyGroup
 {
     public int enemyId;
     public int amount;
-    public float rate;
+    // public float rate;
 }

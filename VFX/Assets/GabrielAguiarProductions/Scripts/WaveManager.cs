@@ -6,6 +6,7 @@ using System;
 public class WaveManager : MonoBehaviour, ISaveable
 {
     public static WaveManager Instance;
+    public int totalWaves = 3;
     [SerializeField] private List<GameObject> enemyPrefabList;
     [SerializeField] private List<EnemyDetails> enemyDetailsList;
     public List<EnemyMovement> enemyList;
@@ -29,6 +30,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
         canSpawnNext = true;
+        populateWavesList();
         //difficultyAdjustment()
     }
 
@@ -73,7 +75,7 @@ public class WaveManager : MonoBehaviour, ISaveable
             //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
             SpawnEnemy(waves[waveIndex].enemyGroup[groupNum].enemyId, spawnPoint.transform.position, spawnPoint.transform.rotation);
             
-            if(groupNum == waves[waveIndex].enemyGroup.Count-2)Debug.Log("Spawning " + (j+1) + "/" + waves[waveIndex].enemyGroup[groupNum].amount);
+            // if(groupNum == waves[waveIndex].enemyGroup.Count-2)Debug.Log("Spawning " + (j+1) + "/" + waves[waveIndex].enemyGroup[groupNum].amount);
             
             if(j == waves[waveIndex].enemyGroup[groupNum].amount-1)
             {
@@ -87,7 +89,8 @@ public class WaveManager : MonoBehaviour, ISaveable
                 waveIndex++;
             }
 
-            yield return new WaitForSeconds(1f / waves[waveIndex].enemyGroup[groupNum].rate);
+            float temp = UnityEngine.Random.Range(enemyDetailsList[groupNum].spawnTimeRange.x,enemyDetailsList[groupNum].spawnTimeRange.y);
+            yield return new WaitForSeconds(/* 1f / */ temp);
         }
     }
 
@@ -98,6 +101,31 @@ public class WaveManager : MonoBehaviour, ISaveable
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
         enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
+    }
+
+    private void populateWavesList()
+    {
+        for(int i = 0; i < totalWaves; i++)
+        {
+                Debug.Log("Creating wave...");
+            
+            Waves waveTemp = new Waves();
+            waveTemp.enemyGroup = new List<EnemyGroup>();
+            
+            foreach(EnemyDetails enemyDetails in enemyDetailsList)
+            {
+                Debug.Log("Check");
+                if(enemyDetails.spawnAfterLevel > i) { continue; }
+                Debug.Log("entered");
+                EnemyGroup enemyGroupTemp = new EnemyGroup();
+                enemyGroupTemp.enemyId = enemyDetails.enemyId;
+                enemyDetails.amount += UnityEngine.Random.Range(0,3);
+                enemyGroupTemp.amount = enemyDetails.amount;
+                //rate changes to be faster after waves
+                waveTemp.enemyGroup.Add(enemyGroupTemp);
+            }
+            waves.Add(waveTemp);
+        }
     }
 
     // private void difficultyAdjustment()
@@ -112,7 +140,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 
         if(enemyHealthList.Count <= 0 && lastOfWave)
         {
-            if(waveIndex >= waves.Count) 
+            if(waveIndex >= totalWaves) 
             {
                 MenuManager.Instance.PlayerWin(); 
                 return;

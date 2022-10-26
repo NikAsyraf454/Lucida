@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1573725682995777339}
   - component: {fileID: 643951033}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: teee
   m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f27469425138c848901c0594902097d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalWaves: 5
   enemyPrefabList:
   - {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b, type: 3}
   - {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce, type: 3}
@@ -267,14 +268,14 @@ MonoBehaviour:
     prefab: {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b,
       type: 3}
     spawnTimeRange: {x: 1, y: 3}
-    startAmount: 5
+    amount: 0
     spawnAfterLevel: 0
     health: 0
   - enemyId: 1
     prefab: {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce,
       type: 3}
     spawnTimeRange: {x: 2, y: 4}
-    startAmount: 2
+    amount: 0
     spawnAfterLevel: 5
     health: 0
   enemyList: []
@@ -282,27 +283,22 @@ MonoBehaviour:
   - enemyGroup:
     - enemyId: 0
       amount: 5
-      rate: 0.2
     - enemyId: 1
       amount: 3
-      rate: 0.1
   - enemyGroup:
     - enemyId: 0
       amount: 10
-      rate: 0.5
     - enemyId: 1
       amount: 3
-      rate: 0.1
   - enemyGroup:
     - enemyId: 0
       amount: 15
-      rate: 0.5
     - enemyId: 1
       amount: 5
-      rate: 0.1
   timeBetweenWave: 5
   waveIndex: 0
   enemyHealthList: []
+  wavesEnded: 0
 --- !u!114 &3008501430176670577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +453,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2477620478679566878}
     m_Modifications:
+    - target: {fileID: 663769719178898794, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 663769719178898794, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 1304448361374167269, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
       propertyPath: m_Name
@@ -505,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 4698162925840485385, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 118.4863
+      value: 132.4012
       objectReference: {fileID: 0}
     - target: {fileID: 4698162925840485385, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
@@ -550,7 +556,7 @@ PrefabInstance:
     - target: {fileID: 4698162925840485385, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -59.243164
+      value: -66.20062
       objectReference: {fileID: 0}
     - target: {fileID: 4698162925840485385, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
@@ -566,6 +572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.799377
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990407c6c320c7c45b02502f98e4c578, type: 3}
