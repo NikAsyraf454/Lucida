@@ -15,11 +15,13 @@ public class TowerInfoDisplay : MonoBehaviour
     private void Awake()
     {
         towerLevel.ServerOnTowerXp += UpdateStats;
+        towerLevel.ServerOnTowerDestroyed += TowerDestroyed;
     }
 
     private void OnDestroy()
     {
         towerLevel.ServerOnTowerXp -= UpdateStats;
+        towerLevel.ServerOnTowerDestroyed -= TowerDestroyed;
     }
 
     void Start()
@@ -63,5 +65,11 @@ public class TowerInfoDisplay : MonoBehaviour
         level.SetText("Level " + towerLevel.Level);
         xpBarImage.fillAmount = (float)towerLevel.TowerXp / (towerLevel.Level*10);
         cost.SetText("Cost: -$" + ((towerLevel.Level * 10) - towerLevel.TowerXp).ToString());
+    }
+
+    void TowerDestroyed(TowerLevel towerLevel)
+    {
+        if(isDisplayed)
+        TowerManager.Instance.canDisplayInfo = true;
     }
 }

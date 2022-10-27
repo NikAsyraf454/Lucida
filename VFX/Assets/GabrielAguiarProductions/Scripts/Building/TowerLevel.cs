@@ -16,6 +16,9 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private bool isUnlocked;
     [SerializeField] private bool isSpawned = false;        //for UI]
     [SerializeField] private int _towerXp;
+
+    public Node node;
+    
     
 
     public int Level { get{return _level; } set{ _level = Level; } }
@@ -37,6 +40,7 @@ public class TowerLevel : MonoBehaviour
         //isSpawned = false;
         //currentTowerPrice = maxTowerPrice;
         // _level = UnityEngine.Random.Range(1,4);
+        GetNodeAvailability(transform.position);
     }
 
     // Update is called once per frame
@@ -109,6 +113,7 @@ public class TowerLevel : MonoBehaviour
     public void SellTower()
     {
         ServerOnTowerDestroyed.Invoke(this);
+        node.TowerDestroyed();
         Destroy(transform.parent.gameObject);
     }
 
@@ -121,4 +126,14 @@ public class TowerLevel : MonoBehaviour
     //TowerUpgrade()
 
     //Damage
+
+    private void GetNodeAvailability(Vector3 position)
+    {
+        Ray ray = new Ray(position, Vector3.down);
+        if(Physics.Raycast(ray, out RaycastHit hit))
+        {
+            node =  hit.collider.gameObject.GetComponentInChildren<Node>();
+        }
+        
+    }
 }

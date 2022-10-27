@@ -58,7 +58,8 @@ public class TowerManager : MonoBehaviour, ISaveable
     public bool BuildTower(Vector3 position)
     {
         if (PlayerManager.Instance.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
-
+        
+        
         PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
         SpawnTower(position);
         return false;
@@ -66,6 +67,8 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     private void SpawnTower(Vector3 position)
     {
+        if(!GetNodeAvailability(position)) { return; }      //raycast, check if node below the position can be build
+
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
         spawnedTowerList.Add(tower.GetComponentInChildren<TowerLevel>());
         spawnedTowerList[spawnedTowerList.Count-1].ServerOnTowerDestroyed += RemoveTower;
@@ -115,6 +118,16 @@ public class TowerManager : MonoBehaviour, ISaveable
                 //towerButton.SetShopItemPriceText(towerLevel);
             }
         }
+    }
+
+    private bool GetNodeAvailability(Vector3 position)
+    {
+        Ray ray = new Ray(position, Vector3.down);
+        if(Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return hit.collider.gameObject.GetComponentInChildren<Node>().canBuild;
+        }
+        return false;
     }
 
 

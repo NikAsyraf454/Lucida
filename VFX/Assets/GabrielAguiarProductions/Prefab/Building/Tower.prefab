@@ -44,7 +44,7 @@ BoxCollider:
   m_GameObject: {fileID: 1077020381243097579}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.0000002, y: 1.0590899, z: 1.2580305}
   m_Center: {x: -5.705995e-17, y: 0.02954492, z: 0.1290152}
@@ -331,6 +331,7 @@ MonoBehaviour:
   isUnlocked: 1
   isSpawned: 0
   _towerXp: 0
+  node: {fileID: 0}
 --- !u!1 &3692403797195391853
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Node : MonoBehaviour
     public PathManager pathManager;
     public TowerManager towerManager;
     public bool canBuild = true;
+    public TowerLevel towerLevel;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class Node : MonoBehaviour
         if(!canBuild) { return; }
         //return true if cannot build, false if can build
         canBuild = towerManager.BuildTower( new Vector3(transform.position.x, 0.64f, transform.position.z));
+        
     }
 
     void OnMouseEnter()
@@ -48,6 +50,11 @@ public class Node : MonoBehaviour
     {
         rend.material.color = startColor;
         //
+    }
+
+    public void TowerDestroyed()
+    {
+        canBuild = true;
     }
 
     private void UpdateBuildingPreview()

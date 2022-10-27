@@ -59,7 +59,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void SpawnWave()
     {
-        Debug.Log("Spawning the wave: " + waveIndex);
+        // Debug.Log("Spawning the wave: " + waveIndex);
         wavesEnded = waves[waveIndex].enemyGroup.Count;
         for(groupIndex = 0; groupIndex < waves[waveIndex].enemyGroup.Count; groupIndex++)
         {
