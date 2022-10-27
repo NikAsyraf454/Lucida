@@ -271,6 +271,7 @@ MonoBehaviour:
     amount: 0
     spawnAfterLevel: 0
     health: 0
+    isBoss: 0
   - enemyId: 1
     prefab: {fileID: 1902418783150779098, guid: 41815e0afaa120e40885255e8fb08fce,
       type: 3}
@@ -278,23 +279,30 @@ MonoBehaviour:
     amount: 0
     spawnAfterLevel: 5
     health: 0
+    isBoss: 0
   enemyList: []
   waves:
   - enemyGroup:
     - enemyId: 0
       amount: 5
+      rate: {x: 0, y: 0}
     - enemyId: 1
       amount: 3
+      rate: {x: 0, y: 0}
   - enemyGroup:
     - enemyId: 0
       amount: 10
+      rate: {x: 0, y: 0}
     - enemyId: 1
       amount: 3
+      rate: {x: 0, y: 0}
   - enemyGroup:
     - enemyId: 0
       amount: 15
+      rate: {x: 0, y: 0}
     - enemyId: 1
       amount: 5
+      rate: {x: 0, y: 0}
   timeBetweenWave: 5
   waveIndex: 0
   enemyHealthList: []
@@ -463,10 +471,30 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 663769719178898794, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 663769719178898794, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1304448361374167269, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
       propertyPath: m_Name
       value: PlayerStat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700230956383245180, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000013351
+      objectReference: {fileID: 0}
+    - target: {fileID: 3700230956383245180, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15.269
       objectReference: {fileID: 0}
     - target: {fileID: 4698162925840485385, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
@@ -575,8 +603,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
         type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.50000036
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.49999997
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150.2414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5.067505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524966085504594383, guid: 990407c6c320c7c45b02502f98e4c578,
+        type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -47.799377
+      value: -50.391
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 990407c6c320c7c45b02502f98e4c578, type: 3}

@@ -9,4 +9,6 @@ public class EnemyDetails
     public int amount;
     public int spawnAfterLevel;
     public int health;
+    public bool isBoss;
+    // public bool spawned;
 }

@@ -49,10 +49,11 @@ public class WaveManager : MonoBehaviour, ISaveable
             canSpawnNext = false;
             lastOfWave = false;
             SpawnWave();
+            TimerUI.Instance.SetTimer(0.00f);
         }
 
         timer -= Time.deltaTime;
-        if (timer <= 0.0f) { return; }
+        if (timer <= 0.00f) { return; }
         TimerUI.Instance.SetTimer(timer);
     }
 
@@ -89,7 +90,7 @@ public class WaveManager : MonoBehaviour, ISaveable
                 waveIndex++;
             }
 
-            float temp = UnityEngine.Random.Range(enemyDetailsList[groupNum].spawnTimeRange.x,enemyDetailsList[groupNum].spawnTimeRange.y);
+            float temp = UnityEngine.Random.Range(waves[waveIndex].enemyGroup[groupNum].rate.x,waves[waveIndex].enemyGroup[groupNum].rate.y);
             yield return new WaitForSeconds(/* 1f / */ temp);
         }
     }
@@ -114,13 +115,16 @@ public class WaveManager : MonoBehaviour, ISaveable
             
             foreach(EnemyDetails enemyDetails in enemyDetailsList)
             {
-                Debug.Log("Check");
                 if(enemyDetails.spawnAfterLevel > i) { continue; }
-                Debug.Log("entered");
+
                 EnemyGroup enemyGroupTemp = new EnemyGroup();
                 enemyGroupTemp.enemyId = enemyDetails.enemyId;
                 enemyDetails.amount += UnityEngine.Random.Range(0,3);
                 enemyGroupTemp.amount = enemyDetails.amount;
+                enemyDetails.spawnTimeRange.x *= UnityEngine.Random.Range(1f,0.95f);
+                enemyDetails.spawnTimeRange.y *= UnityEngine.Random.Range(1f,0.95f);
+                enemyGroupTemp.rate = enemyDetails.spawnTimeRange;
+                if(enemyDetails.isBoss && enemyDetails.spawnAfterLevel == i) { enemyGroupTemp.amount = 1; }
                 //rate changes to be faster after waves
                 waveTemp.enemyGroup.Add(enemyGroupTemp);
             }

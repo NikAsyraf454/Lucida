@@ -22,8 +22,13 @@ public class TimerUI : MonoBehaviour
 
     public void SetTimer(float time)
     {
-        // StartCoroutine(UpdateTimer(time));
-        timer.text = time.ToString("0.0");
+        // float minutes = Mathf.FloorToInt(time / 60);  
+        float seconds = Mathf.FloorToInt(time % 60);
+        int milliseconds = (int)(time * 100);
+        milliseconds = milliseconds % 100;
+        // timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        // timer.text = string.Format("{0}:{1}:{2}", minutes, seconds, (int)milliseconds);
+        timer.text = string.Format("{0}:{1}", seconds, (int)milliseconds);
     }
 
     // IEnumerator UpdateTimer(float time)
