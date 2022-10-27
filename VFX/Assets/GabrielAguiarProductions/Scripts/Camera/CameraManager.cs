@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
-    public Camera mainCamera;
+    public Camera[] cameras;
     public PathManager pathManager;
     // [SerializeField] private Vector2 maxPosition;
     // [SerializeField] private Vector2 minPosition;
@@ -60,6 +61,41 @@ public class CameraManager : MonoBehaviour
         targetZoom -= scrollData * zoomFactor;
         targetZoom = Mathf.Clamp(targetZoom, zoomClamp.x, zoomClamp.y);
         Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity, Time.deltaTime* zoomSmoothSpeed);
+        // foreach(Camera camera in cameras)
+        // {
+        //     camera.orthographicSize = Camera.main.orthographicSize;
+        // }
+        cameras[1].orthographicSize = Camera.main.orthographicSize;
+    }
+
+    public void OnLeftClick(InputValue value)
+    {
+        GetNodeAvailability(transform.position);
+        // Debug.Log("shooting ray..." + Mouse.current.position.ReadValue());
+    }
+
+    private void GetNodeAvailability(Vector3 position)
+    {
+        // Vector3 mousePos = Mouse.current.position.ReadValue();   
+        // mousePos.z=Camera.main.nearClipPlane;
+        // Vector3 Worldpos=Camera.main.ScreenToWorldPoint(mousePos);  
+
+        // Ray ray = new Ray(position, Vector3.down);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+        // Debug.Log("shooting ray..." + Mouse.current.position.ReadValue());
+        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        {
+            if(!hit.collider.isTrigger) { return; }
+
+            if(hit.collider.gameObject.tag == "Tower")
+            {
+                Debug.Log("Got it");
+                TowerInfoDisplay towerInfoDisplay =  hit.collider.gameObject.GetComponent<TowerInfoDisplay>();
+                towerInfoDisplay.DisplayTowerInfo();
+            }
+        }
+        
     }
     
 }

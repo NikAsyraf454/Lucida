@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PathManager : MonoBehaviour, ISaveable
+public class PathManager : MonoBehaviour/* , ISaveable */
 {
     public List<Node> nodeList;
     public List<bool> canBuiltTemp;
@@ -183,7 +183,7 @@ public class PathManager : MonoBehaviour, ISaveable
     }
 
 
-    #region Save and Load
+    /* #region Save and Load
         
     
     public object CaptureState()
@@ -226,5 +226,5 @@ public class PathManager : MonoBehaviour, ISaveable
         // public int xp;
     }
     
-    #endregion
+    #endregion */
 }

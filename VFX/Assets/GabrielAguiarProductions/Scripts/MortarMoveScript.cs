@@ -16,11 +16,13 @@ public class MortarMoveScript : MonoBehaviour
 	public List<GameObject> trails;
     public List<EnemyHealth> enemyHealthInRange;
 	public int damageDeal = 0;
+	public float lifeSpan = 6f;
 	
 
     void Start()
     {
 		rb = GetComponent <Rigidbody> ();
+		Destroy(gameObject, lifeSpan);
     }
 
     // Update is called once per frame

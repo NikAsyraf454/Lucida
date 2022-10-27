@@ -21,6 +21,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 	//private bool collided;
 	private Rigidbody rb;
 	private EnemyHealth enemyHealth;
+	public float lifeSpan = 3f;
 
 	void Start () {	
 		rb = GetComponent <Rigidbody> ();
@@ -61,6 +62,8 @@ public class ProjectileMoveScript : MonoBehaviour {
 		if (shotSFX != null && GetComponent<AudioSource>()) {
 			GetComponent<AudioSource> ().PlayOneShot (shotSFX);
 		}
+
+		Destroy(gameObject, lifeSpan);
 	}
 
 	void FixedUpdate () {	

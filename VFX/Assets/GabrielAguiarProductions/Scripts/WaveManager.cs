@@ -108,7 +108,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     {
         for(int i = 0; i < totalWaves; i++)
         {
-                Debug.Log("Creating wave...");
+                // Debug.Log("Creating wave...");
             
             Waves waveTemp = new Waves();
             waveTemp.enemyGroup = new List<EnemyGroup>();

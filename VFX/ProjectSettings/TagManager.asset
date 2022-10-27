@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - TowerShop
   - Floor
+  - Tower
   layers:
   - Default
   - TransparentFX

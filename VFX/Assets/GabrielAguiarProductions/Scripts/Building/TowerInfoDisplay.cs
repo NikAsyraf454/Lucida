@@ -44,6 +44,11 @@ public class TowerInfoDisplay : MonoBehaviour
 
     void OnMouseDown()
     {
+        DisplayTowerInfo();
+    }
+    
+    public void DisplayTowerInfo()
+    {
         if(isDisplayed && !TowerManager.Instance.canDisplayInfo)
         {
             isDisplayed = false;

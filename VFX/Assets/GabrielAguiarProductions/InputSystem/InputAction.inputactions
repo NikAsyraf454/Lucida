@@ -48,6 +48,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Mouse",
+            "id": "0bb287f7-d1b4-4247-9c5e-f951f5ecfc69",
+            "actions": [
+                {
+                    "name": "LeftClick",
+                    "type": "Value",
+                    "id": "0ceb9234-b855-4de9-a08c-fbcef0e066b3",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "169b01f1-e080-4c3f-8b93-e03080f7822f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

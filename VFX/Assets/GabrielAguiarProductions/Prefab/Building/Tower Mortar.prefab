@@ -147,6 +147,7 @@ MonoBehaviour:
   isUnlocked: 1
   isSpawned: 0
   _towerXp: 0
+  node: {fileID: 0}
 --- !u!1 &6051520627198286845
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ GameObject:
   - component: {fileID: 5150175382843647458}
   m_Layer: 0
   m_Name: Tower Mortar
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,8 +225,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6, z: 0.6}
-  m_Center: {x: 0, y: 0.04736173, z: 0.0000000010376645}
+  m_Size: {x: 0.537374, y: 0.52842754, z: 0.5105344}
+  m_Center: {x: 0.004473254, y: 0.01157549, z: 0.008946538}
 --- !u!114 &5150175382843647458
 MonoBehaviour:
   m_ObjectHideFlags: 0
