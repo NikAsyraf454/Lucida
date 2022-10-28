@@ -20,7 +20,7 @@ public class RotateToEnemyScript : MonoBehaviour
 	private float mortarOffset;		//sphere collider mortar limit is 22
 	[SerializeField]
 	private float predictionMultiplier;
-	private WaitForSeconds updateTime = new WaitForSeconds (0.01f); 
+	// private WaitForSeconds updateTime = new WaitForSeconds (0.01f); 
 	private EnemyMovement enemyMovement;
 	[SerializeField] private TowerLevel towerLevel;
 	public List<EnemyHealth> enemyHealthList;			//needs to be public, idk why
@@ -31,7 +31,7 @@ public class RotateToEnemyScript : MonoBehaviour
 		towerLevel = GetComponent<TowerLevel>();
 	}
 
-	private void OnDestroy()
+	private void OnDisable()
     {
 		foreach(EnemyHealth enemyHealth in enemyHealthList)
 		{
@@ -46,7 +46,7 @@ public class RotateToEnemyScript : MonoBehaviour
 			//collided = true;
 			enemyList.Add(co.gameObject);
 			//transform.LookAt(enemyList[0].transform);
-			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();
+			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();		//'GameObject' has been destroyed but you are still trying to access it
 			enemyHealthList.Add(co.gameObject.GetComponent<EnemyHealth>());
 			enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
 		}
@@ -54,7 +54,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	private void OnTriggerStay(Collider co)
     {
-        if (co.gameObject.tag == "Enemy") {
+        if (co.gameObject.tag == "Enemy" && enemyMovement != null) {
 			StartUpdateRay(co.gameObject);
 		}
     }
@@ -79,7 +79,16 @@ public class RotateToEnemyScript : MonoBehaviour
 		// Debug.Log("deleted " + other.name);
 		if(enemyList.Count > 0)
 		{
-			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();
+			
+			foreach(GameObject enemy in enemyList)
+			{
+				if(enemy.TryGetComponent<EnemyMovement>(out EnemyMovement temp))
+				{
+					enemyMovement = temp;
+					return;
+				}
+			}
+			/* enemyMovement =  */
 		}
 	}
 
@@ -104,7 +113,7 @@ public class RotateToEnemyScript : MonoBehaviour
 			transform.LookAt(enemyMovement.transform.position);
 
 		if (Time.time >= timeToFire) {
-			timeToFire = Time.time + 1f / towerLevel.FireRate;
+			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			SpawnVFX();
 		}
 		/*yield return updateTime;
@@ -151,6 +160,9 @@ public class RotateToEnemyScript : MonoBehaviour
 		}
 	}
 
-	
+	public void fireDelay(float time)
+	{
+		timeToFire += time;
+	}
 
 }

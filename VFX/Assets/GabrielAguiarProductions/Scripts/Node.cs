@@ -20,7 +20,7 @@ public class Node : MonoBehaviour
         rend = GetComponentInChildren<Renderer>();
         startColor = rend.material.color;
         pathManager = GameObject.FindObjectOfType<PathManager>();
-        towerManager = pathManager.gameObject.GetComponent<TowerManager>();
+        towerManager = pathManager.gameObject.GetComponentInParent<TowerManager>();
     }
 
     private void Update()

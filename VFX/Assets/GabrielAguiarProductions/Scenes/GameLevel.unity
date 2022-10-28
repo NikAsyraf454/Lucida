@@ -3274,36 +3274,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: totalWaves
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: waves.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: enemyDetailsList.Array.data[0].amount
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: enemyDetailsList.Array.data[1].amount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: enemyDetailsList.Array.data[1].spawnAfterLevel
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2477620478679566874, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2477620479550125248, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_Name

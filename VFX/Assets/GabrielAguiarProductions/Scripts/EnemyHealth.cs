@@ -35,25 +35,29 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     
     public void DealDamage(int damageAmount)
     {
-        if (_currentHealth == 0) { return; }
+        // if (_currentHealth == 0) { return; }
 
         _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
         HandleHealthUpdated(maxHealth, _currentHealth);
 
-        if (_currentHealth != 0) { return; }
+        if (_currentHealth > 0) { return; }
 
         //death of enemy
-        EnemyDeath();
         playerManager.IncreaseResource(resourceDrop);
         playerManager.ScoreIncrease(scoreValue);
+        EnemyDeath();
         //ServerOnDie?.Invoke();
     }
 
     public void EnemyDeath()
     {
-
-        ServerOnDie?.Invoke(gameObject);
-        Destroy(this.gameObject);  
+        if(this.gameObject != null)
+        {
+            Destroy(this.gameObject, 0.15f);         //place this first, so if invoke errors, it will still be destroyed
+            ServerOnDie?.Invoke(this.gameObject);
+        }
+        
+         
     }
 
 /*

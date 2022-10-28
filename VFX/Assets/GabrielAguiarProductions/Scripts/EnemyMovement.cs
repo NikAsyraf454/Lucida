@@ -14,22 +14,22 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] public EnemyHealth enemyHealth;
     private PlayerManager playerManager;
     private List<GameObject> waypoints;
-    
+    private bool isDead;
     
     void Start()
     {
-        pathManager = GameObject.Find("GameManager").GetComponent<PathManager>();
+        pathManager = GameObject.Find("GameManager").GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         waypoints = pathManager.GetWaypointList();
         target = waypoints[pathIndex];
         //target = pathManager.GetWaypoint(pathIndex);
         pathsAmount = pathManager.GetWaypointsAmount();
-        pathsAmount++;  //waypointIndex calculation is still bizzarre
+        // pathsAmount++;  //waypointIndex calculation is still bizzarre
     }
 
     void FixedUpdate()
     {
-        if(pathIndex < pathsAmount)
+        // if(pathIndex < pathsAmount)
             Move();
     }
 
@@ -42,14 +42,17 @@ public class EnemyMovement : MonoBehaviour
         if(Vector3.Distance(transform.position, target.transform.position) <= 0.15f)
         {
             pathIndex++;
-            if(pathIndex < pathsAmount)
+            if(pathIndex < waypoints.Count)
+            {
                 target = waypoints[pathIndex];
                 //target = pathManager.GetWaypoint(pathIndex);
-            else
-            {
-                enemyHealth.EnemyDeath();
-                playerManager.ReducePlayerHealth(1);
             }
+            // else if(!isDead)
+            // {
+            //     isDead = true;
+            //     playerManager.ReducePlayerHealth(1);
+            //     enemyHealth.EnemyDeath();
+            // }
         }
     }
 
@@ -57,4 +60,18 @@ public class EnemyMovement : MonoBehaviour
     {
         return enemyHealth;
     }
+
+    void OnTriggerEnter (Collider co)
+    {
+        Debug.Log("Collided with" + co.gameObject.tag);
+        if (co.gameObject.tag == "Base") {
+            Debug.Log("in");
+			if(!isDead)
+            {
+                isDead = true;
+                playerManager.ReducePlayerHealth(1);
+                enemyHealth.EnemyDeath();
+            }
+		}
+	}
 }

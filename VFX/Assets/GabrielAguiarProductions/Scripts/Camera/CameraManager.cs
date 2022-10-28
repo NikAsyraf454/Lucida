@@ -90,7 +90,6 @@ public class CameraManager : MonoBehaviour
 
             if(hit.collider.gameObject.tag == "Tower")
             {
-                Debug.Log("Got it");
                 TowerInfoDisplay towerInfoDisplay =  hit.collider.gameObject.GetComponent<TowerInfoDisplay>();
                 towerInfoDisplay.DisplayTowerInfo();
             }

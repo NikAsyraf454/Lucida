@@ -50,7 +50,11 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandlePlayerHealthUpdated(temp, currentPlayerHealth);
 
         // if(currentPlayerHealth <= 5) { SecondChance(); } //second chance for player (eliminate all enemy in wave or map)
-        if(currentPlayerHealth <= 0) { MenuManager.Instance.PlayerLose(); }
+        if(currentPlayerHealth <= 0) 
+        {
+            currentPlayerHealth = 0;
+            MenuManager.Instance.PlayerLose();
+        }
     }
 
     public void IncreaseResource(int resourceAmount)

@@ -26,7 +26,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     void Start()
     {
         Instance = this;
-        pathManager = GetComponent<PathManager>();
+        pathManager = GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         spawnPoint = pathManager.GetWaypoint(0);
         canSpawnNext = true;

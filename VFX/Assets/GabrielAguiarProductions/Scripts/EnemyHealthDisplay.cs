@@ -14,7 +14,7 @@ public class EnemyHealthDisplay : MonoBehaviour
         enemyHealth.ClientOnHealthUpdated += HandleHealthUpdated;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         enemyHealth.ClientOnHealthUpdated -= HandleHealthUpdated;
     }
