@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public List<EnemyHealth> enemyHealthList;
     [SerializeField] private int wavesEnded;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         pathManager = GetComponentInChildren<PathManager>();

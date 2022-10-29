@@ -9,7 +9,7 @@ public class TimerUI : MonoBehaviour
     public static TimerUI Instance;
     public TMP_Text timer;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
     }

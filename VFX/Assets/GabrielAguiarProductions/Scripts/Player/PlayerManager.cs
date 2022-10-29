@@ -15,25 +15,33 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public int currentPlayerScore = 0;
     [SerializeField] private int maxPlayerScore;
 
+    public int currentCharge = 0;
+    [SerializeField] private int maxCharge = 3;
+    //public int chargeCapacity;
+
     [SerializeField] private int resourceMultiplier = 1;
 
     public event Action<int> ClientOnResourcesUpdated;
     public event Action<int> ClientOnPlayerHealthUpdated;
     public event Action<int> ClientOnScoreUpdated;
+    public event Action<int> ClientOnChargeUpdated;
 
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
+    }
+
+    void Start()
+    {
         currentPlayerHealth = maxPlayerHealth;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         currentPlayerResources = maxPlayerResources;
         ClientHandleResourcesUpdated(0, currentPlayerResources);
         currentPlayerScore = maxPlayerScore;
         ClientHandleScoreUpdated(0, currentPlayerScore);
+        currentCharge = maxCharge;
+        ClientHandleChargeUpdated(0, currentCharge);
     }
 
     // Update is called once per frame
@@ -93,6 +101,28 @@ public class PlayerManager : MonoBehaviour, ISaveable
         return currentPlayerScore * resourceMultiplier;
     }
 
+    public void IncreaseCharge(int chargeAmount)
+    {
+        if((currentCharge + chargeAmount) > maxCharge)
+        {
+            currentCharge = maxCharge;
+        }
+        else
+        {
+            currentCharge += chargeAmount;
+        }
+        
+        ClientHandleChargeUpdated(0, currentCharge);
+    }
+
+    public bool ReduceCharge(int chargeAmount)
+    {
+        if((currentCharge - chargeAmount) < 0) { return false; }
+        currentCharge -= chargeAmount;
+        ClientHandleChargeUpdated(0, currentCharge);
+        return true;
+    }
+
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)
     {
         ClientOnResourcesUpdated?.Invoke(newResources);
@@ -108,6 +138,11 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientOnScoreUpdated?.Invoke(newScore);
     }
 
+    private void ClientHandleChargeUpdated(int oldCharge, int newCharge)
+    {
+        ClientOnChargeUpdated?.Invoke(newCharge);
+    }
+
     #region Save and Load
         
     public object CaptureState()
@@ -116,7 +151,8 @@ public class PlayerManager : MonoBehaviour, ISaveable
         {
             currentPlayerHealth = currentPlayerHealth,
             currentPlayerResources = currentPlayerResources,
-            currentPlayerScore = currentPlayerScore
+            currentPlayerScore = currentPlayerScore,
+            currentCharge = currentCharge
         };
     }
 
@@ -127,6 +163,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentPlayerHealth = saveData.currentPlayerHealth;
         currentPlayerResources = saveData.currentPlayerResources;
         currentPlayerScore = saveData.currentPlayerScore;
+        currentCharge = saveData.currentCharge;
         UpdateLoadProperties();
     }
 
@@ -135,6 +172,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         ClientHandleResourcesUpdated(0, currentPlayerResources);
         ClientHandleScoreUpdated(0, currentPlayerScore);
+        ClientHandleChargeUpdated(0, currentCharge);
     }
 
     [Serializable]
@@ -143,6 +181,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         public int currentPlayerHealth;
         public int currentPlayerResources;
         public int currentPlayerScore;
+        public int currentCharge;
     }
     
     #endregion

@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     string filename => $"{Application.persistentDataPath}/performance.csv";
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         gameEnded = false;

@@ -10,14 +10,16 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TMP_Text healthText = null;
     [SerializeField] private TMP_Text resourcesText = null;
     [SerializeField] private TMP_Text scoreText = null;
+    [SerializeField] private TMP_Text chargeText = null;
     [SerializeField] private GameObject[] healthBar;
 
-    private void Awake()
+    private void Start()
     {
-        playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
+        playerManager = PlayerManager.Instance;
         playerManager.ClientOnPlayerHealthUpdated += ClientHandlePlayerHealthUpdated;
         playerManager.ClientOnResourcesUpdated += ClientHandleResourcesUpdated;
         playerManager.ClientOnScoreUpdated += ClientHandleScoreUpdated;
+        playerManager.ClientOnChargeUpdated += ClientHandleChargeUpdated;
         
     }
 
@@ -26,12 +28,9 @@ public class PlayerStatUI : MonoBehaviour
         playerManager.ClientOnResourcesUpdated -= ClientHandleResourcesUpdated;
         playerManager.ClientOnPlayerHealthUpdated -= ClientHandlePlayerHealthUpdated;
         playerManager.ClientOnScoreUpdated -= ClientHandleScoreUpdated;
+        playerManager.ClientOnChargeUpdated -= ClientHandleChargeUpdated;
     }
 
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -61,6 +60,12 @@ public class PlayerStatUI : MonoBehaviour
     {
         //resourcesText.text = $"Score: {score}";
         scoreText.text = $"{score}";
+    }
+
+    private void ClientHandleChargeUpdated(int charge)
+    {
+        //resourcesText.text = $"Score: {score}";
+        chargeText.text = $"{charge}";
     }
 
 }

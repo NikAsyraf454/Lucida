@@ -13,7 +13,7 @@ public class UIGraphManager :  MonoBehaviour
     private Vector2Int gridSize;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Instance = this;
         HealthGraphMenu();

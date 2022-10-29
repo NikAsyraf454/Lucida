@@ -10,7 +10,7 @@ public class SaveManager : MonoBehaviour
 
     private string SavePath => $"{Application.persistentDataPath}/save.txt";
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         if(File.Exists(SavePath)){ LoadDelay(1.0f); }
