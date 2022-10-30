@@ -64,8 +64,7 @@ public class PlayerStatUI : MonoBehaviour
 
     private void ClientHandleChargeUpdated(int charge)
     {
-        //resourcesText.text = $"Score: {score}";
-        chargeText.text = $"{charge}";
+        chargeText.text = $"Charge: {charge}";
     }
 
 }

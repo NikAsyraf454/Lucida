@@ -31,6 +31,26 @@ public class RotateToEnemyScript : MonoBehaviour
 		towerLevel = GetComponent<TowerLevel>();
 	}
 
+	void Update()
+	{
+		if(enemyList.Count <= 0) { return; }
+
+		foreach(GameObject enemy in enemyList)
+		{
+			if(enemy == null)
+			{
+				Debug.Log("Enemy missing...");
+				RemoveEnemy(enemy);
+				return;
+			}
+			else if(enemy != null)
+			{
+				StartUpdateRay(enemy);
+				return;
+			}
+		}
+	}
+
 	private void OnDisable()
     {
 		foreach(EnemyHealth enemyHealth in enemyHealthList)
@@ -45,30 +65,34 @@ public class RotateToEnemyScript : MonoBehaviour
         if (co.gameObject.tag == "Enemy") {
 			//collided = true;
 			enemyList.Add(co.gameObject);
-			//transform.LookAt(enemyList[0].transform);
 			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();		//'GameObject' has been destroyed but you are still trying to access it
 			enemyHealthList.Add(co.gameObject.GetComponent<EnemyHealth>());
 			enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
 		}
 	}
 
-	private void OnTriggerStay(Collider co)
-    {
-        if (co.gameObject.tag == "Enemy" && enemyMovement != null) {
-			StartUpdateRay(co.gameObject);
-		}
-    }
+	// private void OnTriggerStay(Collider co)
+    // {
+    //     if (co.gameObject.tag == "Enemy" && enemyMovement != null) {
+	// 		StartUpdateRay(co.gameObject);
+	// 	}
+    // }
 
 	private void OnTriggerExit(Collider other)
     {
 		if (other.gameObject.tag == "Enemy") {
 			RemoveEnemy(other.gameObject);
-			foreach(EnemyHealth health in enemyHealthList)
-			{
-				if(health.gameObject == other.gameObject)
-					health.ServerOnDie -= RemoveEnemy;
-			}
-			
+			// foreach(EnemyHealth health in enemyHealthList)
+			// {
+			// 	if(health.gameObject == other.gameObject)
+			// 		health.ServerOnDie -= RemoveEnemy;
+			// }
+		}
+
+		foreach(EnemyHealth health in enemyHealthList)
+		{
+			if(health == null)
+				enemyHealthList.Remove(health);
 		}
 	}
 

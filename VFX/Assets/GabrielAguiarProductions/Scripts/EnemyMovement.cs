@@ -63,9 +63,9 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter (Collider co)
     {
-        Debug.Log("Collided with" + co.gameObject.tag);
+        // Debug.Log("Collided with" + co.gameObject.tag);
         if (co.gameObject.tag == "Base") {
-            Debug.Log("in");
+            // Debug.Log("in");
 			if(!isDead)
             {
                 isDead = true;
@@ -74,4 +74,20 @@ public class EnemyMovement : MonoBehaviour
             }
 		}
 	}
+
+    public void SlowDown(float reduction, float duration)
+    {
+        StartCoroutine(Slow(reduction, duration));
+    }
+
+    //reduction takes in value of 0.0% - 100%
+    IEnumerator Slow(float reduction, float duration)
+    {
+
+        float temp = enemySpeed;
+        enemySpeed *= ((100 - reduction)/100);
+        yield return new WaitForSeconds (duration);
+        enemySpeed = temp;
+        StopCoroutine("Slow");
+    }
 }
