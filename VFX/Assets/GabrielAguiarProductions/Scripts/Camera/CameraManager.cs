@@ -82,7 +82,7 @@ public class CameraManager : MonoBehaviour
 
         // Ray ray = new Ray(position, Vector3.down);
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        Debug.DrawRay(ray.origin, ray.direction, Color.green);
+        // Debug.DrawRay(ray.origin, ray.direction * 20, Color.green);
         // Debug.Log("shooting ray..." + Mouse.current.position.ReadValue());
         if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {

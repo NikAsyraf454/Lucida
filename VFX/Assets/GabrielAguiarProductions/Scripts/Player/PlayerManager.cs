@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public int currentPlayerHealth = 0;
     [SerializeField] private int maxPlayerHealth;
 
-    public int currentPlayerResources = 0;
+    public float currentPlayerResources = 0;
     [SerializeField] private int maxPlayerResources;
 
     public int currentPlayerScore = 0;
@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     [SerializeField] private int maxCharge = 3;
     //public int chargeCapacity;
 
-    [SerializeField] private int resourceMultiplier = 1;
+    [SerializeField] private float resourceMultiplier = 1f;
 
     public event Action<int> ClientOnResourcesUpdated;
     public event Action<int> ClientOnPlayerHealthUpdated;
@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentPlayerHealth = maxPlayerHealth;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         currentPlayerResources = maxPlayerResources;
-        ClientHandleResourcesUpdated(0, currentPlayerResources);
+        ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         currentPlayerScore = maxPlayerScore;
         ClientHandleScoreUpdated(0, currentPlayerScore);
         currentCharge = maxCharge;
@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     {
         // int temp = currentPlayerResources;
         currentPlayerResources += resourceAmount * resourceMultiplier;
-        ClientHandleResourcesUpdated(0, currentPlayerResources);
+        ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
 
     }
 
@@ -86,19 +86,18 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     public void ReduceResource(int resourceAmount)
     {
-        int temp = currentPlayerResources;
         currentPlayerResources -= resourceAmount;
-        ClientHandleResourcesUpdated(temp, currentPlayerResources);
+        ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
     }
 
     public int GetResources()
     {
-        return currentPlayerResources;
+        return (int)currentPlayerResources;
     }
 
     public int GetFinalScore()
     {
-        return currentPlayerScore * resourceMultiplier;
+        return currentPlayerScore/*  * resourceMultiplier */;
     }
 
     public void IncreaseCharge(int chargeAmount)
@@ -121,6 +120,21 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentCharge -= chargeAmount;
         ClientHandleChargeUpdated(0, currentCharge);
         return true;
+    }
+
+    public void DoIncreaseMultiplier(float increase, float duration)
+    {
+        StartCoroutine(IncreaseMultiplier(increase, duration));
+    }
+
+    IEnumerator IncreaseMultiplier(float increase, float duration)
+    {
+        float temp = resourceMultiplier;
+        float calcu = resourceMultiplier*(1+(increase/100));
+        resourceMultiplier = calcu;
+        yield return new WaitForSeconds (duration);
+        resourceMultiplier = temp;
+        StopCoroutine("IncreaseMultiplier");
     }
 
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)
@@ -150,7 +164,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         return new SaveData
         {
             currentPlayerHealth = currentPlayerHealth,
-            currentPlayerResources = currentPlayerResources,
+            currentPlayerResources = (int)currentPlayerResources,
             currentPlayerScore = currentPlayerScore,
             currentCharge = currentCharge
         };
@@ -170,7 +184,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     private void UpdateLoadProperties()
     {
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
-        ClientHandleResourcesUpdated(0, currentPlayerResources);
+        ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         ClientHandleScoreUpdated(0, currentPlayerScore);
         ClientHandleChargeUpdated(0, currentCharge);
     }

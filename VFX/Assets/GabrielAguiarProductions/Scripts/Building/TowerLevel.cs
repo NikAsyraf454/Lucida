@@ -136,6 +136,24 @@ public class TowerLevel : MonoBehaviour
         {
             node =  hit.collider.gameObject.GetComponentInChildren<Node>();
         }
-        
+    }
+
+    public void DoIncreaseDamage(float increase, float duration)
+    {
+        StartCoroutine(IncreaseDamage(increase, duration));
+    }
+
+    //increase takes in value of 0% - 100%
+    IEnumerator IncreaseDamage(float increase, float duration)
+    {
+        int temp = _damageDeal;
+        float calcu = _damageDeal*(1+(increase/100));
+        Debug.Log(temp + " damage increased to " + (_damageDeal*(1+(increase/100))));
+        _damageDeal = (int)calcu;
+        ServerOnTowerXp.Invoke(this);
+        yield return new WaitForSeconds (duration);
+        _damageDeal = temp;
+        ServerOnTowerXp.Invoke(this);
+        StopCoroutine("IncreaseDamage");
     }
 }

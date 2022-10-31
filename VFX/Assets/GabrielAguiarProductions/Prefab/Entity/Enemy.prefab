@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1f8de7f943a6f44bd91fa2ca6add04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyId: 0
   pathManager: {fileID: 0}
   pathIndex: 0
   enemySpeed: 2
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   maxHealth: 100
-  currentHealth: 0
+  _currentHealth: 0
   resourceDrop: 20
   scoreValue: 50
 --- !u!114 &8703917682637275458
@@ -190,6 +191,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7689106128679389601}
     m_Modifications:
+    - target: {fileID: 1620868314800243451, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620868314868891401, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1620868315474620944, guid: cd6d20a9a7cc3c1439418fa878a395b6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -299,6 +310,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620868315474620950, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6d20a9a7cc3c1439418fa878a395b6, type: 3}

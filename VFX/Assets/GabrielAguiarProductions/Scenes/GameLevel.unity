@@ -3255,7 +3255,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 279
+    m_Bits: 407
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3274,6 +3274,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1948744812, guid: 96d54d242ea184942a06c01b3f327e1c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2477620479550125248, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_Name
@@ -3333,6 +3337,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329831950611236339, guid: 96d54d242ea184942a06c01b3f327e1c,
+        type: 3}
+      propertyPath: maxCharge
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053990944514846986, guid: 96d54d242ea184942a06c01b3f327e1c,
+        type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839970095216149463, guid: 96d54d242ea184942a06c01b3f327e1c,
+        type: 3}
+      propertyPath: m_DefaultActionMap
+      value: f2fa0710-bbf4-4875-8f88-2f1c5b6f81b2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d54d242ea184942a06c01b3f327e1c, type: 3}

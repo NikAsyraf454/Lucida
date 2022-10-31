@@ -191,6 +191,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3024506344181401978}
     m_Modifications:
+    - target: {fileID: 1620868314800243451, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620868314868891401, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1620868315474620944, guid: cd6d20a9a7cc3c1439418fa878a395b6,
         type: 3}
       propertyPath: m_Pivot.x
@@ -320,6 +330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620868315474620950, guid: cd6d20a9a7cc3c1439418fa878a395b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6d20a9a7cc3c1439418fa878a395b6, type: 3}

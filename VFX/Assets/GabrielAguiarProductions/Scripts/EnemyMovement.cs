@@ -75,19 +75,19 @@ public class EnemyMovement : MonoBehaviour
 		}
 	}
 
-    public void SlowDown(float reduction, float duration)
+    public void DoSlowDown(float reduction, float duration)
     {
-        StartCoroutine(Slow(reduction, duration));
+        StartCoroutine(SlowDown(reduction, duration));
     }
 
     //reduction takes in value of 0.0% - 100%
-    IEnumerator Slow(float reduction, float duration)
+    IEnumerator SlowDown(float reduction, float duration)
     {
 
         float temp = enemySpeed;
         enemySpeed *= ((100 - reduction)/100);
         yield return new WaitForSeconds (duration);
         enemySpeed = temp;
-        StopCoroutine("Slow");
+        StopCoroutine("SlowDown");
     }
 }
