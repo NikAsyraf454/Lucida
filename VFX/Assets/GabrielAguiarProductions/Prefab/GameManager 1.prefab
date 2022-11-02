@@ -488,6 +488,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovements: []
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  areaRadius: 5
 --- !u!1 &4057238800978311423
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1072,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8074823950561121741}
+    - target: {fileID: 3067664579551362468, guid: 626c9b869414d2141af49fa93efc0682,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8775901823804857809}
+    - target: {fileID: 3067664579551362468, guid: 626c9b869414d2141af49fa93efc0682,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067664579551362468, guid: 626c9b869414d2141af49fa93efc0682,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3345649425724014815, guid: 626c9b869414d2141af49fa93efc0682,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1187,6 +1206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027268609065942067, guid: 626c9b869414d2141af49fa93efc0682,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 626c9b869414d2141af49fa93efc0682, type: 3}

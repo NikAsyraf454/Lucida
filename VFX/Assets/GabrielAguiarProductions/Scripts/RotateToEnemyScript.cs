@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RotateToEnemyScript : MonoBehaviour
 {
+	public bool useLaser = false;
+	[SerializeField] private LineRenderer lineRenderer;
+
 	private Vector3 direction;
 	private Quaternion rotation;
 	public GameObject firePoint;
@@ -33,7 +36,10 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	void Update()
 	{
-		if(enemyList.Count <= 0) { return; }
+		if(enemyList.Count <= 0) {
+			lineRenderer.enabled = false;
+			return;
+		}
 
 		foreach(GameObject enemy in enemyList)
 		{
@@ -45,6 +51,12 @@ public class RotateToEnemyScript : MonoBehaviour
 			}
 			else if(enemy != null)
 			{
+				if(useLaser)
+				{
+					Laser(enemy);
+					return;
+				}
+
 				StartUpdateRay(enemy);
 				return;
 			}
@@ -140,9 +152,6 @@ public class RotateToEnemyScript : MonoBehaviour
 			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			SpawnVFX();
 		}
-		/*yield return updateTime;
-		if(!enemyList.Count.Equals(0))
-			StartCoroutine (UpdateRay (enemyList[0]));*/
 	}
 
 /*
@@ -161,9 +170,6 @@ public class RotateToEnemyScript : MonoBehaviour
 			//
 		}else
 			vfx = Instantiate (effectToSpawn);
-
-//		var direction = enemyList[0].transform - this.transform.position;
-//		vfx.transform.localRotation = Quaternion.LookRotation(direction);
 
 		if(isMortar)
 		{
@@ -187,6 +193,22 @@ public class RotateToEnemyScript : MonoBehaviour
 	public void fireDelay(float time)
 	{
 		timeToFire += time;
+	}
+
+	private void Laser(GameObject enemy)
+	{
+		if(!lineRenderer.enabled) { lineRenderer.enabled = true; }
+
+		transform.LookAt(enemyMovement.transform.position);
+		lineRenderer.SetPosition(0, firePoint.transform.position);
+		lineRenderer.SetPosition(1, enemy.transform.position);
+		if (Time.time >= timeToFire) 
+		{
+			timeToFire = Time.time + (1f / towerLevel.FireRate);
+			// SpawnVFX();
+			enemy.GetComponent<EnemyHealth>().DealDamage(towerLevel.DamageDeal);
+			towerLevel.XpIncrease(1);
+		}
 	}
 
 }

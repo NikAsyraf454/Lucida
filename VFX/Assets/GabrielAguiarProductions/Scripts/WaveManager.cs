@@ -174,7 +174,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         List<int> enemyId = new List<int>();
         List<float> enemyPos = new List<float>();
         List<int> enemyPathIndex = new List<int>();
-        List<int> enemyHealth = new List<int>();
+        List<float> enemyHealth = new List<float>();
         List<float> enemySpeed = new List<float>();
         int waveNum;
         float timerSave;
@@ -217,7 +217,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         List<int> enemyId = new List<int>();
         List<float> enemyPos = new List<float>();
         List<int> enemyPathIndex = new List<int>();
-        List<int> enemyHealth = new List<int>();
+        List<float> enemyHealth = new List<float>();
         List<float> enemySpeed = new List<float>();
         enemyId = saveData.enemyId;
         enemyPos = saveData.enemyPos;
@@ -247,7 +247,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         public List<int> enemyId;
         public List<float> enemyPos;
         public List<int> enemypPathIndex;
-        public List<int> enemyHealth;
+        public List<float> enemyHealth;
         public List<float> enemySpeed;
         //wave saving
         public int waveNum;

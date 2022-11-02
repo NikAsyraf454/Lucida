@@ -7,10 +7,10 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour//NetworkBehaviour
 {
     public PlayerManager playerManager;
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private float maxHealth = 100f;
 
    //[SyncVar(hook = nameof(HandleHealthUpdated))]
-    [SerializeField] private int _currentHealth;
+    [SerializeField] private float _currentHealth;
 
     [SerializeField] private int resourceDrop;
     [SerializeField] private int scoreValue;
@@ -18,9 +18,9 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
 
     public event Action<GameObject> ServerOnDie;
 
-    public event Action<int, int> ClientOnHealthUpdated;
+    public event Action<float, float> ClientOnHealthUpdated;
 
-    public int CurrentHealth { get{return _currentHealth; } set{ _currentHealth = CurrentHealth; } }
+    public float CurrentHealth { get{return _currentHealth; } set{ _currentHealth = CurrentHealth; } }
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
 
     }
 
-    private void HandleHealthUpdated(int oldHealth, int newHealth)
+    private void HandleHealthUpdated(float oldHealth, float newHealth)
     {
         ClientOnHealthUpdated?.Invoke(newHealth, maxHealth);
     }

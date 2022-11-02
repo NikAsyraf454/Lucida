@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     public bool gameEnded;
 
     string filename => $"{Application.persistentDataPath}/performance.csv";
+    private string savePath => $"{Application.persistentDataPath}/save.txt";
 
     void Awake()
     {
@@ -54,6 +55,7 @@ public class MenuManager : MonoBehaviour
 
     public void RestartGame()
     {
+        File.Delete(savePath);
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 

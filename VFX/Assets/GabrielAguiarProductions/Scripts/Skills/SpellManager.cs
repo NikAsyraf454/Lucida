@@ -85,17 +85,17 @@ public class SpellManager : MonoBehaviour
         
     }
 
-    private void OnDrawGizmos()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        // Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
-        if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
-        {
-            // Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Gizmos.DrawWireSphere(hit.point, 5f);
-        }
+    // private void OnDrawGizmos()
+    // {
+    //     Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+    //     // Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
+    //     if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
+    //     {
+    //         // Vector3 pos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    //         Gizmos.DrawWireSphere(hit.point, 5f);
+    //     }
 
-        // Ray ray1 = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        // Debug.DrawRay(ray1.origin, ray1.direction * 20, Color.yellow);
-    }
+    //     // Ray ray1 = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+    //     // Debug.DrawRay(ray1.origin, ray1.direction * 20, Color.yellow);
+    // }
 }

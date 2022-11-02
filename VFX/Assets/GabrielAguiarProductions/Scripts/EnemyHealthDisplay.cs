@@ -29,9 +29,9 @@ public class EnemyHealthDisplay : MonoBehaviour
         //healthBarParent.SetActive(false);
     }
 
-    private void HandleHealthUpdated(int currentHealth, int maxHealth)
+    private void HandleHealthUpdated(float currentHealth, float maxHealth)
     {
-        healthBarImage.fillAmount = (float)currentHealth / maxHealth;
+        healthBarImage.fillAmount = /* (float) */currentHealth / maxHealth;
     }
 }
 
