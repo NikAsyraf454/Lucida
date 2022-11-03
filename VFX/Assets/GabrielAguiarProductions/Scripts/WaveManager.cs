@@ -28,10 +28,14 @@ public class WaveManager : MonoBehaviour, ISaveable
         Instance = this;
         pathManager = GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
-        spawnPoint = pathManager.GetWaypoint(0);
         canSpawnNext = true;
         populateWavesList();
         //difficultyAdjustment()
+    }
+
+    void Start()
+    {
+        spawnPoint = pathManager.GetWaypoint(0);
     }
 
     void Update()

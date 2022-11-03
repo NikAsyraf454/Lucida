@@ -6,6 +6,7 @@ public class RotateToEnemyScript : MonoBehaviour
 {
 	public bool useLaser = false;
 	[SerializeField] private LineRenderer lineRenderer;
+	[SerializeField] private ParticleSystem laserHit;
 
 	private Vector3 direction;
 	private Quaternion rotation;
@@ -27,39 +28,33 @@ public class RotateToEnemyScript : MonoBehaviour
 	private EnemyMovement enemyMovement;
 	[SerializeField] private TowerLevel towerLevel;
 	public List<EnemyHealth> enemyHealthList;			//needs to be public, idk why
+	private EnemyHealth targetedEnemyHealth;
 
 	void Start () {	
 		pathManager = GameObject.FindObjectOfType<PathManager>();
 		waypoints = pathManager.GetWaypointList();
 		towerLevel = GetComponent<TowerLevel>();
+		InvokeRepeating("CheckEnemy", 1f, 0.5f);
 	}
 
 	void Update()
 	{
-		if(enemyList.Count <= 0) {
+		if(useLaser && enemyList.Count <= 0) {
 			lineRenderer.enabled = false;
+			laserHit.Pause();
 			return;
 		}
 
-		foreach(GameObject enemy in enemyList)
+		if(enemyList.Count > 0)
 		{
-			if(enemy == null)
+			if(useLaser)
 			{
-				Debug.Log("Enemy missing...");
-				RemoveEnemy(enemy);
+				Laser();
 				return;
 			}
-			else if(enemy != null)
-			{
-				if(useLaser)
-				{
-					Laser(enemy);
-					return;
-				}
 
-				StartUpdateRay(enemy);
-				return;
-			}
+			StartUpdateRay();
+			return;
 		}
 	}
 
@@ -77,7 +72,7 @@ public class RotateToEnemyScript : MonoBehaviour
         if (co.gameObject.tag == "Enemy") {
 			//collided = true;
 			enemyList.Add(co.gameObject);
-			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();		//'GameObject' has been destroyed but you are still trying to access it
+			// enemyMovement = enemyList[0].GetComponent<EnemyMovement>();		//'GameObject' has been destroyed but you are still trying to access it
 			enemyHealthList.Add(co.gameObject.GetComponent<EnemyHealth>());
 			enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
 		}
@@ -113,8 +108,8 @@ public class RotateToEnemyScript : MonoBehaviour
 		enemyList.Remove(other);
 		enemyHealthList.Remove(other.GetComponent<EnemyHealth>());
 		// Debug.Log("deleted " + other.name);
-		if(enemyList.Count > 0)
-		{
+		/*if(enemyList.Count > 0)
+		 {
 			
 			foreach(GameObject enemy in enemyList)
 			{
@@ -124,16 +119,15 @@ public class RotateToEnemyScript : MonoBehaviour
 					return;
 				}
 			}
-			/* enemyMovement =  */
-		}
+		} */
 	}
 
-	public void StartUpdateRay (GameObject enemy){
+	public void StartUpdateRay (){
 		//StartCoroutine (UpdateRay(enemy));
-		UpdateRay(enemy);
+		UpdateRay();
 	}
 
-	void UpdateRay (GameObject enemy){
+	void UpdateRay (){
 		if(isMortar)
 		{
 		int temmp = (int)(enemyMovement.enemySpeed * predictionMultiplier) + enemyMovement.pathIndex;
@@ -151,6 +145,26 @@ public class RotateToEnemyScript : MonoBehaviour
 		if (Time.time >= timeToFire) {
 			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			SpawnVFX();
+		}
+	}
+
+	private void CheckEnemy()
+	{
+		Debug.Log("Checking");
+		if(enemyList.Count > 0)
+		{
+			foreach(GameObject enemy in enemyList)
+			{
+				if(enemy == null)
+				{
+					Debug.Log("Enemy missing...");
+					RemoveEnemy(enemy);
+					
+					return;
+				}
+			}
+			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();
+			targetedEnemyHealth = enemyList[0].GetComponent<EnemyHealth>();
 		}
 	}
 
@@ -195,20 +209,30 @@ public class RotateToEnemyScript : MonoBehaviour
 		timeToFire += time;
 	}
 
-	private void Laser(GameObject enemy)
+	private void Laser()
 	{
 		if(!lineRenderer.enabled) { lineRenderer.enabled = true; }
 
 		transform.LookAt(enemyMovement.transform.position);
 		lineRenderer.SetPosition(0, firePoint.transform.position);
-		lineRenderer.SetPosition(1, enemy.transform.position);
+		lineRenderer.SetPosition(1, enemyMovement.transform.position);
 		if (Time.time >= timeToFire) 
 		{
 			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			// SpawnVFX();
-			enemy.GetComponent<EnemyHealth>().DealDamage(towerLevel.DamageDeal);
+			targetedEnemyHealth.DealDamage(towerLevel.DamageDeal);
 			towerLevel.XpIncrease(1);
 		}
+
+		
+		Ray ray = new Ray(firePoint.transform.position, transform.forward);
+        if(Physics.Raycast(ray, out RaycastHit hit))
+        {
+            laserHit.Play();
+			laserHit.transform.position = hit.point;
+			Vector3 dir = transform.position - hit.point;
+			laserHit.transform.rotation = Quaternion.LookRotation(dir);
+        }
 	}
 
 }
