@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4329831950611236339}
   - component: {fileID: 8775901823804857809}
   - component: {fileID: 2477620477634519622}
+  - component: {fileID: 2752632377110273852}
   - component: {fileID: 2477620479008930307}
   - component: {fileID: 8074823950561121741}
   - component: {fileID: 1763077152098049298}
@@ -302,6 +303,7 @@ MonoBehaviour:
   maxPlayerScore: 0
   currentCharge: 0
   maxCharge: 3
+  gotLifeline: 0
   resourceMultiplier: 1
 --- !u!114 &8775901823804857809
 MonoBehaviour:
@@ -334,6 +336,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6dfd60323afde478c6602e085704af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2752632377110273852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477620479550125248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab73fbd16df904418964c628b9a9185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTriggered: 0
 --- !u!114 &2477620479008930307
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -162,9 +162,21 @@ public class WaveManager : MonoBehaviour, ISaveable
         }
     }
 
+    public void EliminateEnemy()
+    {
+        Debug.Log("Eliminating all enemy");
+        // int count = 0;
+        foreach(EnemyHealth enemyHealth in enemyHealthList.ToArray())
+        {
+            // count++;
+            enemyHealth.EnemyDeath();
+            // Debug.Log(count);
+        }
+    }
+
     private void OnDestroy()
     {
-		foreach(EnemyHealth enemyHealth in enemyHealthList)
+		foreach(EnemyHealth enemyHealth in enemyHealthList.ToArray())
 		{
 			enemyHealth.ServerOnDie -= RemoveEnemy;
 			enemyHealthList.Remove(enemyHealth);

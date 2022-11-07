@@ -5,8 +5,10 @@ using UnityEngine;
 public class RotateToEnemyScript : MonoBehaviour
 {
 	public bool useLaser = false;
+	private bool laserOn = false;
 	[SerializeField] private LineRenderer lineRenderer;
 	[SerializeField] private ParticleSystem laserHit;
+	
 
 	private Vector3 direction;
 	private Quaternion rotation;
@@ -34,14 +36,17 @@ public class RotateToEnemyScript : MonoBehaviour
 		pathManager = GameObject.FindObjectOfType<PathManager>();
 		waypoints = pathManager.GetWaypointList();
 		towerLevel = GetComponent<TowerLevel>();
-		InvokeRepeating("CheckEnemy", 1f, 0.5f);
+		InvokeRepeating("CheckEnemy", 1f, 0.2f);
 	}
 
 	void Update()
 	{
-		if(useLaser && enemyList.Count <= 0) {
+		if(useLaser && enemyList.Count <= 0 && laserHit.isPlaying) 
+		{
+			lineRenderer.SetPosition(1, firePoint.transform.position);
 			lineRenderer.enabled = false;
-			laserHit.Pause();
+			laserHit.Stop(true);
+			// Debug.Log("Laser Stopped");
 			return;
 		}
 
@@ -60,7 +65,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	private void OnDisable()
     {
-		foreach(EnemyHealth enemyHealth in enemyHealthList)
+		foreach(EnemyHealth enemyHealth in enemyHealthList.ToArray())
 		{
 			enemyHealth.ServerOnDie -= RemoveEnemy;
 			enemyHealthList.Remove(enemyHealth);
@@ -150,7 +155,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	private void CheckEnemy()
 	{
-		Debug.Log("Checking");
+		// Debug.Log("Checking");
 		if(enemyList.Count > 0)
 		{
 			foreach(GameObject enemy in enemyList)
@@ -228,7 +233,9 @@ public class RotateToEnemyScript : MonoBehaviour
 		Ray ray = new Ray(firePoint.transform.position, transform.forward);
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
-            laserHit.Play();
+			// Debug.Log("Particle laser");
+            if(!laserHit.isPlaying)
+				laserHit.Play();
 			laserHit.transform.position = hit.point;
 			Vector3 dir = transform.position - hit.point;
 			laserHit.transform.rotation = Quaternion.LookRotation(dir);

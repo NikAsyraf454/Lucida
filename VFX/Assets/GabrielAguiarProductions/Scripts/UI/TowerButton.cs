@@ -28,10 +28,10 @@ public class TowerButton : MonoBehaviour
 
     void OnDestroy()
     {
-        foreach(GameObject shopitem in shopItemList)
+        foreach(GameObject shopitem in shopItemList.ToArray())
             shopItemList.Remove(shopItem);
 
-        foreach(TowerLevel towerLevel in towerLevelList)
+        foreach(TowerLevel towerLevel in towerLevelList.ToArray())
             towerLevelList.Remove(towerLevel);
         
     }

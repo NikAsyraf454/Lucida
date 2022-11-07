@@ -19,6 +19,9 @@ public class PlayerManager : MonoBehaviour, ISaveable
     [SerializeField] private int maxCharge = 3;
     //public int chargeCapacity;
 
+    private Lifeline lifeline;
+    [SerializeField] private bool gotLifeline = false;
+
     [SerializeField] private float resourceMultiplier = 1f;
 
     public event Action<int> ClientOnResourcesUpdated;
@@ -42,6 +45,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandleScoreUpdated(0, currentPlayerScore);
         currentCharge = maxCharge;
         ClientHandleChargeUpdated(0, currentCharge);
+        lifeline = GetComponent<Lifeline>();
     }
 
     // Update is called once per frame
@@ -53,11 +57,19 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public void ReducePlayerHealth(int damageAmount)
     {
         CameraShake.Shake(0.25f, 0.2f);
-        int temp = currentPlayerHealth;
+        // int temp = currentPlayerHealth;
         currentPlayerHealth -= damageAmount;
-        ClientHandlePlayerHealthUpdated(temp, currentPlayerHealth);
+        ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
 
-        // if(currentPlayerHealth <= 5) { SecondChance(); } //second chance for player (eliminate all enemy in wave or map)
+        if(currentPlayerHealth <= 3 && !gotLifeline)    //second chance for player (eliminate all enemy in wave or map)
+        {
+            gotLifeline = true;
+            int temp = lifeline.GaveLifeline();
+            // Debug.Log("Temp: " + temp);
+            currentPlayerHealth += temp;
+            ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+        } 
+
         if(currentPlayerHealth <= 0) 
         {
             currentPlayerHealth = 0;
@@ -166,7 +178,8 @@ public class PlayerManager : MonoBehaviour, ISaveable
             currentPlayerHealth = currentPlayerHealth,
             currentPlayerResources = (int)currentPlayerResources,
             currentPlayerScore = currentPlayerScore,
-            currentCharge = currentCharge
+            currentCharge = currentCharge,
+            gotLifeline = gotLifeline
         };
     }
 
@@ -178,6 +191,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentPlayerResources = saveData.currentPlayerResources;
         currentPlayerScore = saveData.currentPlayerScore;
         currentCharge = saveData.currentCharge;
+        gotLifeline = saveData.gotLifeline;
         UpdateLoadProperties();
     }
 
@@ -196,6 +210,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         public int currentPlayerResources;
         public int currentPlayerScore;
         public int currentCharge;
+        public bool gotLifeline;
     }
     
     #endregion
