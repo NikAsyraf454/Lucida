@@ -12,6 +12,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private int purchasePriceIncrement;
     [SerializeField] private int _level;
     [SerializeField] private int _damageDeal;
+    private int originalDamage;
     [SerializeField] private float _fireRate;
     [SerializeField] private bool isUnlocked;
     [SerializeField] private bool isSpawned = false;        //for UI]
@@ -41,6 +42,7 @@ public class TowerLevel : MonoBehaviour
         //currentTowerPrice = maxTowerPrice;
         // _level = UnityEngine.Random.Range(1,4);
         GetNodeAvailability(transform.position);
+        originalDamage = _damageDeal;
     }
 
     // Update is called once per frame
@@ -99,7 +101,14 @@ public class TowerLevel : MonoBehaviour
         _towerXp += increaseAmount;
         // Debug.Log(TowerXp + " " + increaseAmount);
 
-        if(TowerXp >= Level*10) { _level++; _towerXp = 0; }
+        if(TowerXp >= Level*10) 
+        {
+            _level++; 
+            _towerXp = 0; 
+            _damageDeal = originalDamage * _level;
+        }
+
+        
 
         ServerOnTowerXp.Invoke(this);
     }

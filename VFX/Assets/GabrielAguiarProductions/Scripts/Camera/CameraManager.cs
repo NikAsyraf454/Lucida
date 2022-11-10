@@ -25,6 +25,7 @@ public class CameraManager : MonoBehaviour
     {
         pathManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PathManager>();
         targetZoom = Camera.main.orthographicSize;
+        cameras[1].orthographicSize = cameras[0].orthographicSize;
     }
 
     void LateUpdate()
@@ -56,16 +57,17 @@ public class CameraManager : MonoBehaviour
     public void UpdateCameraZoom()
     {
         float scrollData;
-        scrollData = Input.GetAxis("Mouse ScrollWheel");
+        scrollData = Mouse.current.scroll.ReadValue().normalized.y;/* Input.GetAxis("Mouse ScrollWheel"); */
 
         targetZoom -= scrollData * zoomFactor;
         targetZoom = Mathf.Clamp(targetZoom, zoomClamp.x, zoomClamp.y);
-        Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity, Time.deltaTime* zoomSmoothSpeed);
+        cameras[0].orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity, Time.deltaTime* zoomSmoothSpeed);
         // foreach(Camera camera in cameras)
         // {
         //     camera.orthographicSize = Camera.main.orthographicSize;
         // }
-        cameras[1].orthographicSize = Camera.main.orthographicSize;
+        // cameras[1].orthographicSize = Camera.main.orthographicSize;
+        cameras[1].orthographicSize = cameras[0].orthographicSize;
     }
 
     public void OnLeftClick(InputValue value)

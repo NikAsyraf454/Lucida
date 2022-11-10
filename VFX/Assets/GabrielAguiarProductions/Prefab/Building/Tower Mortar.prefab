@@ -100,7 +100,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 22
-  m_Center: {x: -0.0000019073495, y: 0, z: -2.842171e-14}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &75957044738471580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4e0888b32f12b42bf9ac6b2ee865df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useLaser: 0
+  lineRenderer: {fileID: 0}
+  laserHit: {fileID: 0}
   firePoint: {fileID: 6051520627198286845}
   effectToSpawn: {fileID: 7848766475769544068, guid: a7bc08f401d87de4abb564f8d4ef0dbf,
     type: 3}

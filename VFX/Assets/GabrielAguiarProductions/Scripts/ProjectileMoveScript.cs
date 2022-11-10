@@ -23,6 +23,8 @@ public class ProjectileMoveScript : MonoBehaviour {
 	private EnemyHealth enemyHealth;
 	public float lifeSpan = 3f;
 
+	[SerializeField] private ProjectileEffect projectileEffect;
+
 	void Start () {	
 		rb = GetComponent <Rigidbody> ();
 
@@ -76,12 +78,12 @@ public class ProjectileMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision co) {
-		if (co.gameObject.tag == "Enemy"){//!collided) {
-			//collided = true;
+		if (co.gameObject.tag == "Enemy"){
 
 			enemyHealth = co.gameObject.GetComponent<EnemyHealth>();
 			enemyHealth.DealDamage(damageDeal);
-			
+			if(projectileEffect != null) { projectileEffect.Effect(co.gameObject); /* Debug.Log("Have projectile Effect"); */ }
+
 			
 			if (shotSFX != null && GetComponent<AudioSource>()) {
 				GetComponent<AudioSource> ().PlayOneShot (hitSFX);

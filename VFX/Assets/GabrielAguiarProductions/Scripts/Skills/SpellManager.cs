@@ -5,10 +5,17 @@ using UnityEngine.InputSystem;
 
 public class SpellManager : MonoBehaviour
 {
+    public static SpellManager Instance;
     private PlayerManager playerManager;
     [SerializeField] private List<EnemyMovement> enemyMovements;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float areaRadius = 5f;
+    public Color slowedColor;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -29,7 +36,7 @@ public class SpellManager : MonoBehaviour
 
         foreach(Collider co in colliders)
         {
-            Debug.Log(co.gameObject.name);
+            // Debug.Log(co.gameObject.name);
             if(co.TryGetComponent<EnemyMovement>(out EnemyMovement enemyMovement))
             {
                 enemyMovement.DoSlowDown(50f,2f);

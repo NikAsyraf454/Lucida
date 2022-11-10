@@ -37,6 +37,12 @@ public class RotateToEnemyScript : MonoBehaviour
 		waypoints = pathManager.GetWaypointList();
 		towerLevel = GetComponent<TowerLevel>();
 		InvokeRepeating("CheckEnemy", 1f, 0.2f);
+
+		if(useLaser) 
+		{
+			lineRenderer.SetPosition(1, firePoint.transform.position);
+			lineRenderer.SetPosition(0, firePoint.transform.position);
+		}
 	}
 
 	void Update()
@@ -46,7 +52,6 @@ public class RotateToEnemyScript : MonoBehaviour
 			lineRenderer.SetPosition(1, firePoint.transform.position);
 			lineRenderer.enabled = false;
 			laserHit.Stop(true);
-			// Debug.Log("Laser Stopped");
 			return;
 		}
 
@@ -192,13 +197,13 @@ public class RotateToEnemyScript : MonoBehaviour
 
 		if(isMortar)
 		{
-			vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal * towerLevel.Level;
+			vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
 			towerLevel.XpIncrease(3);		//increase xp of tower every shot
 		}
 		else
 		{
 			vfx.GetComponent<ProjectileMoveScript>().target = enemyMovement.gameObject;			//pass enemy and damage value to projectile
-			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal * towerLevel.Level;
+			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;
 			towerLevel.XpIncrease(1);		//increase xp of tower every shot
 		}
 
