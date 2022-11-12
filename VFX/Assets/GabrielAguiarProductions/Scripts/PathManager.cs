@@ -72,7 +72,7 @@ public class PathManager : MonoBehaviour/* , ISaveable */
             }
         }
 
-        SpawnTile(basePrefab, new Vector3(2,0.6f,height/2));   //base
+        SpawnTile(basePrefab, new Vector3(2,0.1f,height/2));   //base
         tilePlacement[2,height/2] = 1;
         SpawnWaypoint(2,height/2);
 
@@ -148,7 +148,7 @@ public class PathManager : MonoBehaviour/* , ISaveable */
         
     void SpawnTile(GameObject prefab, Vector3 pos)
     {
-        GameObject temp = Instantiate(prefab, pos, Quaternion.identity, this.gameObject.transform);
+        GameObject temp = Instantiate(prefab, pos, prefab.transform.rotation, this.gameObject.transform);
         Node node = temp.GetComponentInChildren<Node>();
         if(prefab == nodePrefab)
         {

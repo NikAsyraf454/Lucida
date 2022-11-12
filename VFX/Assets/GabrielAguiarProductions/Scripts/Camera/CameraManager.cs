@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CameraManager : MonoBehaviour
 {
+    public bool isIsometric = false;
     public Camera[] cameras;
     public PathManager pathManager;
     // [SerializeField] private Vector2 maxPosition;
@@ -15,7 +16,7 @@ public class CameraManager : MonoBehaviour
     private Vector3 oldPos, panOrigin;
     Vector3 pos = new Vector3(200, 200, 0);
 
-    private float targetZoom;
+    public float targetZoom;
     [SerializeField] private float zoomFactor = 3f;
     [SerializeField] private float zoomSmoothSpeed = 10f;
     private float velocity = 0f;
@@ -24,8 +25,18 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         pathManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PathManager>();
-        targetZoom = Camera.main.orthographicSize;
-        cameras[1].orthographicSize = cameras[0].orthographicSize;
+        
+        if(isIsometric)
+        {
+            targetZoom = Camera.main.orthographicSize;
+            cameras[1].orthographicSize = cameras[0].orthographicSize;
+        }
+        else
+        {
+            cameras[0].transform.localPosition = new Vector3(0,0,-10);
+            targetZoom = -cameras[0].transform.localPosition.z;
+        }
+
     }
 
     void LateUpdate()
@@ -44,39 +55,49 @@ public class CameraManager : MonoBehaviour
             panOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);    
             return;
         }
- 
+
         if (!Input.GetMouseButton(1)) return;
  
+
         Vector3 pos = Camera.main.ScreenToViewportPoint(Input.mousePosition) - panOrigin;    //Get the difference between where the mouse clicked and where it moved
-        //pos.y = 0;
-        transform.position = oldPos + -pos * panSpeed;  
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+        
+        if(isIsometric)
+        {
+            transform.position = oldPos + -pos * panSpeed;  
+        }
+        else
+        {
+            Vector3 temp = new Vector3(pos.x,0,pos.y);
+            transform.position = oldPos + -temp * panSpeed; 
+        }
     }
 
     public void UpdateCameraZoom()
     {
         float scrollData;
-        scrollData = Mouse.current.scroll.ReadValue().normalized.y;/* Input.GetAxis("Mouse ScrollWheel"); */
+        scrollData = Mouse.current.scroll.ReadValue().normalized.y;
 
         targetZoom -= scrollData * zoomFactor;
         targetZoom = Mathf.Clamp(targetZoom, zoomClamp.x, zoomClamp.y);
-        cameras[0].orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity, Time.deltaTime* zoomSmoothSpeed);
-        // foreach(Camera camera in cameras)
-        // {
-        //     camera.orthographicSize = Camera.main.orthographicSize;
-        // }
-        // cameras[1].orthographicSize = Camera.main.orthographicSize;
-        cameras[1].orthographicSize = cameras[0].orthographicSize;
+        if(isIsometric)
+        {
+            cameras[0].orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity, Time.deltaTime* zoomSmoothSpeed);
+            cameras[1].orthographicSize = cameras[0].orthographicSize;
+        }
+        else
+        {
+            cameras[0].transform.localPosition = new Vector3(0,0,-targetZoom);
+        }
+
     }
 
     public void OnLeftClick(InputValue value)
     {
-        GetNodeAvailability(transform.position);
+        GetNodeAvailability();
         // Debug.Log("shooting ray..." + Mouse.current.position.ReadValue());
     }
 
-    private void GetNodeAvailability(Vector3 position)
+    private void GetNodeAvailability()
     {
         // Vector3 mousePos = Mouse.current.position.ReadValue();   
         // mousePos.z=Camera.main.nearClipPlane;

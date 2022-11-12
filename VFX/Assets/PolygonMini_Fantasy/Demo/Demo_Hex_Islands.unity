@@ -2396,6 +2396,16 @@ PrefabInstance:
       propertyPath: randomSeed
       value: 83449200
       objectReference: {fileID: 0}
+    - target: {fileID: 199189608957952892, guid: 94d531e8767470545b0d0b15d0e22a3b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199775994146356260, guid: 94d531e8767470545b0d0b15d0e22a3b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94d531e8767470545b0d0b15d0e22a3b, type: 3}
 --- !u!4 &269169346 stripped
@@ -4196,6 +4206,16 @@ PrefabInstance:
       propertyPath: randomSeed
       value: -1940831920
       objectReference: {fileID: 0}
+    - target: {fileID: 199189608957952892, guid: 94d531e8767470545b0d0b15d0e22a3b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199775994146356260, guid: 94d531e8767470545b0d0b15d0e22a3b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94d531e8767470545b0d0b15d0e22a3b, type: 3}
 --- !u!4 &489256171 stripped
@@ -5822,7 +5842,6 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
   - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -10867,10 +10886,20 @@ PrefabInstance:
       propertyPath: m_SortMode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 199276757341812192, guid: 52cb8d66accce0d4ca8239d32cdabaac,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 199973611410775110, guid: 52cb8d66accce0d4ca8239d32cdabaac,
         type: 3}
       propertyPath: m_Mesh1
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 199973611410775110, guid: 52cb8d66accce0d4ca8239d32cdabaac,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52cb8d66accce0d4ca8239d32cdabaac, type: 3}
@@ -15328,7 +15357,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3a217b6e8510ca54e966a1b80ca7215a, type: 2}
-  - {fileID: 2100000, guid: 4e019fcf2b2348743a3284e4c3b505e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23102,7 +23130,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
-  - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -27837,6 +27864,7 @@ GameObject:
   - component: {fileID: 1795748166}
   - component: {fileID: 1795748164}
   - component: {fileID: 1795748163}
+  - component: {fileID: 1795748168}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -27918,6 +27946,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45.066, y: -56.920002, z: 2.0300002}
+--- !u!114 &1795748168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795748161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1800821148
 GameObject:
   m_ObjectHideFlags: 0
@@ -27957,7 +28018,6 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
   - {fileID: 2100000, guid: 976c15b36fd385a4f9db584e81d28467, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -33618,6 +33678,16 @@ PrefabInstance:
       propertyPath: randomSeed
       value: -1026150594
       objectReference: {fileID: 0}
+    - target: {fileID: 199077005273406014, guid: fec8d361af8521b4081c7c13129ed1f5,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199184668083671612, guid: fec8d361af8521b4081c7c13129ed1f5,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fec8d361af8521b4081c7c13129ed1f5, type: 3}
 --- !u!4 &1922349211 stripped
@@ -35174,10 +35244,20 @@ PrefabInstance:
       propertyPath: m_SortMode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 199276757341812192, guid: 52cb8d66accce0d4ca8239d32cdabaac,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 199973611410775110, guid: 52cb8d66accce0d4ca8239d32cdabaac,
         type: 3}
       propertyPath: m_Mesh1
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 199973611410775110, guid: 52cb8d66accce0d4ca8239d32cdabaac,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52cb8d66accce0d4ca8239d32cdabaac, type: 3}
