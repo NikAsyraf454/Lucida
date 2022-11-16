@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour, ISaveable
     [SerializeField] private int maxCharge = 3;
     //public int chargeCapacity;
 
+    private DamageScreen damageScreen;
+
     private Lifeline lifeline;
     [SerializeField] private bool gotLifeline = false;
 
@@ -46,6 +48,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentCharge = maxCharge;
         ClientHandleChargeUpdated(0, currentCharge);
         lifeline = GetComponent<Lifeline>();
+        damageScreen = GetComponent<DamageScreen>();
     }
 
     // Update is called once per frame
@@ -60,6 +63,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         // int temp = currentPlayerHealth;
         currentPlayerHealth -= damageAmount;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+        damageScreen.PlayerTakeDamage();
 
         if(currentPlayerHealth <= 3 && !gotLifeline)    //second chance for player (eliminate all enemy in wave or map)
         {

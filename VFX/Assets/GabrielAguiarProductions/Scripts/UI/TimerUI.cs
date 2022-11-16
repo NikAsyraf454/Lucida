@@ -24,11 +24,12 @@ public class TimerUI : MonoBehaviour
     {
         // float minutes = Mathf.FloorToInt(time / 60);  
         float seconds = Mathf.FloorToInt(time % 60);
-        int milliseconds = (int)(time * 100);
-        milliseconds = milliseconds % 100;
+        // int milliseconds = (int)(time * 100);
+        // milliseconds = milliseconds % 100;
         // timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         // timer.text = string.Format("{0}:{1}:{2}", minutes, seconds, (int)milliseconds);
-        timer.text = string.Format("{0}:{1}", seconds, (int)milliseconds);
+        // timer.text = string.Format("{0}:{1}", seconds, (int)milliseconds);
+        timer.text = string.Format("{0}", seconds);
     }
 
     // IEnumerator UpdateTimer(float time)
