@@ -11,6 +11,7 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float areaRadius = 5f;
     public Color slowedColor;
+    [SerializeField] private GameObject lightning;
 
     void Awake()
     {
@@ -72,7 +73,14 @@ public class SpellManager : MonoBehaviour
         {
             if(co.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
             {
-                enemyHealth.DealDamage(30);
+                if(co.TryGetComponent<EnemyMovement>(out EnemyMovement enemyMovement))
+                {
+                    enemyMovement.DoSlowDown(100f,1f);
+                }
+                Vector3 pos = enemyHealth.transform.position;
+                pos.y = 6f;
+                Instantiate(lightning, pos, Quaternion.identity);
+                enemyHealth.DoDelayedDealDamage(80, 0.55f);
             }
         }
     }

@@ -15,6 +15,11 @@ public class DamageScreen : MonoBehaviour
         _fullScreenIntensity = defaultFullScreenIntensity;
     }
 
+    private void OnDisable()
+    {
+        fullscreenEffect.SetFloat("_FullScreenIntensity", 0f);
+    }
+
     // Update is called once per frame
     void Update()
     {

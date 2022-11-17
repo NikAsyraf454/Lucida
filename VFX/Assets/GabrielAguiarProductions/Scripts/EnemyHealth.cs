@@ -36,9 +36,14 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     public void DealDamage(int damageAmount)
     {
         // if (_currentHealth == 0) { return; }
-
+        float health = _currentHealth;
         _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
-        HandleHealthUpdated(maxHealth, _currentHealth);
+
+        LeanTween.value( gameObject, health, _currentHealth, 0.15f).setOnUpdate( (float val)=>{
+            HandleHealthUpdated(maxHealth, val);
+        } );
+
+        // HandleHealthUpdated(maxHealth, _currentHealth);
 
         if (_currentHealth > 0) { return; }
 
@@ -47,6 +52,18 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
         playerManager.ScoreIncrease(scoreValue);
         EnemyDeath();
         //ServerOnDie?.Invoke();
+    }
+
+    public void DoDelayedDealDamage(float damageAmount, float duration)
+    {
+        StartCoroutine(DelayedDealDamage(damageAmount, duration));
+    }
+
+    IEnumerator DelayedDealDamage(float damageAmount, float duration)
+    {
+        yield return new WaitForSeconds (duration);
+        this.DealDamage(80);
+        StopCoroutine("DelayedDealDamage");
     }
 
     public void EnemyDeath()
