@@ -5047,7 +5047,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 25
-  accuracy: 100
   fireRate: 4
   muzzlePrefab: {fileID: 8967523002408650009, guid: b8f8618ee1e644f41a362538c576244f,
     type: 3}
@@ -5059,6 +5058,8 @@ MonoBehaviour:
   - {fileID: 2293317222645243380}
   target: {fileID: 0}
   damageDeal: 10
+  lifeSpan: 3
+  projectileEffect: {fileID: 0}
 --- !u!1 &8582660596697141714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5071,7 +5072,7 @@ GameObject:
   - component: {fileID: 1890314691820405542}
   - component: {fileID: 7998911873833022745}
   - component: {fileID: 6556497424656470689}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

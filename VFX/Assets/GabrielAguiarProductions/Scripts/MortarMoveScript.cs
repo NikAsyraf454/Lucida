@@ -23,6 +23,7 @@ public class MortarMoveScript : MonoBehaviour
     {
 		rb = GetComponent <Rigidbody> ();
 		Destroy(gameObject, lifeSpan);
+		// InvokeRepeating("CheckGround", 1f, 0.1f);
     }
 
     // Update is called once per frame
@@ -36,7 +37,19 @@ public class MortarMoveScript : MonoBehaviour
 			rb.position += (transform.forward + offset)  * (speed * Time.deltaTime);
 	}
 
-    void OnCollisionEnter (Collision co) 
+	void CheckGround()
+	{
+		if(transform.position.y > 0.3f) { return; }
+		Explode();
+	}
+
+    void OnCollisionEnter (Collision co)
+	{
+		Explode();
+	}
+
+
+	void Explode()
 	{
 		// if (co.gameObject.tag != "Floor") {return;}
 
@@ -64,9 +77,9 @@ public class MortarMoveScript : MonoBehaviour
 		speed = 0;
 		GetComponent<Rigidbody> ().isKinematic = true;
 
-		ContactPoint contact = co.contacts [0];
-		Quaternion rot = Quaternion.FromToRotation (Vector3.up, contact.normal);
-		Vector3 pos = contact.point;
+		// ContactPoint contact = co.contacts [0];
+		Quaternion rot = /* Quaternion.FromToRotation (Vector3.up, contact.normal) */Quaternion.identity;
+		Vector3 pos = /* contact.point */this.transform.position;
 
 		if (hitPrefab != null) {
 			var hitVFX = Instantiate (hitPrefab, pos, rot) as GameObject;

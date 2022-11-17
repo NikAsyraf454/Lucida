@@ -57,6 +57,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 		if(enemyList.Count > 0)
 		{
+			if(enemyMovement == null) { return; }
 			if(useLaser)
 			{
 				Laser();
@@ -221,6 +222,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	private void Laser()
 	{
+		// if(enemyMovement == null) { return; }
 		if(!lineRenderer.enabled) { lineRenderer.enabled = true; }
 
 		transform.LookAt(enemyMovement.transform.position);

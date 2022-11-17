@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 806589716416914320}
   - component: {fileID: 771309303048379712}
   - component: {fileID: 1957389153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MortarShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,3 +151,4 @@ MonoBehaviour:
   trails: []
   enemyHealthInRange: []
   damageDeal: 0
+  lifeSpan: 6
