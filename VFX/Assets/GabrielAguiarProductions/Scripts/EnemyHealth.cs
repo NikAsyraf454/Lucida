@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     [SerializeField] private int resourceDrop;
     [SerializeField] private int scoreValue;
 
+    private Material _material;
 
     public event Action<GameObject> ServerOnDie;
 
@@ -25,7 +26,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     private void Start()
     {
         _currentHealth = maxHealth;
-
+        _material = GetComponent<Renderer>().material;
     }
 
     private void HandleHealthUpdated(float oldHealth, float newHealth)
@@ -38,6 +39,12 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
         // if (_currentHealth == 0) { return; }
         float health = _currentHealth;
         _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
+
+        LeanTween.cancel(gameObject);
+
+        LeanTween.value( gameObject, 0.6f, 0f, 0.15f).setOnUpdate( (float val)=>{
+            _material.SetFloat("_DamageAmount", val);
+        } );
 
         LeanTween.value( gameObject, health, _currentHealth, 0.15f).setOnUpdate( (float val)=>{
             HandleHealthUpdated(maxHealth, val);

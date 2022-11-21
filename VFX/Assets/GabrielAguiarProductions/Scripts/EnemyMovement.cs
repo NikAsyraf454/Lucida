@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     private List<GameObject> waypoints;
     private bool isDead;
     private float originalSpeed;
-    private Color originalColor;
+    private Material _material;
     
     void Start()
     {
@@ -28,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         pathsAmount = pathManager.GetWaypointsAmount();
         // pathsAmount++;  //waypointIndex calculation is still bizzarre
         originalSpeed = enemySpeed;
-        originalColor = GetComponent<Renderer>().material.GetColor("_Color");
+        _material = GetComponent<Renderer>().material;
     }
 
     void FixedUpdate()
@@ -87,14 +87,15 @@ public class EnemyMovement : MonoBehaviour
     //reduction takes in value of 0.0% - 100%
     IEnumerator SlowDown(float reduction, float duration)
     {
-
+        LeanTween.cancel(gameObject);
+        LeanTween.value( gameObject, 0.4f, 0f, duration).setOnUpdate( (float val)=>{
+            _material.SetFloat("_FrozeAmount", val);
+        } );
         // float temp = enemySpeed;
         enemySpeed *= ((100 - reduction)/100);
         var cubeRenderer = GetComponent<Renderer>();
-        cubeRenderer.material.SetColor("_Color", SpellManager.Instance.slowedColor);
         yield return new WaitForSeconds (duration);
         enemySpeed = originalSpeed;
-        cubeRenderer.material.SetColor("_Color", originalColor);
 
         StopCoroutine("SlowDown");
     }
