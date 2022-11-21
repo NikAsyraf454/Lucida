@@ -10,12 +10,19 @@ public class UIGraphManager :  MonoBehaviour
     public UILineRenderer healthLineRenderer;
     public UILineRenderer levelLineRenderer;
     public UILineRenderer scoreLineRenderer;
+    public GameObject healthGraph;
+    public GameObject levelGraph;
+    public GameObject scoreGraph;
     private Vector2Int gridSize;
 
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+    }
+
+    void Start()
+    {
         HealthGraphMenu();
     }
 
@@ -37,6 +44,10 @@ public class UIGraphManager :  MonoBehaviour
         CSVToPoints(healthLineRenderer, 1);
         levelLineRenderer.gameObject.SetActive(false);
         scoreLineRenderer.gameObject.SetActive(false);
+
+        healthGraph.gameObject.SetActive(true);
+        levelGraph.gameObject.SetActive(false);
+        scoreGraph.gameObject.SetActive(false);
     }
 
     public void LevelGraphMenu()
@@ -44,6 +55,10 @@ public class UIGraphManager :  MonoBehaviour
         healthLineRenderer.gameObject.SetActive(false);
         CSVToPoints(levelLineRenderer, 2);
         scoreLineRenderer.gameObject.SetActive(false);
+
+        healthGraph.gameObject.SetActive(false);
+        levelGraph.gameObject.SetActive(true);
+        scoreGraph.gameObject.SetActive(false);
     }
 
     public void ScoreGraphMenu()
@@ -51,6 +66,10 @@ public class UIGraphManager :  MonoBehaviour
         healthLineRenderer.gameObject.SetActive(false);
         levelLineRenderer.gameObject.SetActive(false);
         CSVToPoints(scoreLineRenderer, 3);
+
+        healthGraph.gameObject.SetActive(false);
+        levelGraph.gameObject.SetActive(false);
+        scoreGraph.gameObject.SetActive(true);
     }
 
     [ContextMenu("CSVtoPoints")]

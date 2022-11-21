@@ -28,7 +28,7 @@ public class PathManager : MonoBehaviour/* , ISaveable */
     int[,] tilePlacement = new int[100,100];
     private WaitForSeconds updateTime = new WaitForSeconds (0.5f); 
 
-    void Awake()
+    void Start()
     {
         leftTurn = rightTurn = (height/2);
         //int[,] tilePlacement = new int[lenght,height];
@@ -73,6 +73,7 @@ public class PathManager : MonoBehaviour/* , ISaveable */
         }
 
         SpawnTile(basePrefab, new Vector3(2,0.1f,height/2));   //base
+        tilePlacement[1,height/2] = 1;
         tilePlacement[2,height/2] = 1;
         SpawnWaypoint(2,height/2);
 

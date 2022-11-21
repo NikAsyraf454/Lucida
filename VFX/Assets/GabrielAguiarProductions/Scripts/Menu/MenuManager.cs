@@ -35,6 +35,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayerLose()
     {
+        if(gameEnded) { return; }
         pauseMenuPrefab.SetActive(false);
         gameEnded = true;
         Time.timeScale = 0;
@@ -45,6 +46,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayerWin()
     {
+        if(gameEnded) { return; }
         pauseMenuPrefab.SetActive(false);
         gameEnded = true;
         Time.timeScale = 0;
@@ -104,10 +106,34 @@ public class MenuManager : MonoBehaviour
                     arr[i] = temp.scores[i].score;
                     break;
             }
-            
         }
         
         return arr;
+    }
+
+        public List<int> GetCSVColumnList(int j)
+    {
+        ScoreList temp = cSVReader.ReadCSV();
+        List<int> list = new List<int>();
+
+        for(int i = 0; i<temp.scores.Length; i++)
+        {
+            switch(j)
+            {
+                case 1:
+                    list.Add(temp.scores[i].health);
+                    break;
+                case 2:
+                    list.Add(temp.scores[i].level);
+                    break;
+                case 3:
+                    list.Add(temp.scores[i].score);
+                    break;
+            }
+            
+        }
+        
+        return list;
     }
 }
 

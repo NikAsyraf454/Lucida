@@ -122,7 +122,8 @@ public class TowerLevel : MonoBehaviour
     public void SellTower()
     {
         RotateToEnemyScript rotateToEnemyScript = GetComponent<RotateToEnemyScript>();
-        rotateToEnemyScript.fireDelay(5f);
+        if(rotateToEnemyScript != null)
+            rotateToEnemyScript.fireDelay(5f);
         ServerOnTowerDestroyed.Invoke(this);
         node.TowerDestroyed();
         Destroy(transform.parent.gameObject, 0.2f);

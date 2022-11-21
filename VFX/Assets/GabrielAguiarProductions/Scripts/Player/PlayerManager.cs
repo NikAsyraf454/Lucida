@@ -59,9 +59,16 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     public void ReducePlayerHealth(int damageAmount)
     {
+        currentPlayerHealth -= damageAmount;
+
+        if(currentPlayerHealth <= 0) 
+        {
+            currentPlayerHealth = 0;
+            MenuManager.Instance.PlayerLose();
+        }
+
         CameraShake.Shake(0.25f, 0.2f);
         // int temp = currentPlayerHealth;
-        currentPlayerHealth -= damageAmount;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         damageScreen.PlayerTakeDamage();
 
@@ -74,11 +81,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
             ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         } 
 
-        if(currentPlayerHealth <= 0) 
-        {
-            currentPlayerHealth = 0;
-            MenuManager.Instance.PlayerLose();
-        }
+
     }
 
     public void IncreaseResource(int resourceAmount)
