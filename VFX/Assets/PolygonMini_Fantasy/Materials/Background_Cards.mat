@@ -2,15 +2,19 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Background_Cards
-  m_Shader: {fileID: 4800000, guid: 8663d1809decd0543af7f98a3c190261, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: -6465566751694194690, guid: 73a78012276d18f4fb3693e88180592f,
+    type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -149,6 +153,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - BaseEmber: 0
     - GlowBaseFrequency: 1.1
@@ -218,6 +223,8 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
+    - Color_3ECE37A8: {r: 0.41037738, g: 0.8132252, b: 1, a: 0}
+    - Color_AE0D83D3: {r: 0.9622641, g: 0.46751517, b: 0.46751517, a: 0}
     - EmberColorTint: {r: 0.9926471, g: 0.6777384, b: 0, a: 1}
     - _ASEOutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Bot_XZ: {r: 0.7058823, g: 0.2024221, b: 0.2024221, a: 0}
@@ -240,3 +247,17 @@ Material:
     - _Top: {r: 1, g: 0, b: 0, a: 0}
     - _Top_XZ: {r: 0.2569204, g: 0.5525266, b: 0.7279412, a: 0}
     - _Top_Y: {r: 0.7259277, g: 0.7647059, b: 0.06185123, a: 0}
+  m_BuildTextureStacks: []
+--- !u!114 &1811550147853713207
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

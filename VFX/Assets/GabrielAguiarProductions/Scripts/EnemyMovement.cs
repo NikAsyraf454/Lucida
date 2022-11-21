@@ -87,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
     //reduction takes in value of 0.0% - 100%
     IEnumerator SlowDown(float reduction, float duration)
     {
-        LeanTween.cancel(gameObject);
+        // LeanTween.cancel(gameObject);
         LeanTween.value( gameObject, 0.4f, 0f, duration).setOnUpdate( (float val)=>{
             _material.SetFloat("_FrozeAmount", val);
         } );

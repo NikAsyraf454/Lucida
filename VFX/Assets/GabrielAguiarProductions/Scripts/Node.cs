@@ -12,6 +12,12 @@ public class Node : MonoBehaviour
     public TowerManager towerManager;
     public bool canBuild = true;
     public TowerLevel towerLevel;
+    [SerializeField] private GameObject[] EnvProp;
+    [Range(0.0f, 1.0f)]
+    public float propPercentage;
+    [SerializeField] private int minProp, maxProp;
+    [SerializeField] private Vector2 minPropPosition, maxPropPosition;
+    [SerializeField] private List<GameObject> propSpawned;
 
     private void Start()
     {
@@ -21,6 +27,7 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
         pathManager = GameObject.FindObjectOfType<PathManager>();
         towerManager = pathManager.gameObject.GetComponentInParent<TowerManager>();
+        SpawnProp();
     }
 
     private void Update()
@@ -36,6 +43,13 @@ public class Node : MonoBehaviour
         //return true if cannot build, false if can build
         canBuild = towerManager.BuildTower( new Vector3(transform.position.x, 0.64f, transform.position.z));
         
+        if(!canBuild)
+        {
+            foreach(GameObject prop in propSpawned)
+            {
+                Destroy(prop);
+            }
+        }
     }
 
     void OnMouseEnter()
@@ -60,6 +74,25 @@ public class Node : MonoBehaviour
     private void UpdateBuildingPreview()
     {
 
+    }
+
+    private void SpawnProp()
+    {
+        float temp = UnityEngine.Random.Range(0f, 100f);
+        // Debug.Log(temp + ", " + propPercentage);
+        // if(temp > propPercentage) { return; }
+
+        int propAmount = UnityEngine.Random.Range(minProp, maxProp);
+        for(int i = 0; i < propAmount; i++)
+        {
+            Vector3 pos = new Vector3(
+                transform.parent.position.x + UnityEngine.Random.Range(minPropPosition.x, maxPropPosition.x),
+                transform.parent.position.y + 0.3f,
+                transform.parent.position.z + UnityEngine.Random.Range(minPropPosition.y, maxPropPosition.y)
+            );
+            var prop = Instantiate(EnvProp[UnityEngine.Random.Range(0, EnvProp.Length)], pos, Quaternion.identity, transform.parent.GetComponent<Transform>());
+            propSpawned.Add(prop);
+        }
     }
 }
 

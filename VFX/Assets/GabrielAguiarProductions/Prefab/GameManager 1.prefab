@@ -1143,6 +1143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GraphMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2526423220228910670, guid: 66d39cefd188bb846a9324448aa1c16e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3622554068648640507, guid: 66d39cefd188bb846a9324448aa1c16e,
         type: 3}
       propertyPath: m_Name

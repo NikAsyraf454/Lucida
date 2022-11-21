@@ -147,3 +147,13 @@ MonoBehaviour:
   towerManager: {fileID: 0}
   canBuild: 1
   towerLevel: {fileID: 0}
+  EnvProp:
+  - {fileID: 1061410200461678, guid: 84650fac5bc773e4f9e6eac4cb77c5ee, type: 3}
+  - {fileID: 1530165478891328, guid: b3d5bf97186b3d949b317b06faa1e9b8, type: 3}
+  - {fileID: 1149964068514196, guid: 7bf03ea436de85340a610548fc71b0ee, type: 3}
+  propPercentage: 0.5
+  minProp: 0
+  maxProp: 2
+  minPropPosition: {x: 0.3, y: 0.3}
+  maxPropPosition: {x: -0.3, y: -0.3}
+  propSpawned: []

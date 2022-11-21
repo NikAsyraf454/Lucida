@@ -41,6 +41,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
         _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
 
         LeanTween.cancel(gameObject);
+        HandleHealthUpdated(maxHealth, health);
 
         LeanTween.value( gameObject, 0.6f, 0f, 0.15f).setOnUpdate( (float val)=>{
             _material.SetFloat("_DamageAmount", val);

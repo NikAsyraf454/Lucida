@@ -23,7 +23,7 @@ public class MortarMoveScript : MonoBehaviour
     {
 		rb = GetComponent <Rigidbody> ();
 		Destroy(gameObject, lifeSpan);
-		// InvokeRepeating("CheckGround", 1f, 0.1f);
+		InvokeRepeating("CheckGround", 1f, 0.1f);
     }
 
     // Update is called once per frame

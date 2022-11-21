@@ -75,6 +75,15 @@ public class PathManager : MonoBehaviour/* , ISaveable */
         SpawnTile(basePrefab, new Vector3(2,0.1f,height/2));   //base
         tilePlacement[1,height/2] = 1;
         tilePlacement[2,height/2] = 1;
+
+        tilePlacement[0,height/2] = 1;
+        tilePlacement[0,(height/2)+1] = 1;
+        tilePlacement[0,(height/2)-1] = 1;
+        tilePlacement[1,(height/2)+1] = 1;
+        tilePlacement[1,(height/2)-1] = 1;
+        tilePlacement[2,(height/2)+1] = 1;
+        tilePlacement[2,(height/2)-1] = 1;
+
         SpawnWaypoint(2,height/2);
 
         pathIndexX = 2;

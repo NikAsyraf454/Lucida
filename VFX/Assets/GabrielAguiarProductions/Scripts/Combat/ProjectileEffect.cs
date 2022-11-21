@@ -24,7 +24,7 @@ public class ProjectileEffect : MonoBehaviour
         {
             if(enemy.TryGetComponent<EnemyMovement>(out EnemyMovement enemyMovement))
             {
-                enemyMovement.DoSlowDown(50f,2f);
+                enemyMovement.DoSlowDown(50f,1.5f);
             }
         }
     }

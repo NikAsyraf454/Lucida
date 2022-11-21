@@ -931,7 +931,7 @@ MonoBehaviour:
   - {fileID: 2098865178}
   - {fileID: 1307461551}
   pathManager: {fileID: 0}
-  zoomClamp: {x: 2, y: 20}
+  zoomClamp: {x: 2, y: 19}
   panSpeed: 18
   targetZoom: 0
   zoomFactor: 1
@@ -2931,11 +2931,6 @@ PrefabInstance:
     - target: {fileID: 2477620479550125250, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578761739581586071, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
