@@ -9707,7 +9707,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  accuracy: 100
   fireRate: 1
   muzzlePrefab: {fileID: 772256393890462501, guid: f26ef6010ae5d244abdd9bda9acdbcba,
     type: 3}
@@ -9717,6 +9716,10 @@ MonoBehaviour:
   hitSFX: {fileID: 0}
   trails:
   - {fileID: 8035877430918373248}
+  target: {fileID: 0}
+  damageDeal: 0
+  lifeSpan: 3
+  projectileEffect: {fileID: 0}
 --- !u!1 &7681310210115172707
 GameObject:
   m_ObjectHideFlags: 0
