@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2154244704211724308}
   - component: {fileID: 8977692526851661568}
   - component: {fileID: 4300648276509768059}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8961505878026875723}
   - component: {fileID: 5517106543243478308}
   - component: {fileID: 260813209148519592}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FireRate Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 3875572611068695025}
   - component: {fileID: 2546365367907393508}
   - component: {fileID: 7288907970094564962}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,13 +300,13 @@ GameObject:
   - component: {fileID: 1612433684437567402}
   - component: {fileID: 1100278496952473525}
   - component: {fileID: 8771240732266269624}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TowerStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1612433684437567403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 1612433684828305217}
   - component: {fileID: 1612433684828305231}
   - component: {fileID: 1612433684828305230}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 1612433684898007731}
   - component: {fileID: 1612433684898007729}
   - component: {fileID: 1612433684898007728}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HealthBar_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   - component: {fileID: 4128704295422470387}
   - component: {fileID: 6005263748311693612}
   - component: {fileID: 1001717201539854211}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TowerName Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 8184166844978838436}
   - component: {fileID: 7344705027461411696}
   - component: {fileID: 3177970929712088709}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 6332236463812850852}
   - component: {fileID: 3311554969490301305}
   - component: {fileID: 6442886529978287796}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Level XP Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +876,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.5
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -892,7 +892,7 @@ GameObject:
   - component: {fileID: 8588975564313888614}
   - component: {fileID: 1630542259387840998}
   - component: {fileID: 2637216483647798825}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 7344594675008147481}
   - component: {fileID: 8902540338130334545}
   - component: {fileID: 1753737052169427781}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1051,7 @@ GameObject:
   - component: {fileID: 3942669897146812225}
   - component: {fileID: 2663170255314568375}
   - component: {fileID: 4303940952016242311}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Stats Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 3522865136408654826}
   - component: {fileID: 7032165745527216218}
   - component: {fileID: 7081391850999195231}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 8223066309531044769}
   - component: {fileID: 408258106877709439}
   - component: {fileID: 5664060735586507467}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1340,7 @@ GameObject:
   - component: {fileID: 3985648984396595252}
   - component: {fileID: 3505639925657069128}
   - component: {fileID: 451516383565246878}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Damage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 5241030638019637366}
   - component: {fileID: 3675033502119342288}
   - component: {fileID: 2907972437064183355}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UpgradeText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1612,7 +1612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2092707617535841478}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1653,7 +1653,7 @@ GameObject:
   - component: {fileID: 4799977989830059533}
   - component: {fileID: 1193897651225710126}
   - component: {fileID: 3627305212216978774}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Sell Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 6639937476511363434}
   - component: {fileID: 5489492044416929761}
   - component: {fileID: 8810693882110814564}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1870,7 +1870,7 @@ GameObject:
   - component: {fileID: 2247271997841047639}
   - component: {fileID: 762309428056326525}
   - component: {fileID: 3187098430271064522}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SellText (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2006,7 +2006,7 @@ GameObject:
   - component: {fileID: 787827148678231231}
   - component: {fileID: 8396048383433170330}
   - component: {fileID: 4499451620373410325}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Level XP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2082,7 +2082,7 @@ GameObject:
   - component: {fileID: 444485089749540254}
   - component: {fileID: 7344686483844662366}
   - component: {fileID: 2872784219792654606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2159,7 +2159,7 @@ GameObject:
   - component: {fileID: 8444433821605705703}
   - component: {fileID: 6189378624394924878}
   - component: {fileID: 2236792986233214551}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Upgrade Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 7192542542677729895}
   - component: {fileID: 1060511133311336682}
   - component: {fileID: 3332295074613710029}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cost Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,7 +2429,7 @@ GameObject:
   - component: {fileID: 2985421624267291370}
   - component: {fileID: 2822969169871750608}
   - component: {fileID: 1002351483525006816}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FireRateValue Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2565,7 +2565,7 @@ GameObject:
   - component: {fileID: 6280705240061533480}
   - component: {fileID: 4927846308957582512}
   - component: {fileID: 7705999964112618056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DamageValue Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

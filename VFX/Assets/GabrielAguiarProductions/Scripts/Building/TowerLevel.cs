@@ -17,6 +17,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private bool isUnlocked;
     [SerializeField] private bool isSpawned = false;        //for UI]
     [SerializeField] private int _towerXp;
+    [SerializeField] private float _towerRange;
 
     public Node node;
     
@@ -29,6 +30,7 @@ public class TowerLevel : MonoBehaviour
     public int MaxTowerPrice { get{return _maxTowerPrice; } set{ _maxTowerPrice = MaxTowerPrice; } }
     public int CurrentTowerPrice { get{return _currentTowerPrice; } set{ _currentTowerPrice = CurrentTowerPrice; } }
     public int TowerXp { get{return _towerXp; } set{ _towerXp = TowerXp; } }
+    public float TowerRange { get{return _towerRange; } set{ _towerRange = TowerRange; } }
 
     public event Action<TowerLevel> ServerOnTowerXp;
     public event Action<TowerLevel> ServerOnTowerDestroyed;
@@ -43,6 +45,7 @@ public class TowerLevel : MonoBehaviour
         // _level = UnityEngine.Random.Range(1,4);
         GetNodeAvailability(transform.position);
         originalDamage = _damageDeal;
+        GetComponent<SphereCollider>().radius = _towerRange;
     }
 
     // Update is called once per frame

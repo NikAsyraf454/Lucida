@@ -8,9 +8,11 @@ public class TowerInfoDisplay : MonoBehaviour
 {
     private bool isDisplayed = false;
     [SerializeField] private GameObject statsPanel;
+    [SerializeField] private GameObject towerRange;
     [SerializeField] private TowerLevel towerLevel;
     [SerializeField] private TMP_Text towerName, level, damageDeal, fireRate, sellPrice, cost;
     [SerializeField] private Image xpBarImage = null;
+    private Torus torusScript;
 
     private void Awake()
     {
@@ -29,6 +31,7 @@ public class TowerInfoDisplay : MonoBehaviour
         towerName.SetText(towerLevel.TowerName);
         sellPrice.SetText("Sell $" + towerLevel.MaxTowerPrice.ToString());
         UpdateStats(towerLevel);
+        torusScript = towerRange.GetComponent<Torus>();
     }
 
     // Update is called once per frame
@@ -53,11 +56,15 @@ public class TowerInfoDisplay : MonoBehaviour
         {
             isDisplayed = false;
             statsPanel.SetActive(false);
+            towerRange.SetActive(false);
             TowerManager.Instance.canDisplayInfo = true;
         }
         else if(TowerManager.Instance.canDisplayInfo)
         {
             statsPanel.SetActive(true);
+            towerRange.SetActive(true);
+            torusScript.radius = (towerLevel.TowerRange/2);
+            torusScript.NewMesh();
             isDisplayed = true;
             TowerManager.Instance.canDisplayInfo = false;
         }

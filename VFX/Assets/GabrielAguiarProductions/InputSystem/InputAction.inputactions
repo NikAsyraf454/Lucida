@@ -103,16 +103,16 @@
             "actions": [
                 {
                     "name": "Spell1",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "dd61adf4-6e26-46b5-8416-32cb38640d90",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
                     "name": "Spell2",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "d97e2db5-cfd9-4e05-8e37-399275d68e99",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -121,7 +121,7 @@
                 },
                 {
                     "name": "Spell3",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "9318e9ae-128d-48f8-901a-a9f2d5089d5a",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -130,8 +130,17 @@
                 },
                 {
                     "name": "Spell4",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "d06502a0-276f-4a7f-8c83-1730f4bc1a38",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "739a0e58-3d88-4ae3-947c-73d2ff91a0cb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -180,6 +189,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Spell4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "980bef7d-0379-45a9-812d-8900df1f1023",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

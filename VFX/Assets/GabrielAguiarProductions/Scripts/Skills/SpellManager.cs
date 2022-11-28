@@ -7,11 +7,15 @@ public class SpellManager : MonoBehaviour
 {
     public static SpellManager Instance;
     private PlayerManager playerManager;
+    [SerializeField] private GameObject previewProjection;
     [SerializeField] private List<EnemyMovement> enemyMovements;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float areaRadius = 5f;
     public Color slowedColor;
     [SerializeField] private GameObject lightning;
+    private bool isHold = false;
+    [SerializeField] private bool[] isActivated = {false, false, false, false};
+    private bool preview = false;
 
     void Awake()
     {
@@ -23,15 +27,31 @@ public class SpellManager : MonoBehaviour
         playerManager = PlayerManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+        if(!preview) { previewProjection.SetActive(false); return; }
+
+        previewProjection.SetActive(true);
+
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
+        {
+            previewProjection.transform.position = hit.point;
+        }
+
     }
 
-    private void OnSpell1()     //Slowdown Enemy
+    // private void OnClick()
+    // {
+    //     OnSpell1();
+    // }
+
+    private void OnSpell1(InputValue value)     //Slowdown Enemy
     {
         // Debug.Log("Q or Spell1 is activated");
+        if(!ActivatedSpell(0)) { return; }
+        if(!isActivated[0]) { isActivated[0] = true; preview = true; return;} 
+
         if(!playerManager.ReduceCharge(1)) { return; }
         Collider[] colliders = AreaDetection();
 
@@ -43,10 +63,19 @@ public class SpellManager : MonoBehaviour
                 enemyMovement.DoSlowDown(50f,2f);
             }
         }
+
+        isActivated[0] = false;
+        preview = false;
+        // float temp = value.Get<int>;
+        // Debug.Log("Activated " + );
     }
 
     private void OnSpell2()     //Increase tower damage
     {
+        if(!ActivatedSpell(1)) { return; }
+        if(!isActivated[1]) { isActivated[1] = true; return;}
+
+
         //decide on all tower or area selection
         //if all tower
         if(!playerManager.ReduceCharge(2)) { return; }
@@ -57,15 +86,28 @@ public class SpellManager : MonoBehaviour
             towerLevel.DoIncreaseDamage(50f, 10f);
         }
 
+        isActivated[1] = false;
+
     }
 
     private void OnSpell3()     //Increase Resource multiplier
     {
+        if(!ActivatedSpell(2)) { return; }
+        if(!isActivated[2]) { isActivated[2] = true; return;} 
+
+
+        if(!playerManager.ReduceCharge(1)) { return; }
         PlayerManager.Instance.DoIncreaseMultiplier(50f, 15f);
+
+        isActivated[2] = false;
     }
 
     private void OnSpell4()     //Damage enemy
     {
+        if(!ActivatedSpell(3)) { return; }
+        if(!isActivated[3]) { isActivated[3] = true; preview = true; return;} 
+
+
         if(!playerManager.ReduceCharge(2)) { return; }
         Collider[] colliders = AreaDetection();
 
@@ -83,6 +125,14 @@ public class SpellManager : MonoBehaviour
                 enemyHealth.DoDelayedDealDamage(80, 0.55f);
             }
         }
+
+        isActivated[3] = false;
+        preview = false;
+    }
+
+    private void DamageEnemy()
+    {
+
     }
 
     private Collider[] AreaDetection()
@@ -100,8 +150,26 @@ public class SpellManager : MonoBehaviour
         
     }
 
-    // private void OnDrawGizmos()
-    // {
+    private bool ActivatedSpell(int spell)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            if(isActivated[i] && i != spell)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        // // Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
+        // if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
+        // {
+        //     Gizmos.DrawWireSphere(hit.point, 5f);
+        // }
     //     Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
     //     // Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
     //     if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
@@ -112,5 +180,5 @@ public class SpellManager : MonoBehaviour
 
     //     // Ray ray1 = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
     //     // Debug.DrawRay(ray1.origin, ray1.direction * 20, Color.yellow);
-    // }
+    }
 }
