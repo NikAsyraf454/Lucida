@@ -18,6 +18,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private bool isSpawned = false;        //for UI]
     [SerializeField] private int _towerXp;
     [SerializeField] private float _towerRange;
+    [SerializeField] private GameObject _powerUpVFX;
 
     public Node node;
     
@@ -161,12 +162,14 @@ public class TowerLevel : MonoBehaviour
     {
         int temp = _damageDeal;
         float calcu = _damageDeal*(1+(increase/100));
-        Debug.Log(temp + " damage increased to " + (_damageDeal*(1+(increase/100))));
+        // Debug.Log(temp + " damage increased to " + (_damageDeal*(1+(increase/100))));
         _damageDeal = (int)calcu;
         ServerOnTowerXp.Invoke(this);
+        _powerUpVFX.SetActive(true);
         yield return new WaitForSeconds (duration);
         _damageDeal = temp;
         ServerOnTowerXp.Invoke(this);
+        _powerUpVFX.SetActive(false);
         StopCoroutine("IncreaseDamage");
     }
 }

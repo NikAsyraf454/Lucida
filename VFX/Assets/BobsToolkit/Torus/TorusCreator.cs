@@ -26,7 +26,7 @@ using UnityEngine;
 using UnityEditor;
 
 public class TorusCreator : MonoBehaviour {
-    [MenuItem("GameObject/3D Object/Torus", false, 10)]
+    // [MenuItem("GameObject/3D Object/Torus", false, 10)]
     public static void CreateTorus()
     {
         GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Quad);
@@ -35,6 +35,6 @@ public class TorusCreator : MonoBehaviour {
         torus.Mf.sharedMesh = new Mesh();
         torus.Mf.sharedMesh.name = "Torus (custom)";
         torus.UpdateTorus();
-        Selection.activeObject = obj;
+        // Selection.activeObject = obj;
     }
 }
