@@ -20,8 +20,8 @@ public class RotateToEnemyScript : MonoBehaviour
     private PathManager pathManager;
 	private List<GameObject> waypoints;
 	public bool collided;
-	[SerializeField]
-	private bool isMortar;
+	// [SerializeField]
+	// private bool isMortar;
 	[SerializeField]
 	private float mortarOffset;		//sphere collider mortar limit is 22
 	[SerializeField]
@@ -139,18 +139,18 @@ public class RotateToEnemyScript : MonoBehaviour
 	}
 
 	void UpdateRay (){
-		if(isMortar)
-		{
-		int temmp = (int)(enemyMovement.enemySpeed * predictionMultiplier) + enemyMovement.pathIndex;
-		if(temmp > waypoints.Count-1)
-			temmp = waypoints.Count-1;
-		Vector3 temp = waypoints[temmp].transform.position;
-		//Vector3 temp = enemy.position;
-			temp.y += mortarOffset;
-		transform.LookAt(temp);
-		//firePoint.transform.rotation = this.transform.rotation;
-		}
-		else
+		// if(isMortar)
+		// {
+		// int temmp = (int)(enemyMovement.enemySpeed * predictionMultiplier) + enemyMovement.pathIndex;
+		// if(temmp > waypoints.Count-1)
+		// 	temmp = waypoints.Count-1;
+		// Vector3 temp = waypoints[temmp].transform.position;
+		// //Vector3 temp = enemy.position;
+		// 	temp.y += mortarOffset;
+		// transform.LookAt(temp);
+		// //firePoint.transform.rotation = this.transform.rotation;
+		// }
+		// else
 			transform.LookAt(enemyMovement.transform.position);
 
 		if (Time.time >= timeToFire) {
@@ -196,17 +196,17 @@ public class RotateToEnemyScript : MonoBehaviour
 		}else
 			vfx = Instantiate (effectToSpawn);
 
-		if(isMortar)
-		{
-			vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
-			towerLevel.XpIncrease(3);		//increase xp of tower every shot
-		}
-		else
-		{
+		// if(isMortar)
+		// {
+		// 	vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
+		// 	towerLevel.XpIncrease(3);		//increase xp of tower every shot
+		// }
+		// else
+		// {
 			vfx.GetComponent<ProjectileMoveScript>().target = enemyMovement.gameObject;			//pass enemy and damage value to projectile
 			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;
 			towerLevel.XpIncrease(1);		//increase xp of tower every shot
-		}
+		// }
 
 		var ps = vfx.GetComponent<ParticleSystem> ();
 

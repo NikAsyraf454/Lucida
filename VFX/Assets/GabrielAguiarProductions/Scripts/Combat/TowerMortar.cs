@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerArcane : MonoBehaviour
+public class TowerMortar : MonoBehaviour
 {
     [SerializeField] private TowerAim towerAim;
     [SerializeField] private TowerLevel towerLevel;
@@ -38,9 +38,8 @@ public class TowerArcane : MonoBehaviour
 			vfx = Instantiate (effectToSpawn);
 
 		
-        vfx.GetComponent<ProjectileMoveScript>().target = towerAim.enemyMovement.gameObject;			//pass enemy and damage value to projectile
-        vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;/* = towerLevel.DamageDeal * towerLevel.Level; */
-        towerLevel.XpIncrease(1);		//increase xp of tower every shot
+        vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
+        towerLevel.XpIncrease(3);		//increase xp of tower every shot
 		
 		var ps = vfx.GetComponent<ParticleSystem> ();
 

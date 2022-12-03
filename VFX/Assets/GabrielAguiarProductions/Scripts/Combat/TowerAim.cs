@@ -82,7 +82,7 @@ public class TowerAim : MonoBehaviour
 
 	private void StartRotation ()
     {
-		if(isMortar)
+		if(isMortar && enemyMovement != null)
 		{
 		int temmp = (int)(enemyMovement.enemySpeed * predictionMultiplier) + enemyMovement.pathIndex;
 		if(temmp > waypoints.Count-1)
