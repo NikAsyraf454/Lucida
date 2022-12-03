@@ -412,7 +412,6 @@ MonoBehaviour:
   enemyList: []
   pathManager: {fileID: 0}
   collided: 0
-  isMortar: 0
   mortarOffset: 0
   predictionMultiplier: 0
   towerLevel: {fileID: 0}
@@ -455,6 +454,7 @@ MonoBehaviour:
   _towerXp: 0
   _towerRange: 6.69
   _powerUpVFX: {fileID: 6507670602423895427}
+  _spawnHeight: 0.6
   node: {fileID: 0}
 --- !u!120 &863271312659837316
 LineRenderer:

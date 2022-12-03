@@ -61,6 +61,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         
         
         PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
+        position.y = towerLevelList[towerInstanceId].SpawnHeight;
         SpawnTower(position);
         return false;
     }

@@ -19,6 +19,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private int _towerXp;
     [SerializeField] private float _towerRange;
     [SerializeField] private GameObject _powerUpVFX;
+    [SerializeField] private float _spawnHeight;
 
     public Node node;
     
@@ -32,6 +33,7 @@ public class TowerLevel : MonoBehaviour
     public int CurrentTowerPrice { get{return _currentTowerPrice; } set{ _currentTowerPrice = CurrentTowerPrice; } }
     public int TowerXp { get{return _towerXp; } set{ _towerXp = TowerXp; } }
     public float TowerRange { get{return _towerRange; } set{ _towerRange = TowerRange; } }
+    public float SpawnHeight { get{return _spawnHeight; } set{ _spawnHeight = SpawnHeight; } }
 
     public event Action<TowerLevel> ServerOnTowerXp;
     public event Action<TowerLevel> ServerOnTowerDestroyed;
