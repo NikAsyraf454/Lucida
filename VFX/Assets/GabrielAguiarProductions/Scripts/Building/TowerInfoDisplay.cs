@@ -63,7 +63,8 @@ public class TowerInfoDisplay : MonoBehaviour
         {
             statsPanel.SetActive(true);
             towerRange.SetActive(true);
-            torusScript.radius = (towerLevel.TowerRange/2);
+            towerLevel.UpdateColliderRadius();
+            torusScript.radius = (towerLevel.TowerRange);
             torusScript.NewMesh();
             isDisplayed = true;
             TowerManager.Instance.canDisplayInfo = false;

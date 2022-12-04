@@ -62,6 +62,7 @@ public class Node : MonoBehaviour
 
     void OnMouseExit()
     {
+        if(!canBuild) { return; }
         rend.material.color = startColor;
         //
     }

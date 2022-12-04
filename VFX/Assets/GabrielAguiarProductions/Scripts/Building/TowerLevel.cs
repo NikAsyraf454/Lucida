@@ -20,6 +20,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private float _towerRange;
     [SerializeField] private GameObject _powerUpVFX;
     [SerializeField] private float _spawnHeight;
+    private SphereCollider sphereCollider;
 
     public Node node;
     
@@ -48,7 +49,8 @@ public class TowerLevel : MonoBehaviour
         // _level = UnityEngine.Random.Range(1,4);
         GetNodeAvailability(transform.position);
         originalDamage = _damageDeal;
-        GetComponent<SphereCollider>().radius = _towerRange;
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.radius = _towerRange;
     }
 
     // Update is called once per frame
@@ -133,6 +135,11 @@ public class TowerLevel : MonoBehaviour
         ServerOnTowerDestroyed.Invoke(this);
         node.TowerDestroyed();
         Destroy(transform.parent.gameObject, 0.2f);
+    }
+
+    public void UpdateColliderRadius()
+    {
+        sphereCollider.radius = _towerRange;
     }
 
     // public int GetTowerLevel()

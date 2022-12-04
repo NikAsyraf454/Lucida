@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class TowerAim : MonoBehaviour
 {
-	// public bool useLaser = false;
-	// private bool laserOn = false;
-	// [SerializeField] private LineRenderer lineRenderer;
-	// [SerializeField] private ParticleSystem laserHit;
-
 	public GameObject firePoint;
 	private Vector3 direction;
 	private Quaternion rotation;
@@ -26,7 +21,7 @@ public class TowerAim : MonoBehaviour
 	private List<GameObject> waypoints;
 
 	public EnemyMovement enemyMovement;
-	private EnemyHealth targetedEnemyHealth;
+	public EnemyHealth targetedEnemyHealth;
 
 
 	void Start ()
