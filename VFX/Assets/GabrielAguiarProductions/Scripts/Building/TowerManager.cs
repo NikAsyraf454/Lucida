@@ -61,7 +61,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         
         
         PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
-        position.y = towerLevelList[towerInstanceId].SpawnHeight;
+        
         SpawnTower(position);
         return false;
     }
@@ -69,6 +69,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     private void SpawnTower(Vector3 position)
     {
         if(!GetNodeAvailability(position)) { return; }      //raycast, check if node below the position can be build
+        position.y = towerLevelList[towerInstanceId].SpawnHeight;
 
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
         spawnedTowerList.Add(tower.GetComponentInChildren<TowerLevel>());
@@ -126,6 +127,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         Ray ray = new Ray(position, Vector3.down);
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
+            
             return hit.collider.gameObject.GetComponentInChildren<Node>().canBuild;
         }
         return false;

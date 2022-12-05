@@ -12,8 +12,10 @@ public class TowerRay : MonoBehaviour
     [SerializeField] private TowerLevel towerLevel;
     // public GameObject effectToSpawn;
     [SerializeField] private float timeToFire = 0f;
+    private bool isActivated = false, canShoot = false;
 
     public GameObject firePoint;
+    [SerializeField] private GameObject crystal;
 
     void Start()
     {
@@ -32,11 +34,21 @@ public class TowerRay : MonoBehaviour
 			lineRenderer.SetPosition(1, firePoint.transform.position);
 			lineRenderer.enabled = false;
 			laserHit.Stop(true);
+            CrystalDeactivate();
+            isActivated = false;
 			return;
 		} 
         else if (towerAim.targetedEnemyHealth != null)
         {
-            Laser();
+            
+            if(!isActivated)
+            {
+                isActivated = true;
+                CrystalActivate();
+            }
+                
+            if(canShoot)
+                Laser();
         }
     }
 
@@ -67,5 +79,33 @@ public class TowerRay : MonoBehaviour
             Vector3 dir = transform.position - hit.point;
             laserHit.transform.rotation = Quaternion.LookRotation(dir);
         }
+    }
+
+    private void CrystalActivate()
+    {
+        LeanTween.value( gameObject, crystal.transform.localPosition.y, 0.3f, 0.2f).setOnUpdate( (float val)=>{
+            // Debug.Log("Activate Y: " + val);
+            crystal.transform.localPosition = new Vector3(crystal.transform.localPosition.x, val, crystal.transform.localPosition.z);
+        } ).setOnComplete(ChangeShootFlag);
+
+        
+    }
+
+    private void CrystalDeactivate()
+    {
+        LeanTween.cancel(gameObject);
+        canShoot = false;
+        LeanTween.value( gameObject, crystal.transform.localPosition.y, 0f, 0.2f).setOnUpdate( (float val)=>{
+            // Debug.Log("Deactivate Y: " + val);
+            crystal.transform.localPosition = new Vector3(crystal.transform.localPosition.x, val, crystal.transform.localPosition.z);
+        } );
+        
+    }
+
+    private void ChangeShootFlag()
+    {
+        canShoot = true;
+
+        LeanTween.rotateY(gameObject, 360, 10f).setFrom(0).setRepeat(-1);
     }
 }

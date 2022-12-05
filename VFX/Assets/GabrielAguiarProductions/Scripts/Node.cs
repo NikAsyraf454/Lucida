@@ -41,7 +41,7 @@ public class Node : MonoBehaviour
         if(towerManager.towerInstance == null) { return; }
         if(!canBuild) { return; }
         //return true if cannot build, false if can build
-        canBuild = towerManager.BuildTower( new Vector3(transform.position.x, 0f, transform.position.z));
+        canBuild = towerManager.BuildTower( new Vector3(transform.position.x, 1f, transform.position.z));
         
         if(!canBuild)
         {

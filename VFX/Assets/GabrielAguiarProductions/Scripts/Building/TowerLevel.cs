@@ -47,7 +47,7 @@ public class TowerLevel : MonoBehaviour
         //isSpawned = false;
         //currentTowerPrice = maxTowerPrice;
         // _level = UnityEngine.Random.Range(1,4);
-        GetNodeAvailability(transform.position);
+        GetNode(transform.position);
         originalDamage = _damageDeal;
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.radius = _towerRange;
@@ -152,12 +152,18 @@ public class TowerLevel : MonoBehaviour
 
     //Damage
 
-    private void GetNodeAvailability(Vector3 position)
+    private void GetNode(Vector3 position)
     {
+        position.y = 0.35f;
         Ray ray = new Ray(position, Vector3.down);
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
+            Debug.DrawRay(position, Vector3.down, Color.green);
             node =  hit.collider.gameObject.GetComponentInChildren<Node>();
+        }
+        if(node == null)
+        {
+            Debug.Log("Node not found");
         }
     }
 

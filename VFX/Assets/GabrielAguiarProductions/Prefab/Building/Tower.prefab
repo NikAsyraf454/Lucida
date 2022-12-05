@@ -50,8 +50,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.51570255, y: 0.517816, z: 0.53212416}
-  m_Center: {x: 0.0047480166, y: -0.0131872, z: 0.0034627318}
+  m_Size: {x: 0.65, y: 0.65, z: 0.65}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1856121242377233696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 3007360287037598566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7647878702215091343}
@@ -338,7 +338,7 @@ MonoBehaviour:
   isUnlocked: 1
   isSpawned: 0
   _towerXp: 0
-  _towerRange: 6.69
+  _towerRange: 3.3
   _powerUpVFX: {fileID: 4171090268579564788}
   _spawnHeight: 0.35
   node: {fileID: 0}
@@ -423,6 +423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: towerSquare_topA
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4174ba5b0ecedfd41a77314305b8e623,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4174ba5b0ecedfd41a77314305b8e623, type: 3}
@@ -839,17 +844,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.40801713
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.40801713
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.40801713
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
@@ -859,7 +864,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 0.431
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
@@ -900,6 +905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7befc28017874e448be1c91388d5a33,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f7befc28017874e448be1c91388d5a33,
         type: 3}
@@ -995,6 +1005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: towerSquare_bottomA
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5dff733bb3e5e4444b2990752f6ee412,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dff733bb3e5e4444b2990752f6ee412, type: 3}

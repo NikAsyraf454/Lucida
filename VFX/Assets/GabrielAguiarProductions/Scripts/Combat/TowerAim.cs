@@ -118,6 +118,11 @@ public class TowerAim : MonoBehaviour
 			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();
 			targetedEnemyHealth = enemyList[0].GetComponent<EnemyHealth>();
 		}
+		else
+		{
+			enemyMovement = null;
+			targetedEnemyHealth = null;
+		}
 	}
 
 	public void fireDelay(float time)
