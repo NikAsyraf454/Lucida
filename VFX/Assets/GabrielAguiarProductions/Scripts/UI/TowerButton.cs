@@ -10,6 +10,7 @@ public class TowerButton : MonoBehaviour
     [SerializeField] private GameObject shopItem;
     [SerializeField] private List<GameObject> shopItemList;
     [SerializeField] private List<TowerLevel> towerLevelList; 
+    [SerializeField] private List<bool> buttonActivated;
     //[SerializeField] private PlayerManager playerManager;
 
     // Start is called before the first frame update
@@ -38,7 +39,17 @@ public class TowerButton : MonoBehaviour
 
     public void PurchaseTower(int towerId)      //function for UI button
     {
-        towerManager.SetTowerInstance(towerId);
+        if(buttonActivated[towerId] == true)
+        {
+            //deactivate button, cancel tower instance purchase;
+            DeactivateAllButton();
+            towerManager.CancelPurchaseSelection();
+        }
+        else{
+            towerManager.SetTowerInstance(towerId);
+            DeactivateAllButton();
+            ActivateButton(towerId);
+        }
     }
 
     public void SpawnShopItem(TowerLevel towerLevel)
@@ -46,6 +57,7 @@ public class TowerButton : MonoBehaviour
         GameObject shopItemInstance = Instantiate(shopItem, transform.position, Quaternion.identity);
         shopItemList.Add(shopItemInstance);
         towerLevelList.Add(towerLevel);
+        buttonActivated.Add(false);
         SetShopItemProperties(shopItemInstance, towerLevel);
     }
 
@@ -55,7 +67,6 @@ public class TowerButton : MonoBehaviour
         shopItemInstance.transform.SetParent(gameObject.transform, false);
         shopItemInstance.GetComponent<Button>().onClick.AddListener(delegate{PurchaseTower(towerLevel.towerId);});
         SetShopItemText(shopItemInstance, towerLevel);
-
     }
 
     public void SetShopItemText(GameObject shopItem, TowerLevel towerLevel)
@@ -76,5 +87,28 @@ public class TowerButton : MonoBehaviour
             text[0].text = towerLevelList[i].TowerName;
             text[1].text = $" ${towerLevelList[i].CurrentTowerPrice.ToString()}";
         }
+    }
+
+    private void DeactivateAllButton()
+    {
+        for(int i = 0; i < buttonActivated.Count; i++)
+        {
+            if(buttonActivated[i] == true)
+            {
+                //turn off cancel ui;
+                shopItemList[i].GetComponent<ShopItemActivation>().ButtonDeactivated();
+                buttonActivated[i] = false;
+            }
+            
+        }
+
+        
+    }
+
+    private void ActivateButton(int buttonNo)
+    {
+        buttonActivated[buttonNo] = true;
+        //turnon cancel ui;
+        shopItemList[buttonNo].GetComponent<ShopItemActivation>().ButtonActivated();
     }
 }

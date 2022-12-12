@@ -25,7 +25,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         // playerManager = GetComponent<PlayerManager>();
         CacheTowerLevels();
         towerButton = GameObject.FindGameObjectWithTag("TowerShop").GetComponent<TowerButton>();
-        CheckTowerAvailability();
+        CheckTowerButtonAvailability();
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         if (PauseMenu.isPaused || Input.GetMouseButtonDown(1))
         {
-            towerInstance = null;
+            CancelPurchaseSelection();
             //close ui of tower info
         }
     }
@@ -109,7 +109,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         }
     }
 
-    public void CheckTowerAvailability()        //available in trems of unlocked
+    public void CheckTowerButtonAvailability()        //available in trems of unlocked
     {
         foreach(TowerLevel towerLevel in towerLevelList)
         {
@@ -131,6 +131,11 @@ public class TowerManager : MonoBehaviour, ISaveable
             return hit.collider.gameObject.GetComponentInChildren<Node>().canBuild;
         }
         return false;
+    }
+
+    public void CancelPurchaseSelection()
+    {
+        towerInstance = null;
     }
 
 
