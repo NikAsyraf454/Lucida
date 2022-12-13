@@ -78,6 +78,8 @@ public class TowerButton : MonoBehaviour
 
     public void UpdateShopItemText(int towerLevelId)
     {
+        DeactivateAllButton();
+        
         for(int i = 0; i < towerLevelList.Count; i++)
         {
             
