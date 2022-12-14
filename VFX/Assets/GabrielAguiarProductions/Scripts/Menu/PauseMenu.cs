@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ResumeGame();
+        // ResumeGame();
     }
 
     // Update is called once per frame
@@ -25,10 +25,16 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void PauseGame()
+    public void PauseGame()         //pause game and activate pause menu
     {
         Time.timeScale = 0;
         MenuManager.Instance.pauseMenuPrefab.SetActive(true);
+        isPaused = true;
+    }
+
+    public void HaltGame()         //pause game only
+    {
+        Time.timeScale = 0;
         isPaused = true;
     }
 

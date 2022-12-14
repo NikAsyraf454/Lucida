@@ -31,10 +31,18 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public event Action<int> ClientOnScoreUpdated;
     public event Action<int> ClientOnChargeUpdated;
 
+    public enum Difficulty{
+        Easy,
+        Normal,
+        Hard
+    };
+
+    [SerializeField] private Difficulty difficulty;
+
 
     void Awake()
     {
-        Instance = this;
+        Instance = this;  
     }
 
     void Start()
@@ -154,6 +162,11 @@ public class PlayerManager : MonoBehaviour, ISaveable
         yield return new WaitForSeconds (duration);
         resourceMultiplier = temp;
         StopCoroutine("IncreaseMultiplier");
+    }
+
+    public void SetDifficulty(Difficulty i)
+    {
+        (difficulty) = i;
     }
 
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)

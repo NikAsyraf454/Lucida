@@ -8,12 +8,14 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
+    public GameObject difficultyMenuPrefab;
     public GameObject pauseMenuPrefab;
     public GameObject winMenuPrefab;
     public GameObject loseMenuPrefab;
     [SerializeField] private GameObject graphMenuPrefab;
     [SerializeField] private CSVReader cSVReader;
     [SerializeField] private CSVWriter cSVWriter;
+    private PauseMenu pause;
 
     public bool gameEnded;
 
@@ -24,13 +26,32 @@ public class MenuManager : MonoBehaviour
     {
         Instance = this;
         gameEnded = false;
-        Time.timeScale = 1;
+        // Time.timeScale = 1;
+    }
+
+    void Start()
+    {
+        pause = GetComponent<PauseMenu>();
+        if(!SaveManager.Instance.saveFileExist)
+        {
+            pause.HaltGame();
+            ChooseDifficulty();
+        }
+        else
+        {
+            pause.ResumeGame();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ChooseDifficulty()
+    {
+        difficultyMenuPrefab.SetActive(true);
     }
 
     public void PlayerLose()
@@ -55,6 +76,30 @@ public class MenuManager : MonoBehaviour
         SaveManager.Instance.DeleteSave();
     }
 
+    public void DifficultyEasy()
+    {
+        PlayerManager.Instance.SetDifficulty(PlayerManager.Difficulty.Easy);
+        //reload enemy list
+        pause.ResumeGame();
+        difficultyMenuPrefab.SetActive(false);
+    }
+
+    public void DifficultyNormal()
+    {
+        PlayerManager.Instance.SetDifficulty(PlayerManager.Difficulty.Normal);
+        //reload enemy list
+        pause.ResumeGame();
+        difficultyMenuPrefab.SetActive(false);
+    }
+
+    public void DifficultyHard()
+    {
+        PlayerManager.Instance.SetDifficulty(PlayerManager.Difficulty.Hard);
+        //reload enemy list
+        pause.ResumeGame();
+        difficultyMenuPrefab.SetActive(false);
+    }
+
     public void RestartGame()
     {
         File.Delete(savePath);
@@ -63,7 +108,6 @@ public class MenuManager : MonoBehaviour
 
     public void PauseGame()
     {
-        PauseMenu pause = GetComponent<PauseMenu>();
         pause.PauseGame();
     }
 

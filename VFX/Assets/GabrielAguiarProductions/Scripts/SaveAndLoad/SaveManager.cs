@@ -7,13 +7,17 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
-
+    public bool saveFileExist = false;
     private string SavePath => $"{Application.persistentDataPath}/save.txt";
 
     void Awake()
     {
         Instance = this;
-        if(File.Exists(SavePath)){ LoadDelay(1.0f); }
+        if(File.Exists(SavePath))
+        {
+            saveFileExist=true;
+            LoadDelay(1.0f); 
+        }
     }
 
     // [ContextMenu("Save")]
