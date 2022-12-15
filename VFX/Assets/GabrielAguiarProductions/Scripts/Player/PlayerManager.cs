@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     [SerializeField] private bool gotLifeline = false;
 
     [SerializeField] private float resourceMultiplier = 1f;
+    [SerializeField] private int scoreMultiplier = 1;
 
     public event Action<int> ClientOnResourcesUpdated;
     public event Action<int> ClientOnPlayerHealthUpdated;
@@ -37,7 +38,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         Hard
     };
 
-    [SerializeField] private Difficulty difficulty;
+    public Difficulty difficulty;
 
 
     void Awake()
@@ -95,14 +96,14 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public void IncreaseResource(int resourceAmount)
     {
         // int temp = currentPlayerResources;
-        currentPlayerResources += resourceAmount * resourceMultiplier;
+        currentPlayerResources += (resourceAmount * resourceMultiplier);
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
 
     }
 
     public void ScoreIncrease(int ScoreAmount)
     {
-        currentPlayerScore += ScoreAmount;
+        currentPlayerScore += (ScoreAmount * scoreMultiplier);
         ClientHandleScoreUpdated(0, currentPlayerScore);
     }
 
@@ -167,6 +168,20 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public void SetDifficulty(Difficulty i)
     {
         (difficulty) = i;
+        switch(difficulty)
+        {
+            case Difficulty.Easy:
+                scoreMultiplier = 1;
+                break;
+            case Difficulty.Normal:
+                scoreMultiplier = 2;
+                break;
+            case Difficulty.Hard:
+                scoreMultiplier = 3;
+                break;
+            
+        }
+        WaveManager.Instance.PopulateWavesList();
     }
 
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)
@@ -199,7 +214,8 @@ public class PlayerManager : MonoBehaviour, ISaveable
             currentPlayerResources = (int)currentPlayerResources,
             currentPlayerScore = currentPlayerScore,
             currentCharge = currentCharge,
-            gotLifeline = gotLifeline
+            gotLifeline = gotLifeline,
+            difficulty = difficulty
         };
     }
 
@@ -212,6 +228,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         currentPlayerScore = saveData.currentPlayerScore;
         currentCharge = saveData.currentCharge;
         gotLifeline = saveData.gotLifeline;
+        difficulty = saveData.difficulty;
         UpdateLoadProperties();
     }
 
@@ -221,6 +238,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         ClientHandleScoreUpdated(0, currentPlayerScore);
         ClientHandleChargeUpdated(0, currentCharge);
+        SetDifficulty(difficulty);
     }
 
     [Serializable]
@@ -231,6 +249,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         public int currentPlayerScore;
         public int currentCharge;
         public bool gotLifeline;
+        public Difficulty difficulty;
     }
     
     #endregion

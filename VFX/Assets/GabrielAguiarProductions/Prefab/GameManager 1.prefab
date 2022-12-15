@@ -1099,51 +1099,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8775901823804857809}
-    - target: {fileID: 561684303576939992, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DifficultyEasy
-      objectReference: {fileID: 0}
     - target: {fileID: 5773127311478078543, guid: 47e26087b0d2c6443af0359e3e77e573,
         type: 3}
       propertyPath: m_Name
       value: DifficultyMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 5773127311478078543, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6170814385340372383, guid: 47e26087b0d2c6443af0359e3e77e573,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8775901823804857809}
-    - target: {fileID: 6170814385340372383, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DifficultyHard
-      objectReference: {fileID: 0}
-    - target: {fileID: 6170814385340372383, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 7218457599134604295, guid: 47e26087b0d2c6443af0359e3e77e573,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8775901823804857809}
-    - target: {fileID: 7218457599134604295, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DifficultyNormal
-      objectReference: {fileID: 0}
-    - target: {fileID: 7218457599134604295, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: MenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47e26087b0d2c6443af0359e3e77e573, type: 3}
 --- !u!1 &1763462040279115462 stripped

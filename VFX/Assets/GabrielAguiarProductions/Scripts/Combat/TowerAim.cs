@@ -112,8 +112,6 @@ public class TowerAim : MonoBehaviour
 					
 					return;
 				}
-
-				 
 			}
 			enemyMovement = enemyList[0].GetComponent<EnemyMovement>();
 			targetedEnemyHealth = enemyList[0].GetComponent<EnemyHealth>();

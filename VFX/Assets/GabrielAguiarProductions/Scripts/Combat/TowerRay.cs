@@ -29,7 +29,7 @@ public class TowerRay : MonoBehaviour
 
     void LateUpdate()
     {
-        if(towerAim.enemyList.Count <= 0 && laserHit.isPlaying) 
+        if(towerAim.enemyList.Count <= 0 && (laserHit.isPlaying || lineRenderer.enabled)) 
 		{
 			lineRenderer.SetPosition(1, firePoint.transform.position);
 			lineRenderer.enabled = false;
@@ -69,13 +69,15 @@ public class TowerRay : MonoBehaviour
         }
 
         
-        Ray ray = new Ray(firePoint.transform.position, transform.forward);
+        Ray ray = new Ray(firePoint.transform.position, firePoint.transform.forward);
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
             // Debug.Log("Particle laser");
             if(!laserHit.isPlaying)
                 laserHit.Play();
+            
             laserHit.transform.position = hit.point;
+            Debug.Log(hit.point);
             Vector3 dir = transform.position - hit.point;
             laserHit.transform.rotation = Quaternion.LookRotation(dir);
         }
@@ -87,8 +89,6 @@ public class TowerRay : MonoBehaviour
             // Debug.Log("Activate Y: " + val);
             crystal.transform.localPosition = new Vector3(crystal.transform.localPosition.x, val, crystal.transform.localPosition.z);
         } ).setOnComplete(ChangeShootFlag);
-
-        
     }
 
     private void CrystalDeactivate()
@@ -107,5 +107,11 @@ public class TowerRay : MonoBehaviour
         canShoot = true;
 
         LeanTween.rotateY(gameObject, 360, 10f).setFrom(0).setRepeat(-1);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Debug.DrawRay(ray1.origin, ray1.direction * 20, Color.yellow);
+        Debug.DrawRay(firePoint.transform.position, firePoint.transform.forward * 20, Color.red);
     }
 }

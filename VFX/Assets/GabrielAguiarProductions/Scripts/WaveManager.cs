@@ -29,7 +29,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         pathManager = GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         canSpawnNext = true;
-        populateWavesList();
+        // PopulateWavesList();
         //difficultyAdjustment()
     }
 
@@ -108,8 +108,38 @@ public class WaveManager : MonoBehaviour, ISaveable
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
     }
 
-    private void populateWavesList()
+    public void PopulateWavesList()
     {
+        PlayerManager.Difficulty diff = PlayerManager.Instance.difficulty;
+
+        int[] amount = new int[2];
+        float[] spawnSpeed = new float[2];
+
+        switch(diff)
+        {
+            case PlayerManager.Difficulty.Easy:
+                Debug.Log("easy");
+                amount[0] = 0;
+                amount[1] = 3;
+                spawnSpeed[0] = 1f;
+                spawnSpeed[1] = 0.95f;
+                break;
+            case PlayerManager.Difficulty.Normal:
+                Debug.Log("Normal");
+                amount[0] = 3;
+                amount[1] = 5;
+                spawnSpeed[0] = 0.95f;
+                spawnSpeed[1] = 0.9f;
+                break;
+            case PlayerManager.Difficulty.Hard:
+                Debug.Log("Hard");
+                amount[0] = 5;
+                amount[1] = 7;
+                spawnSpeed[0] = 0.94f;
+                spawnSpeed[1] = 0.85f;
+                break;
+        }
+
         for(int i = 0; i < totalWaves; i++)
         {
                 // Debug.Log("Creating wave...");
@@ -123,10 +153,10 @@ public class WaveManager : MonoBehaviour, ISaveable
 
                 EnemyGroup enemyGroupTemp = new EnemyGroup();
                 enemyGroupTemp.enemyId = enemyDetails.enemyId;
-                enemyDetails.amount += UnityEngine.Random.Range(0,3);
+                enemyDetails.amount += UnityEngine.Random.Range(amount[0],amount[1]);
                 enemyGroupTemp.amount = enemyDetails.amount;
-                enemyDetails.spawnTimeRange.x *= UnityEngine.Random.Range(1f,0.95f);
-                enemyDetails.spawnTimeRange.y *= UnityEngine.Random.Range(1f,0.95f);
+                enemyDetails.spawnTimeRange.x *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
+                enemyDetails.spawnTimeRange.y *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
                 enemyGroupTemp.rate = enemyDetails.spawnTimeRange;
                 if(enemyDetails.isBoss && enemyDetails.spawnAfterLevel == i) { enemyGroupTemp.amount = 1; }
                 //rate changes to be faster after waves

@@ -36,7 +36,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     
     public void DealDamage(int damageAmount)
     {
-        // if (_currentHealth == 0) { return; }
+        if (_currentHealth <= 0) { return; }
         float health = _currentHealth;
         _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
 
