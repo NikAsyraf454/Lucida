@@ -91,7 +91,7 @@ public class TowerButton : MonoBehaviour
         }
     }
 
-    private void DeactivateAllButton()
+    public void DeactivateAllButton()
     {
         for(int i = 0; i < buttonActivated.Count; i++)
         {
@@ -112,5 +112,17 @@ public class TowerButton : MonoBehaviour
         buttonActivated[buttonNo] = true;
         //turnon cancel ui;
         shopItemList[buttonNo].GetComponent<ShopItemActivation>().ButtonActivated();
+    }
+
+    public bool CheckButtonActivated()
+    {
+        for(int i = 0; i < buttonActivated.Count; i++)
+        {
+            if(buttonActivated[i] == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

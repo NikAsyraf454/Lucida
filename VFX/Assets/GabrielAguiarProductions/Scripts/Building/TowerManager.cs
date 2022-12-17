@@ -33,6 +33,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         if (PauseMenu.isPaused || Input.GetMouseButtonDown(1))
         {
+            towerButton.DeactivateAllButton();
             CancelPurchaseSelection();
             //close ui of tower info
         }
@@ -42,10 +43,10 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         foreach(TowerLevel towerLevel in towerLevelList)
         {
-                towerLevel.ResetTowerLevel();
-                towerLevel.ServerOnTowerDestroyed -= RemoveTower;
-                towerLevel.ServerOnUpgradeTowerLevel -= ImproveTower;
-                spawnedTowerList.Remove(towerLevel);
+            towerLevel.ResetTowerLevel();
+            towerLevel.ServerOnTowerDestroyed -= RemoveTower;
+            towerLevel.ServerOnUpgradeTowerLevel -= ImproveTower;
+            spawnedTowerList.Remove(towerLevel);
         }
     }
 
@@ -58,17 +59,18 @@ public class TowerManager : MonoBehaviour, ISaveable
     public bool BuildTower(Vector3 position)
     {
         if (PlayerManager.Instance.GetResources() < towerLevelList[towerInstanceId].CurrentTowerPrice) { return true; }
-        
+        if(CameraManager.Instance.CheckUIRaycast()) { return true; }
+        if(!GetNodeAvailability(position)) { return true; }      //raycast, check if node below the position can be build
         
         PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
-        
+        canDisplayInfo = false;
         SpawnTower(position);
         return false;
     }
 
     private void SpawnTower(Vector3 position)
     {
-        if(!GetNodeAvailability(position)) { return; }      //raycast, check if node below the position can be build
+        //if(!GetNodeAvailability(position)) { return; }      //raycast, check if node below the position can be build
         position.y = towerLevelList[towerInstanceId].SpawnHeight;
 
         GameObject tower = Instantiate(towerInstance, position, Quaternion.identity);
@@ -77,6 +79,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         spawnedTowerList[spawnedTowerList.Count-1].ServerOnUpgradeTowerLevel += ImproveTower;
         towerLevelList[towerInstanceId].SetNewTowerPrice();
         towerButton.UpdateShopItemText(towerInstanceId);
+        canDisplayInfo = true;
     }
 
     public void RemoveTower(TowerLevel towerLevel)

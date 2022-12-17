@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager Instance;
     public bool isIsometric = false;
     public Camera[] cameras;
     public PathManager pathManager;
@@ -21,6 +24,15 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private float zoomSmoothSpeed = 10f;
     private float velocity = 0f;
 
+    GraphicRaycaster m_Raycaster;
+    PointerEventData m_PointerEventData;
+    EventSystem m_EventSystem;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +48,10 @@ public class CameraManager : MonoBehaviour
             cameras[0].transform.localPosition = new Vector3(0,0,-10);
             targetZoom = -cameras[0].transform.localPosition.z;
         }
+
+        m_Raycaster = PlayerManager.Instance.gameObject.GetComponentInChildren<GraphicRaycaster>();
+        //Fetch the Event System from the Scene
+        m_EventSystem = GetComponent<EventSystem>();
 
     }
 
@@ -111,6 +127,8 @@ public class CameraManager : MonoBehaviour
         {
             if(!hit.collider.isTrigger) { return; }
 
+            if(hit.collider.gameObject.tag == "TowerShop") { Debug.Log("hit UI"); return; }
+
             if(hit.collider.gameObject.tag == "Tower")
             {
                 TowerInfoDisplay towerInfoDisplay =  hit.collider.gameObject.GetComponent<TowerInfoDisplay>();
@@ -119,5 +137,27 @@ public class CameraManager : MonoBehaviour
         }
         
     }
-    
+
+    public bool CheckUIRaycast()
+    {
+        //Set up the new Pointer Event
+        m_PointerEventData = new PointerEventData(m_EventSystem);
+        //Set the Pointer Event Position to that of the mouse position
+        m_PointerEventData.position = Input.mousePosition;
+
+        //Create a list of Raycast Results
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        //Raycast using the Graphics Raycaster and mouse click position
+        m_Raycaster.Raycast(m_PointerEventData, results);
+
+        //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
+        foreach (RaycastResult result in results)
+        {
+            if(result.gameObject.tag == "TowerShop") { return true; }
+            Debug.Log("Hit " + result.gameObject.name);
+        }
+
+        return false;        
+    }
 }
