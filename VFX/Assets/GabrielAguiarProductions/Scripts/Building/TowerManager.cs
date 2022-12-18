@@ -63,7 +63,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         if(!GetNodeAvailability(position)) { return true; }      //raycast, check if node below the position can be build
         
         PlayerManager.Instance.ReduceResource(towerLevelList[towerInstanceId].CurrentTowerPrice);
-        canDisplayInfo = false;
+        // canDisplayInfo = false;
         SpawnTower(position);
         return false;
     }
@@ -79,7 +79,7 @@ public class TowerManager : MonoBehaviour, ISaveable
         spawnedTowerList[spawnedTowerList.Count-1].ServerOnUpgradeTowerLevel += ImproveTower;
         towerLevelList[towerInstanceId].SetNewTowerPrice();
         towerButton.UpdateShopItemText(towerInstanceId);
-        canDisplayInfo = true;
+        // canDisplayInfo = true;
     }
 
     public void RemoveTower(TowerLevel towerLevel)
@@ -179,7 +179,10 @@ public class TowerManager : MonoBehaviour, ISaveable
     {
         
         var saveData = (SaveData)state;
-        UpdateLoadProperties(saveData);
+        LeanTween.delayedCall(gameObject, 0.8f, () =>{
+            UpdateLoadProperties(saveData);
+        });
+        
     }
 
     private void UpdateLoadProperties(SaveData saveData)         //if any properties needed to be updated for UI or etc

@@ -35,7 +35,10 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void Start()
     {
-        spawnPoint = pathManager.GetWaypoint(0);
+        LeanTween.delayedCall(gameObject, 1f, () =>{
+            spawnPoint = pathManager.GetWaypoint(0);
+        });
+
     }
 
     void Update()
@@ -118,21 +121,21 @@ public class WaveManager : MonoBehaviour, ISaveable
         switch(diff)
         {
             case PlayerManager.Difficulty.Easy:
-                Debug.Log("easy");
+                // Debug.Log("easy");
                 amount[0] = 0;
                 amount[1] = 3;
                 spawnSpeed[0] = 1f;
                 spawnSpeed[1] = 0.95f;
                 break;
             case PlayerManager.Difficulty.Normal:
-                Debug.Log("Normal");
+                // Debug.Log("Normal");
                 amount[0] = 3;
                 amount[1] = 5;
                 spawnSpeed[0] = 0.95f;
                 spawnSpeed[1] = 0.9f;
                 break;
             case PlayerManager.Difficulty.Hard:
-                Debug.Log("Hard");
+                // Debug.Log("Hard");
                 amount[0] = 5;
                 amount[1] = 7;
                 spawnSpeed[0] = 0.94f;
@@ -277,7 +280,7 @@ public class WaveManager : MonoBehaviour, ISaveable
             SpawnEnemy(i, new Vector3(enemyPos[j*3], enemyPos[j*3+1], enemyPos[j*3+2]), Quaternion.identity);
             enemyList[j].pathIndex = enemyPathIndex[j];
             enemyHealthList[j].CurrentHealth = enemyHealth[j];
-            Debug.Log("Load:" + enemyHealth[j]);
+            // Debug.Log("Load:" + enemyHealth[j]);
             enemyList[j].enemySpeed = enemySpeed[j];
             j++;
         }

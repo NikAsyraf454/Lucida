@@ -127,12 +127,11 @@ public class CameraManager : MonoBehaviour
         {
             if(!hit.collider.isTrigger) { return; }
 
-            if(hit.collider.gameObject.tag == "TowerShop") { Debug.Log("hit UI"); return; }
-
             if(hit.collider.gameObject.tag == "Tower")
             {
                 TowerInfoDisplay towerInfoDisplay =  hit.collider.gameObject.GetComponent<TowerInfoDisplay>();
                 towerInfoDisplay.DisplayTowerInfo();
+                Debug.Log("Tower Info");
             }
         }
         

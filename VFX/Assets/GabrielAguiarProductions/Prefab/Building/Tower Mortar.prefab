@@ -151,6 +151,7 @@ MonoBehaviour:
   enemyList: []
   enemyHealthList: []
   enemyMovement: {fileID: 0}
+  targetedEnemyHealth: {fileID: 0}
 --- !u!114 &4026556378876649210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,11 +247,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153913654782071670}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.537374, y: 0.52842754, z: 0.5105344}
-  m_Center: {x: 0.004473254, y: 0.01157549, z: 0.008946538}
+  m_Size: {x: 1.0314206, y: 0.8826498, z: 1.0139024}
+  m_Center: {x: -0.00018751621, y: 0.43104893, z: -0.00037515163}
 --- !u!114 &5150175382843647458
 MonoBehaviour:
   m_ObjectHideFlags: 0

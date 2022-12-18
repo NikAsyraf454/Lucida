@@ -16,7 +16,7 @@ public class SaveManager : MonoBehaviour
         if(File.Exists(SavePath))
         {
             saveFileExist=true;
-            LoadDelay(1.0f); 
+            LoadDelay(0.2f); 
         }
     }
 

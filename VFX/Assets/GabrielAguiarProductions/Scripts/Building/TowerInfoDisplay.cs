@@ -45,10 +45,10 @@ public class TowerInfoDisplay : MonoBehaviour
         // Debug.Log("tower stats");
     }
 
-    void OnMouseDown()
-    {
-        DisplayTowerInfo();
-    }
+    // void OnMouseDown()
+    // {
+    //     DisplayTowerInfo();
+    // }
     
     public void DisplayTowerInfo()
     {
@@ -59,7 +59,7 @@ public class TowerInfoDisplay : MonoBehaviour
             towerRange.SetActive(false);
             TowerManager.Instance.canDisplayInfo = true;
         }
-        else if(TowerManager.Instance.canDisplayInfo)
+        else if(!isDisplayed && TowerManager.Instance.canDisplayInfo)
         {
             statsPanel.SetActive(true);
             towerRange.SetActive(true);

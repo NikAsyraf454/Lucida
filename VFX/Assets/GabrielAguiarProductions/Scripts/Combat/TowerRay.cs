@@ -77,7 +77,7 @@ public class TowerRay : MonoBehaviour
                 laserHit.Play();
             
             laserHit.transform.position = hit.point;
-            Debug.Log(hit.point);
+            // Debug.Log(hit.point);
             Vector3 dir = transform.position - hit.point;
             laserHit.transform.rotation = Quaternion.LookRotation(dir);
         }

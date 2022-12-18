@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PathManager : MonoBehaviour/* , ISaveable */
+public class PathManager : MonoBehaviour, ISaveable
 {
+    public static PathManager Instance;
     public List<Node> nodeList;
     public List<bool> canBuiltTemp;
     public List<GameObject> waypoints;
@@ -22,14 +23,36 @@ public class PathManager : MonoBehaviour/* , ISaveable */
     private int height;
     private int leftTurn;
     private int rightTurn;
-    private int randomSeed = 10;
+    [SerializeField] private int originalSeed = -1;
+    [SerializeField] private int randomSeed = -1;
     private int pathIndexX = 0;
     private int pathIndexZ = 0;
     int[,] tilePlacement = new int[100,100];
-    private WaitForSeconds updateTime = new WaitForSeconds (0.5f); 
+    private WaitForSeconds updateTime = new WaitForSeconds (0.5f);
 
-    void Start()
+    void Awake()
     {
+        Instance = this;
+
+        LeanTween.delayedCall(gameObject, 0.5f, ()=>{
+            randomSeed = originalSeed;    
+            InitPath();
+        });
+    }
+
+    // void Start()
+    private void InitPath()
+    {
+        Debug.Log("before randomize " + originalSeed);
+        if(originalSeed == -1)
+        {
+            originalSeed = UnityEngine.Random.Range(1,1000);
+            randomSeed = originalSeed;
+            Debug.Log("seed randomize");
+        }
+
+        
+
         leftTurn = rightTurn = (height/2);
         //int[,] tilePlacement = new int[lenght,height];
         pathIndexZ = height/2;
@@ -193,21 +216,16 @@ public class PathManager : MonoBehaviour/* , ISaveable */
     }
 
 
-    /* #region Save and Load
+    #region Save and Load
         
     
     public object CaptureState()
     {
-        List<bool> temp = new List<bool>();
-        //int i = 0;
-        foreach(Node node in nodeList)
-        {
-            temp.Add(node.canBuild);
-        }
-
+        // int seed;
+        Debug.Log("saving seed: " + originalSeed);
         return new SaveData
         {
-            canBuiltList = temp
+            seed = originalSeed
         };
     }
 
@@ -215,26 +233,27 @@ public class PathManager : MonoBehaviour/* , ISaveable */
     {
         var saveData = (SaveData)state;
 
-        canBuiltTemp = saveData.canBuiltList;
-        UpdateLoadProperties();
+        originalSeed = saveData.seed;
+        Debug.Log("Seed from save: " + originalSeed + " " + saveData.seed);
+        // UpdateLoadProperties();
     }
 
-    private void UpdateLoadProperties()         //if any properties needed to be updated for UI or etc
-    {
-        int i = 0;
-        foreach(Node node in nodeList)
-        {
-            node.canBuild = canBuiltTemp[i];
-            i++;
-        }
-    }
+    // private void UpdateLoadProperties()         //if any properties needed to be updated for UI or etc
+    // {
+    //     int i = 0;
+    //     foreach(Node node in nodeList)
+    //     {
+    //         node.canBuild = canBuiltTemp[i];
+    //         i++;
+    //     }
+    // }
 
     [Serializable]
     private struct SaveData
     {
-        public List<bool> canBuiltList;
+        public int seed;
         // public int xp;
     }
     
-    #endregion */
+    #endregion
 }

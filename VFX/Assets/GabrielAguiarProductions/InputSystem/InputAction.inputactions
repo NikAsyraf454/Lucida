@@ -55,9 +55,9 @@
             "actions": [
                 {
                     "name": "LeftClick",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "0ceb9234-b855-4de9-a08c-fbcef0e066b3",
-                    "expectedControlType": "Vector3",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
