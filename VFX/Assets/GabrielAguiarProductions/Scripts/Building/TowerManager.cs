@@ -112,6 +112,15 @@ public class TowerManager : MonoBehaviour, ISaveable
         }
     }
 
+    public void RestartTower()              //to get new waypoints
+    {
+        foreach(TowerLevel towerLevel in spawnedTowerList)
+        {
+            towerLevel.gameObject.SetActive(false);
+            towerLevel.gameObject.SetActive(true);
+        }
+    }
+
     public void CheckTowerButtonAvailability()        //available in trems of unlocked
     {
         foreach(TowerLevel towerLevel in towerLevelList)

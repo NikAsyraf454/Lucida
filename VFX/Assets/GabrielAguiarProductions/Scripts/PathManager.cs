@@ -75,7 +75,7 @@ public class PathManager : MonoBehaviour, ISaveable
             }
         }
 
-        waypoints.Reverse();
+        // waypoints.Reverse();
     }
 
     void Update()
@@ -124,15 +124,16 @@ public class PathManager : MonoBehaviour, ISaveable
 
     void GoStraight()
     {
+        if(pathIndexX >= lenght-1) { return; }
         pathIndexX++;
         tilePlacement[pathIndexX,pathIndexZ] = 1;
         SpawnWaypoint(pathIndexX,pathIndexZ);
     }
 
-    void SetWaypoint()
-    {
+    // void SetWaypoint()
+    // {
 
-    }
+    // }
 
 	void NewPath (){
         UnityEngine.Random.InitState(randomSeed);
@@ -194,6 +195,7 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         GameObject temp = Instantiate(waypointPrefab, new Vector3(x, 0.5f, z), Quaternion.identity, this.gameObject.transform);
         waypoints.Add(temp);
+        // Debug.Log(x + z);
     }
 
     public GameObject GetWaypoint(int waypointIndex)
@@ -214,6 +216,48 @@ public class PathManager : MonoBehaviour, ISaveable
     public List<GameObject> GetWaypointList()
     {
         return waypoints;
+    }
+
+    public void NextSection()
+    {
+        lenght += 15;
+        sectionUnlocked++;
+        GoStraight();
+        int lastIndexX = pathIndexX;
+
+        for(int i=pathIndexX ; i<lenght ; i++)
+        {
+            for(int j=0 ; j<height ; j++)
+            {
+                tilePlacement[i,j] = 2;
+            }
+        }
+
+
+        // pathIndexX--;
+        // GoStraight();
+
+        while(pathIndexX < lenght-1)
+        {
+            NewPath();
+        }
+
+        for(int i=lastIndexX ; i<lenght ; i++)
+        {
+            for(int j=0 ; j<height ; j++)
+            {
+                if(tilePlacement[i,j] == 1)
+                {
+                    SpawnPathTile(new Vector3(i,0,j));
+                }
+                else if(tilePlacement[i,j] == 2)
+                {
+                    SpawnTile(nodePrefab, new Vector3(i,0,j));
+                }
+            }
+        }
+
+        // waypoints.Reverse();
     }
 
 

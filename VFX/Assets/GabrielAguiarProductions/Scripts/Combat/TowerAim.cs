@@ -79,9 +79,9 @@ public class TowerAim : MonoBehaviour
     {
 		if(isMortar && enemyMovement != null)
 		{
-		int temmp = (int)(enemyMovement.enemySpeed * predictionMultiplier) + enemyMovement.pathIndex;
-		if(temmp > waypoints.Count-1)
-			temmp = waypoints.Count-1;
+		int temmp =  enemyMovement.pathIndex - (int)(enemyMovement.enemySpeed * predictionMultiplier);
+		if(temmp <= 0)
+			temmp = 0;
 
         Vector3 temp = waypoints[temmp].transform.position;
         temp.y += mortarOffset;

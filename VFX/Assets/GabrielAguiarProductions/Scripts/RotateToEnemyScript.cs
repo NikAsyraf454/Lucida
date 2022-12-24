@@ -18,7 +18,7 @@ public class RotateToEnemyScript : MonoBehaviour
     public List<GameObject> enemyList;
 	[SerializeField]
     private PathManager pathManager;
-	private List<GameObject> waypoints;
+	// private List<GameObject> waypoints;
 	public bool collided;
 	// [SerializeField]
 	// private bool isMortar;
@@ -34,7 +34,7 @@ public class RotateToEnemyScript : MonoBehaviour
 
 	void Start () {	
 		pathManager = GameObject.FindObjectOfType<PathManager>();
-		waypoints = pathManager.GetWaypointList();
+		// waypoints = pathManager.GetWaypointList();
 		towerLevel = GetComponent<TowerLevel>();
 		InvokeRepeating("CheckEnemy", 1f, 0.2f);
 

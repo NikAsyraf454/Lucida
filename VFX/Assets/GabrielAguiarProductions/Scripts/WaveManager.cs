@@ -11,7 +11,6 @@ public class WaveManager : MonoBehaviour, ISaveable
     [SerializeField] private List<EnemyDetails> enemyDetailsList;
     public List<EnemyMovement> enemyList;
     public List<Waves> waves;
-    private PathManager pathManager;
     private GameObject spawnPoint;
     [SerializeField] private float timeBetweenWave = 5f;
     private float timer = 10f;
@@ -28,7 +27,6 @@ public class WaveManager : MonoBehaviour, ISaveable
     void Awake()
     {
         Instance = this;
-        pathManager = GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         canSpawnNext = true;
         // PopulateWavesList();
@@ -38,9 +36,8 @@ public class WaveManager : MonoBehaviour, ISaveable
     void Start()
     {
         LeanTween.delayedCall(gameObject, 1f, () =>{
-            spawnPoint = pathManager.GetWaypoint(0);
+            SetSpawnPoint();
         });
-
     }
 
     void Update()
@@ -227,6 +224,14 @@ public class WaveManager : MonoBehaviour, ISaveable
         //maybe camera animation to show new section built
         Debug.Log("Next Section Opened");
         bossFight = false;
+        TowerManager.Instance.RestartTower();
+        PathManager.Instance.NextSection();
+        SetSpawnPoint();
+    }
+
+    private void SetSpawnPoint()
+    {
+        spawnPoint = PathManager.Instance.GetWaypoint(PathManager.Instance.GetWaypointsAmount()-1);
     }
 
     private void OnDestroy()

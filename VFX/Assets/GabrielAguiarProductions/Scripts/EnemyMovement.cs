@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
         pathManager = GameObject.Find("GameManager").GetComponentInChildren<PathManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         waypoints = pathManager.GetWaypointList();
+        pathIndex = PathManager.Instance.GetWaypointsAmount()-1;
         target = waypoints[pathIndex];
         //target = pathManager.GetWaypoint(pathIndex);
         pathsAmount = pathManager.GetWaypointsAmount();
@@ -45,13 +46,13 @@ public class EnemyMovement : MonoBehaviour
 
         if(Vector3.Distance(transform.position, target.transform.position) <= 0.15f)
         {
-            pathIndex++;
-            if(pathIndex < waypoints.Count)
-            {
+            pathIndex--;
+            // if(pathIndex > waypoints.Count)
+            // {
                 target = waypoints[pathIndex];
                 transform.LookAt(target.transform);
                 //target = pathManager.GetWaypoint(pathIndex);
-            }
+            // }
             // else if(!isDead)
             // {
             //     isDead = true;
