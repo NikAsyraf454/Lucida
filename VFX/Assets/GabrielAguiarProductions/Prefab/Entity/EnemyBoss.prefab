@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7689106128679389601}
   - component: {fileID: 2073727547697150412}
   - component: {fileID: 8255777416854625763}
-  - component: {fileID: 8236808536453014117}
   - component: {fileID: 958523652394763416}
   - component: {fileID: 1395973255}
   - component: {fileID: 5939773203318938895}
   - component: {fileID: 634981978}
   - component: {fileID: 8703917682637275458}
+  - component: {fileID: 4656336706867798113}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Enemy
@@ -91,20 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8236808536453014117
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425153401542437377}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!136 &958523652394763416
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -115,10 +101,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.45
+  m_Height: 2.16
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 0.17, z: -0.00000008940697}
 --- !u!54 &1395973255
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,6 +171,18 @@ MonoBehaviour:
   enemyHealth: {fileID: 634981978}
   healthBarParent: {fileID: 4849195052646816641}
   healthBarImage: {fileID: 4849195052979099292}
+--- !u!114 &4656336706867798113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425153401542437377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23224194e752ddc4c86d764a2a5ac1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &577297399085028822
 PrefabInstance:
   m_ObjectHideFlags: 0

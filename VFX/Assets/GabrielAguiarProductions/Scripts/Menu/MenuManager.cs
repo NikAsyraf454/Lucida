@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public GameObject pauseMenuPrefab;
     public GameObject winMenuPrefab;
     public GameObject loseMenuPrefab;
+    public GameObject nextSectionPrefab;
     [SerializeField] private GameObject graphMenuPrefab;
     [SerializeField] private CSVReader cSVReader;
     [SerializeField] private CSVWriter cSVWriter;
@@ -119,6 +120,17 @@ public class MenuManager : MonoBehaviour
     public void CloseGraph()
     {
         graphMenuPrefab.SetActive(false);
+    }
+
+    public void ButtonSectionUnlocked()
+    {
+        nextSectionPrefab.SetActive(true);
+    }
+
+    public void StartNextSection()
+    {
+        WaveManager.Instance.NextSection();
+        nextSectionPrefab.SetActive(false);
     }
 
     [ContextMenu("CSV")]

@@ -49,6 +49,7 @@ public class EnemyMovement : MonoBehaviour
             if(pathIndex < waypoints.Count)
             {
                 target = waypoints[pathIndex];
+                transform.LookAt(target.transform);
                 //target = pathManager.GetWaypoint(pathIndex);
             }
             // else if(!isDead)

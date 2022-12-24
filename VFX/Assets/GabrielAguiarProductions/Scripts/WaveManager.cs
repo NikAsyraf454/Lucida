@@ -18,7 +18,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public int waveIndex = 0;
     private int groupIndex = 0;
     private PlayerManager playerManager;
-    private bool bossFight = false;
+    public bool bossFight = false;
     private bool canSpawnNext = false;
     private bool lastOfWave = false;
     public int Unlocked = 0;
@@ -107,7 +107,6 @@ public class WaveManager : MonoBehaviour, ISaveable
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
         enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
-        if(enemyDetailsList[id].isBoss) { bossFight = true; }
     }
 
     public void PopulateWavesList()
@@ -198,6 +197,11 @@ public class WaveManager : MonoBehaviour, ISaveable
                 return;
             }
 
+            if(bossFight)
+            {
+                MenuManager.Instance.ButtonSectionUnlocked();
+            }
+
             timer = timeBetweenWave;
             canSpawnNext = true;
             // TimerUI.Instance.SetTimer(timer);
@@ -216,6 +220,13 @@ public class WaveManager : MonoBehaviour, ISaveable
             enemyHealth.EnemyDeath();
             // Debug.Log(count);
         }
+    }
+
+    public void NextSection()
+    {
+        //maybe camera animation to show new section built
+        Debug.Log("Next Section Opened");
+        bossFight = false;
     }
 
     private void OnDestroy()
