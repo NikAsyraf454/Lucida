@@ -7,7 +7,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 {
     public static WaveManager Instance;
     public int totalWaves = 3;
-    [SerializeField] private List<GameObject> enemyPrefabList;
+    // [SerializeField] private List<GameObject> enemyPrefabList;
     [SerializeField] private List<EnemyDetails> enemyDetailsList;
     public List<EnemyMovement> enemyList;
     public List<Waves> waves;
@@ -18,8 +18,10 @@ public class WaveManager : MonoBehaviour, ISaveable
     public int waveIndex = 0;
     private int groupIndex = 0;
     private PlayerManager playerManager;
+    private bool bossFight = false;
     private bool canSpawnNext = false;
     private bool lastOfWave = false;
+    public int Unlocked = 0;
     public List<EnemyHealth> enemyHealthList;
     [SerializeField] private int wavesEnded;
 
@@ -45,13 +47,8 @@ public class WaveManager : MonoBehaviour, ISaveable
     {
         if(MenuManager.Instance.gameEnded) { return; }
 
-        // if(waveIndex >= waves.Count) {
-        //     MenuManager.Instance.PlayerWin();
-        //     Debug.Log("Win"); 
-        //     return;
-        // }
-
-        if(timer <= 0f && canSpawnNext)
+        
+        if(timer <= 0f && canSpawnNext && !bossFight)
         {   
             canSpawnNext = false;
             lastOfWave = false;
@@ -81,6 +78,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         for(int j = 0; j < waves[waveIndex].enemyGroup[groupNum].amount; j++)        //j is for enemy amount, i is for enemyGroup index
         {
             //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
+
             SpawnEnemy(waves[waveIndex].enemyGroup[groupNum].enemyId, spawnPoint.transform.position, spawnPoint.transform.rotation);
             
             // if(groupNum == waves[waveIndex].enemyGroup.Count-2)Debug.Log("Spawning " + (j+1) + "/" + waves[waveIndex].enemyGroup[groupNum].amount);
@@ -109,6 +107,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
         enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
+        if(enemyDetailsList[id].isBoss) { bossFight = true; }
     }
 
     public void PopulateWavesList()
@@ -156,23 +155,35 @@ public class WaveManager : MonoBehaviour, ISaveable
 
                 EnemyGroup enemyGroupTemp = new EnemyGroup();
                 enemyGroupTemp.enemyId = enemyDetails.enemyId;
+
+                if(enemyDetails.isBoss)
+                {
+                    if(enemyDetails.spawnAfterLevel == i) 
+                    {
+                        enemyGroupTemp.amount = 1;
+                        enemyDetails.amount = 1;
+                        enemyDetails.spawnTimeRange.x *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
+                        enemyDetails.spawnTimeRange.y *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
+                        enemyGroupTemp.rate = enemyDetails.spawnTimeRange;
+                        waveTemp.enemyGroup.Add(enemyGroupTemp);
+                    }
+                    continue;
+                }
+
+                
+                
                 enemyDetails.amount += UnityEngine.Random.Range(amount[0],amount[1]);
                 enemyGroupTemp.amount = enemyDetails.amount;
                 enemyDetails.spawnTimeRange.x *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
                 enemyDetails.spawnTimeRange.y *= UnityEngine.Random.Range(spawnSpeed[0],spawnSpeed[1]);
                 enemyGroupTemp.rate = enemyDetails.spawnTimeRange;
-                if(enemyDetails.isBoss && enemyDetails.spawnAfterLevel == i) { enemyGroupTemp.amount = 1; }
+                
                 //rate changes to be faster after waves
                 waveTemp.enemyGroup.Add(enemyGroupTemp);
             }
             waves.Add(waveTemp);
         }
     }
-
-    // private void difficultyAdjustment()
-    // {
-
-    // }
 
     private void RemoveEnemy(GameObject other)
 	{

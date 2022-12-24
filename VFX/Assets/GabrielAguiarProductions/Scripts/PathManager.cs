@@ -9,6 +9,7 @@ public class PathManager : MonoBehaviour, ISaveable
     public List<Node> nodeList;
     public List<bool> canBuiltTemp;
     public List<GameObject> waypoints;
+    public int sectionUnlocked = 0;
     [SerializeField]
     private GameObject basePrefab;
     [SerializeField]
@@ -222,7 +223,7 @@ public class PathManager : MonoBehaviour, ISaveable
     public object CaptureState()
     {
         // int seed;
-        Debug.Log("saving seed: " + originalSeed);
+        // Debug.Log("saving seed: " + originalSeed);
         return new SaveData
         {
             seed = originalSeed
@@ -234,7 +235,7 @@ public class PathManager : MonoBehaviour, ISaveable
         var saveData = (SaveData)state;
 
         originalSeed = saveData.seed;
-        Debug.Log("Seed from save: " + originalSeed + " " + saveData.seed);
+        // Debug.Log("Seed from save: " + originalSeed + " " + saveData.seed);
         // UpdateLoadProperties();
     }
 
