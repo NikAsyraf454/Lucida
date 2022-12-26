@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
         pathsAmount = pathManager.GetWaypointsAmount();
         // pathsAmount++;  //waypointIndex calculation is still bizzarre
         originalSpeed = enemySpeed;
-        _material = GetComponent<Renderer>().material;
+        // _material = GetComponent<Renderer>().material;
     }
 
     void FixedUpdate()
@@ -100,5 +100,10 @@ public class EnemyMovement : MonoBehaviour
         enemySpeed = originalSpeed;
 
         StopCoroutine("SlowDown");
+    }
+
+    public void SetMaterial(Material mat)
+    {
+        _material = mat;
     }
 }

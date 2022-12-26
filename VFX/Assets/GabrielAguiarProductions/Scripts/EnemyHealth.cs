@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     [SerializeField] private int resourceDrop;
     [SerializeField] private int scoreValue;
 
+    [SerializeField] private Renderer _renderer;
     private Material _material;
 
     public event Action<GameObject> ServerOnDie;
@@ -26,7 +27,17 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
     private void Start()
     {
         _currentHealth = maxHealth;
-        _material = GetComponent<Renderer>().material;
+
+        if(_renderer == null)
+        {
+            _material = GetComponent<Renderer>().material;
+        }
+        else
+        {
+            _material = _renderer.material;
+        }
+        EnemyMovement enemyMovement =  GetComponent<EnemyMovement>();
+        enemyMovement.SetMaterial(_material);
     }
 
     private void HandleHealthUpdated(float oldHealth, float newHealth)
@@ -83,6 +94,13 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
         }
         
          
+    }
+
+    public void SetCurrentHealth(float health)
+    {
+        maxHealth = health;
+        _currentHealth = maxHealth;
+        Debug.Log("Boss health is set to" + health + ", now health is " + _currentHealth);
     }
 
 /*

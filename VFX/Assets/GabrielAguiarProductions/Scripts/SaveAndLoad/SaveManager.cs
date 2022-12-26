@@ -96,4 +96,16 @@ public class SaveManager : MonoBehaviour
         Load();
         //Do the action after the delay time has finished.
     }
+
+    public bool checkSaveFile()
+    {
+        if(File.Exists(SavePath))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

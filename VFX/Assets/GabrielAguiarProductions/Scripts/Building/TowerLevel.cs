@@ -160,6 +160,7 @@ public class TowerLevel : MonoBehaviour
         {
             Debug.DrawRay(position, Vector3.down, Color.green);
             node =  hit.collider.gameObject.GetComponentInChildren<Node>();
+            node.BuildTower();
         }
         if(node == null)
         {

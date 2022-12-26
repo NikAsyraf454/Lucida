@@ -45,11 +45,9 @@ public class Node : MonoBehaviour
         
         if(!canBuild)
         {
-            foreach(GameObject prop in propSpawned)
-            {
-                Destroy(prop);
-            }
+            DestroyProp();
         }
+        rend.material.color = startColor;
     }
 
     void OnMouseEnter()
@@ -70,6 +68,7 @@ public class Node : MonoBehaviour
     public void TowerDestroyed()
     {
         canBuild = true;
+        rend.material.color = startColor;
     }
 
     private void UpdateBuildingPreview()
@@ -94,6 +93,23 @@ public class Node : MonoBehaviour
             var prop = Instantiate(EnvProp[UnityEngine.Random.Range(0, EnvProp.Length)], pos, Quaternion.identity, transform.parent.GetComponent<Transform>());
             propSpawned.Add(prop);
         }
+    }
+
+    private void DestroyProp()
+    {
+        foreach(GameObject prop in propSpawned)
+        {
+            Destroy(prop);
+        }
+    }
+
+    public void BuildTower()
+    {
+        if(!canBuild) { return; }
+
+        canBuild = false;
+        DestroyProp();
+
     }
 }
 

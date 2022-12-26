@@ -100,10 +100,12 @@ public class WaveManager : MonoBehaviour, ISaveable
     private void SpawnEnemy(int id, Vector3 pos, Quaternion rotation)
     {
         GameObject enemy = Instantiate(enemyDetailsList[id].prefab, pos, rotation);
-        enemy.GetComponent<EnemyHealth>().playerManager = playerManager;
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        enemyHealth.playerManager = playerManager;
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
-        enemyHealthList.Add(enemy.GetComponent<EnemyHealth>());
+        enemyHealthList.Add(enemyHealth);
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
+        if(enemyDetailsList[id].isBoss) { enemyHealth.SetCurrentHealth(enemyDetailsList[id].health); }
     }
 
     public void PopulateWavesList()

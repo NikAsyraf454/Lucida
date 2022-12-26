@@ -35,10 +35,18 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         Instance = this;
 
-        LeanTween.delayedCall(gameObject, 0.5f, ()=>{
-            randomSeed = originalSeed;    
-            InitPath();
-        });
+
+    }
+
+    void Start()
+    {
+        if(!SaveManager.Instance.checkSaveFile())
+        {
+            LeanTween.delayedCall(gameObject, 0.5f, ()=>{
+                randomSeed = originalSeed;    
+                InitPath();
+            });
+        }
     }
 
     // void Start()
@@ -222,10 +230,10 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         lenght += 15;
         sectionUnlocked++;
-        GoStraight();
-        int lastIndexX = pathIndexX;
+        
+        int lastIndexX = pathIndexX+1;
 
-        for(int i=pathIndexX ; i<lenght ; i++)
+        for(int i=pathIndexX+1 ; i<lenght ; i++)
         {
             for(int j=0 ; j<height ; j++)
             {
@@ -235,7 +243,7 @@ public class PathManager : MonoBehaviour, ISaveable
 
 
         // pathIndexX--;
-        // GoStraight();
+        GoStraight();
 
         while(pathIndexX < lenght-1)
         {
@@ -258,6 +266,7 @@ public class PathManager : MonoBehaviour, ISaveable
         }
 
         // waypoints.Reverse();
+        SaveManager.Instance.Save();
     }
 
 
@@ -268,9 +277,11 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         // int seed;
         // Debug.Log("saving seed: " + originalSeed);
+        Debug.Log("saving Section: " + sectionUnlocked);
         return new SaveData
         {
-            seed = originalSeed
+            seed = originalSeed,
+            sectionUnlocked = sectionUnlocked
         };
     }
 
@@ -279,24 +290,28 @@ public class PathManager : MonoBehaviour, ISaveable
         var saveData = (SaveData)state;
 
         originalSeed = saveData.seed;
-        // Debug.Log("Seed from save: " + originalSeed + " " + saveData.seed);
-        // UpdateLoadProperties();
+        int temp = saveData.sectionUnlocked;
+        Debug.Log("Section from save: " + sectionUnlocked);
+        UpdateLoadProperties(temp);
     }
 
-    // private void UpdateLoadProperties()         //if any properties needed to be updated for UI or etc
-    // {
-    //     int i = 0;
-    //     foreach(Node node in nodeList)
-    //     {
-    //         node.canBuild = canBuiltTemp[i];
-    //         i++;
-    //     }
-    // }
+    private void UpdateLoadProperties(int sectionUnlocked)         //if any properties needed to be updated for UI or etc
+    {
+        randomSeed = originalSeed;
+        InitPath();
+        if(sectionUnlocked <= 0) { return; }
+
+        for(int i = 0; i < sectionUnlocked; i++)
+        {
+            NextSection();
+        }
+    }
 
     [Serializable]
     private struct SaveData
     {
         public int seed;
+        public int sectionUnlocked;
         // public int xp;
     }
     
