@@ -52,7 +52,7 @@ public class PathManager : MonoBehaviour, ISaveable
     // void Start()
     private void InitPath()
     {
-        Debug.Log("before randomize " + originalSeed);
+        // Debug.Log("before randomize " + originalSeed);
         if(originalSeed == -1)
         {
             originalSeed = UnityEngine.Random.Range(1,1000);
@@ -277,7 +277,7 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         // int seed;
         // Debug.Log("saving seed: " + originalSeed);
-        Debug.Log("saving Section: " + sectionUnlocked);
+        // Debug.Log("saving Section: " + sectionUnlocked);
         return new SaveData
         {
             seed = originalSeed,
@@ -291,7 +291,7 @@ public class PathManager : MonoBehaviour, ISaveable
 
         originalSeed = saveData.seed;
         int temp = saveData.sectionUnlocked;
-        Debug.Log("Section from save: " + sectionUnlocked);
+        // Debug.Log("Section from save: " + sectionUnlocked);
         UpdateLoadProperties(temp);
     }
 

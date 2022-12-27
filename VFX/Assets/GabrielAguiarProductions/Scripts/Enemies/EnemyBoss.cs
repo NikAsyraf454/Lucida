@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class EnemyBoss : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         WaveManager.Instance.bossFight = true;
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -19,5 +22,10 @@ public class EnemyBoss : MonoBehaviour
     void OnDisable()
     {
         // MenuManager.Instance.ButtonSectionUnlocked();
+    }
+
+    private void TransitionAnim()
+    {
+        anim.SetBool("isWalking", true);
     }
 }

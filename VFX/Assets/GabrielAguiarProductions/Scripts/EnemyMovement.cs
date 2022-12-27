@@ -17,6 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private bool isDead;
     private float originalSpeed;
     private Material _material;
+    [SerializeField] private Animator anim;
     
     void Start()
     {
@@ -30,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
         // pathsAmount++;  //waypointIndex calculation is still bizzarre
         originalSpeed = enemySpeed;
         // _material = GetComponent<Renderer>().material;
+        anim = GetComponentInChildren<Animator>();
+        SetAnimationSpeed(enemySpeed);
     }
 
     void FixedUpdate()
@@ -95,9 +98,11 @@ public class EnemyMovement : MonoBehaviour
         } );
         // float temp = enemySpeed;
         enemySpeed *= ((100 - reduction)/100);
+        SetAnimationSpeed(enemySpeed);
         var cubeRenderer = GetComponent<Renderer>();
         yield return new WaitForSeconds (duration);
         enemySpeed = originalSpeed;
+        SetAnimationSpeed(enemySpeed);
 
         StopCoroutine("SlowDown");
     }
@@ -105,5 +110,11 @@ public class EnemyMovement : MonoBehaviour
     public void SetMaterial(Material mat)
     {
         _material = mat;
+    }
+
+    public void SetAnimationSpeed(float speed)
+    {
+        speed /= this.transform.localScale.x;
+        anim.speed = speed;
     }
 }

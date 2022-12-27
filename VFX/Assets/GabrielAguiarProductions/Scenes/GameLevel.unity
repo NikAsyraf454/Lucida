@@ -2902,7 +2902,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyDetailsList.Array.data[2].prefab
       value: 
-      objectReference: {fileID: 6425153401542437377, guid: f80ff1b4831c5d44d9213961cb182735,
+      objectReference: {fileID: 6425153401542437377, guid: b70ec2530fc0af141920d76c95120f9a,
         type: 3}
     - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
@@ -2912,7 +2912,7 @@ PrefabInstance:
     - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: enemyDetailsList.Array.data[3].health
-      value: 1000
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
@@ -2923,7 +2923,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyDetailsList.Array.data[3].prefab
       value: 
-      objectReference: {fileID: 6425153401542437377, guid: b70ec2530fc0af141920d76c95120f9a,
+      objectReference: {fileID: 6425153401542437377, guid: f80ff1b4831c5d44d9213961cb182735,
         type: 3}
     - target: {fileID: 1980469183953629363, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
