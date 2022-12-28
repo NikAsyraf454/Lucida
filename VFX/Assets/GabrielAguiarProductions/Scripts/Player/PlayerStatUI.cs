@@ -70,7 +70,7 @@ public class PlayerStatUI : MonoBehaviour
         {
             chargeBar[i].gameObject.SetActive(true);
         }
-        for(int i = charge; i < 20; i++)
+        for(int i = charge; i < PlayerManager.Instance.maxCharge; i++)
         {
             chargeBar[i].gameObject.SetActive(false);
         }

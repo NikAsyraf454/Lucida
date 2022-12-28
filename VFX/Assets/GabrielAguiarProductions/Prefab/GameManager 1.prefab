@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f27469425138c848901c0594902097d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalWaves: 6
+  totalWaves: 20
   enemyDetailsList:
   - enemyId: 0
     prefab: {fileID: 6425153401542437377, guid: ea47702d87e8b8c43afb57286726e90b,
@@ -255,6 +255,22 @@ MonoBehaviour:
     spawnAfterLevel: 2
     health: 0
     isBoss: 0
+  - enemyId: 2
+    prefab: {fileID: 6425153401542437377, guid: b70ec2530fc0af141920d76c95120f9a,
+      type: 3}
+    spawnTimeRange: {x: 2, y: 6}
+    amount: 1
+    spawnAfterLevel: 4
+    health: 1000
+    isBoss: 1
+  - enemyId: 3
+    prefab: {fileID: 6425153401542437377, guid: f80ff1b4831c5d44d9213961cb182735,
+      type: 3}
+    spawnTimeRange: {x: 2, y: 6}
+    amount: 1
+    spawnAfterLevel: 9
+    health: 2000
+    isBoss: 1
   enemyList: []
   waves: []
   timeBetweenWave: 5
@@ -304,7 +320,7 @@ MonoBehaviour:
   currentPlayerScore: 0
   maxPlayerScore: 0
   currentCharge: 0
-  maxCharge: 30
+  maxCharge: 5
   gotLifeline: 0
   resourceMultiplier: 1
   scoreMultiplier: 1
@@ -546,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8481754037761753593}
   - component: {fileID: 4380691548874545349}
+  - component: {fileID: 511606493}
   m_Layer: 0
   m_Name: Path
   m_TagString: Untagged
@@ -592,10 +609,23 @@ MonoBehaviour:
     type: 3}
   waypointPrefab: {fileID: 3844118554461988372, guid: 968c4415010739c48a40c537835bf3f6,
     type: 3}
-  lenght: 30
+  lenght: 15
   height: 9
   originalSeed: -1
   randomSeed: -1
+--- !u!114 &511606493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057238800978311423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b236c8b20e6414a927d2234c412ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: e3cf3c1a-66bd-4ed3-a0cb-fe56a9af60bc
 --- !u!1001 &1608727685177286613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1697,6 +1727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UnlockSectionMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573566148466056308, guid: 45440aee4ca004b4ab4842696c0ebec7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8115005300008280216, guid: 45440aee4ca004b4ab4842696c0ebec7,
         type: 3}

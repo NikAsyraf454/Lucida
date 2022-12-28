@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     [SerializeField] private int maxPlayerScore;
 
     public int currentCharge = 0;
-    [SerializeField] private int maxCharge = 3;
+    public int maxCharge = 5;
     //public int chargeCapacity;
 
     private DamageScreen damageScreen;
@@ -54,7 +54,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         currentPlayerScore = maxPlayerScore;
         ClientHandleScoreUpdated(0, currentPlayerScore);
-        currentCharge = maxCharge;
+        currentCharge = 0;
         ClientHandleChargeUpdated(0, currentCharge);
         lifeline = GetComponent<Lifeline>();
         damageScreen = GetComponent<DamageScreen>();

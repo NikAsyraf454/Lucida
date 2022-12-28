@@ -29,6 +29,7 @@ public class SpellManager : MonoBehaviour
 
     void LateUpdate()
     {
+        if(playerManager.currentCharge <= 0) { previewProjection.SetActive(false); preview = false;}
         if(!preview) { previewProjection.SetActive(false); return; }
 
         previewProjection.SetActive(true);
@@ -48,11 +49,12 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell1(InputValue value)     //Slowdown Enemy
     {
+        
         // Debug.Log("Q or Spell1 is activated");
         if(!ActivatedSpell(0)) { return; }
         if(!isActivated[0]) { isActivated[0] = true; preview = true; return;} 
-
         if(!playerManager.ReduceCharge(1)) { return; }
+        
         Collider[] colliders = AreaDetection();
 
         foreach(Collider co in colliders)
@@ -72,13 +74,14 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell2()     //Increase tower damage
     {
+        
         if(!ActivatedSpell(1)) { return; }
         if(!isActivated[1]) { isActivated[1] = true; return;}
-
+        if(!playerManager.ReduceCharge(2)) { return; }
 
         //decide on all tower or area selection
         //if all tower
-        if(!playerManager.ReduceCharge(2)) { return; }
+        
         List<TowerLevel> towerList = TowerManager.Instance.spawnedTowerList;
 
         foreach(TowerLevel towerLevel in towerList)
@@ -92,11 +95,12 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell3()     //Increase Resource multiplier
     {
+        
         if(!ActivatedSpell(2)) { return; }
         if(!isActivated[2]) { isActivated[2] = true; return;} 
-
-
         if(!playerManager.ReduceCharge(1)) { return; }
+
+        
         PlayerManager.Instance.DoIncreaseMultiplier(50f, 15f);
 
         isActivated[2] = false;
@@ -104,11 +108,12 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell4()     //Damage enemy
     {
+        
         if(!ActivatedSpell(3)) { return; }
         if(!isActivated[3]) { isActivated[3] = true; preview = true; return;} 
-
-
         if(!playerManager.ReduceCharge(2)) { return; }
+
+        
         Collider[] colliders = AreaDetection();
 
         foreach(Collider co in colliders)
