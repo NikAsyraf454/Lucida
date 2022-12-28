@@ -12,6 +12,7 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TMP_Text scoreText = null;
     [SerializeField] private TMP_Text chargeText = null;
     [SerializeField] private GameObject[] healthBar;
+    [SerializeField] private GameObject[] chargeBar;
 
     private void Start()
     {
@@ -65,6 +66,14 @@ public class PlayerStatUI : MonoBehaviour
     private void ClientHandleChargeUpdated(int charge)
     {
         chargeText.text = $"Charge: {charge}";
+                for(int i = 0; i < charge; i++)
+        {
+            chargeBar[i].gameObject.SetActive(true);
+        }
+        for(int i = charge; i < 20; i++)
+        {
+            chargeBar[i].gameObject.SetActive(false);
+        }
     }
 
 }

@@ -94,7 +94,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 5
   m_ChildAlignment: 4
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
@@ -121,3 +121,4 @@ MonoBehaviour:
     type: 3}
   shopItemList: []
   towerLevelList: []
+  buttonActivated: 

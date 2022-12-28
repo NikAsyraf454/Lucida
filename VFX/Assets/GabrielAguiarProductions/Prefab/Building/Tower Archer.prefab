@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3934623717857816032}
   - component: {fileID: 1856121242377233696}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: Tower Archer
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2932755234056162723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.874, z: 0.545}
+  m_LocalPosition: {x: 0, y: 0.45, z: 0.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
