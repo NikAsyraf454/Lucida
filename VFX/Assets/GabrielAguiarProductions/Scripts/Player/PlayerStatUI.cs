@@ -11,7 +11,8 @@ public class PlayerStatUI : MonoBehaviour
     [SerializeField] private TMP_Text resourcesText = null;
     [SerializeField] private TMP_Text scoreText = null;
     [SerializeField] private TMP_Text chargeText = null;
-    [SerializeField] private GameObject[] healthBar;
+    // [SerializeField] private GameObject[] healthBar;
+    [SerializeField] private Image healthBar;
     [SerializeField] private GameObject[] chargeBar;
 
     private void Start()
@@ -41,14 +42,17 @@ public class PlayerStatUI : MonoBehaviour
     {
         //resourcesText.text = $"Health: {health}";
         healthText.text = $"{health}";
-        for(int i = 0; i < health; i++)
-        {
-            healthBar[i].gameObject.SetActive(true);
-        }
-        for(int i = health; i < 20; i++)
-        {
-            healthBar[i].gameObject.SetActive(false);
-        }
+        Debug.Log((float)(health / PlayerManager.Instance.maxPlayerHealth) + " = " + health + " / " + PlayerManager.Instance.maxPlayerHealth);
+        float temp = (float)(health / PlayerManager.Instance.maxPlayerHealth);
+        healthBar.fillAmount = temp;
+        // for(int i = 0; i < health; i++)
+        // {
+        //     healthBar[i].gameObject.SetActive(true);
+        // }
+        // for(int i = health; i < 20; i++)
+        // {
+        //     healthBar[i].gameObject.SetActive(false);
+        // }
     }
 
     private void ClientHandleResourcesUpdated(int resources)

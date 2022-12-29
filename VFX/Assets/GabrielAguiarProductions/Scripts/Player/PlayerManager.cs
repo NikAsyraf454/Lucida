@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
 {
     public static PlayerManager Instance;
     public int currentPlayerHealth = 0;
-    [SerializeField] private int maxPlayerHealth;
+    public int maxPlayerHealth;
 
     public float currentPlayerResources = 0;
     [SerializeField] private int maxPlayerResources;
