@@ -42,8 +42,8 @@ public class PlayerStatUI : MonoBehaviour
     {
         //resourcesText.text = $"Health: {health}";
         healthText.text = $"{health}";
-        Debug.Log((float)(health / PlayerManager.Instance.maxPlayerHealth) + " = " + health + " / " + PlayerManager.Instance.maxPlayerHealth);
-        float temp = (float)(health / PlayerManager.Instance.maxPlayerHealth);
+        Debug.Log(((float)health / (float)PlayerManager.Instance.maxPlayerHealth) + " = " + health + " / " + PlayerManager.Instance.maxPlayerHealth);
+        float temp = ((float)health / (float)PlayerManager.Instance.maxPlayerHealth);
         healthBar.fillAmount = temp;
         // for(int i = 0; i < health; i++)
         // {

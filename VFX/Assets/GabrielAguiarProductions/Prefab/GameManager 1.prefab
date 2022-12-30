@@ -273,7 +273,7 @@ MonoBehaviour:
     isBoss: 1
   enemyList: []
   waves: []
-  timeBetweenWave: 5
+  timeBetweenWave: 10
   waveIndex: 0
   bossFight: 0
   Unlocked: 0

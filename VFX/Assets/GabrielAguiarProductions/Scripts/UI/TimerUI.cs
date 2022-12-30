@@ -8,6 +8,7 @@ public class TimerUI : MonoBehaviour
 {
     public static TimerUI Instance;
     public TMP_Text timer;
+    public Image CircleBarImg;
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,7 +21,7 @@ public class TimerUI : MonoBehaviour
         
     }
 
-    public void SetTimer(float time)
+    public void SetTimer(float time, float maxTimer)
     {
         // float minutes = Mathf.FloorToInt(time / 60);  
         float seconds = Mathf.FloorToInt(time % 60);
@@ -30,6 +31,9 @@ public class TimerUI : MonoBehaviour
         // timer.text = string.Format("{0}:{1}:{2}", minutes, seconds, (int)milliseconds);
         // timer.text = string.Format("{0}:{1}", seconds, (int)milliseconds);
         timer.text = string.Format("{0}", seconds);
+
+        float temp = ((float)seconds / (float)maxTimer);
+        CircleBarImg.fillAmount = temp;
     }
 
     // IEnumerator UpdateTimer(float time)

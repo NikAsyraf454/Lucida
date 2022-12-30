@@ -12,7 +12,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public List<EnemyMovement> enemyList;
     public List<Waves> waves;
     private GameObject spawnPoint;
-    [SerializeField] private float timeBetweenWave = 5f;
+    [SerializeField] private float timeBetweenWave = 10f;
     private float timer = 10f;
     public int waveIndex = 0;
     private int groupIndex = 0;
@@ -50,12 +50,12 @@ public class WaveManager : MonoBehaviour, ISaveable
             canSpawnNext = false;
             lastOfWave = false;
             SpawnWave();
-            TimerUI.Instance.SetTimer(0.00f);
+            TimerUI.Instance.SetTimer(0.00f, timeBetweenWave);
         }
 
         timer -= Time.deltaTime;
         if (timer <= 0.00f) { return; }
-        TimerUI.Instance.SetTimer(timer);
+        TimerUI.Instance.SetTimer(timer,timeBetweenWave);
     }
 
     void SpawnWave()
