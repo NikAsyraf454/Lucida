@@ -6,12 +6,18 @@ using TMPro;
 
 public class TowerButton : MonoBehaviour
 {
+    public static TowerButton Instance;
     [SerializeField] private TowerManager towerManager;
     [SerializeField] private GameObject shopItem;
     [SerializeField] private List<GameObject> shopItemList;
     [SerializeField] private List<TowerLevel> towerLevelList; 
     [SerializeField] private List<bool> buttonActivated;
     //[SerializeField] private PlayerManager playerManager;
+
+    void Awake()
+    {
+        Instance = this;  
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +45,13 @@ public class TowerButton : MonoBehaviour
 
     public void PurchaseTower(int towerId)      //function for UI button
     {
+        
+
         if(buttonActivated[towerId] == true)
         {
             //deactivate button, cancel tower instance purchase;
             DeactivateAllButton();
-            towerManager.CancelPurchaseSelection();
+            // towerManager.CancelPurchaseSelection();
         }
         else{
             towerManager.SetTowerInstance(towerId);
@@ -74,6 +82,9 @@ public class TowerButton : MonoBehaviour
         TMP_Text[] text = shopItem.GetComponentsInChildren<TMP_Text>();
         text[0].text = towerLevel.TowerName;
         text[1].text = $" ${towerLevel.CurrentTowerPrice.ToString()}";
+
+
+
     }
 
     public void UpdateShopItemText(int towerLevelId)
@@ -83,16 +94,19 @@ public class TowerButton : MonoBehaviour
         for(int i = 0; i < towerLevelList.Count; i++)
         {
             
-            if(towerLevelList[i].towerId != towerLevelId) {continue;}
+            if(towerLevelList[i].towerId != towerLevelId) {continue;}       //to only update the used button
 
             TMP_Text[] text = shopItemList[i].GetComponentsInChildren<TMP_Text>();
             text[0].text = towerLevelList[i].TowerName;
             text[1].text = $" ${towerLevelList[i].CurrentTowerPrice.ToString()}";
+
+
         }
     }
 
     public void DeactivateAllButton()
     {
+        UpdateButtonInteractable();
         for(int i = 0; i < buttonActivated.Count; i++)
         {
             if(buttonActivated[i] == true)
@@ -100,11 +114,10 @@ public class TowerButton : MonoBehaviour
                 //turn off cancel ui;
                 shopItemList[i].GetComponent<ShopItemActivation>().ButtonDeactivated();
                 buttonActivated[i] = false;
+                TowerManager.Instance.CancelPurchaseSelection();
             }
             
         }
-
-        
     }
 
     private void ActivateButton(int buttonNo)
@@ -124,5 +137,26 @@ public class TowerButton : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void UpdateButtonInteractable()      //turn off or on button interactive based on players resource
+    {
+        for(int i = 0; i < towerLevelList.Count; i++)
+        {
+            if(towerLevelList[i].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources)        
+            {
+                shopItemList[i].GetComponent<Button>().interactable = false;
+                // if(buttonActivated[i] == true)
+                // {
+                //     TowerManager.Instance.CancelPurchaseSelection();
+                // }
+
+            }
+            else
+            {
+                shopItemList[i].GetComponent<Button>().interactable = true;
+            }
+        }
+
     }
 }

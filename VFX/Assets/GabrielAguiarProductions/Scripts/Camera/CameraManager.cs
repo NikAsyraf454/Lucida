@@ -36,6 +36,7 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = new Vector3(7f,0f,3f);
         pathManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PathManager>();
         
         if(isIsometric)
@@ -45,7 +46,7 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
-            cameras[0].transform.localPosition = new Vector3(0,0,-10);
+            cameras[0].transform.localPosition = new Vector3(0,0,-13);
             targetZoom = -cameras[0].transform.localPosition.z;
         }
 

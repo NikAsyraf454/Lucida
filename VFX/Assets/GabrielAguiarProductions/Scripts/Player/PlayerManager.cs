@@ -40,7 +40,6 @@ public class PlayerManager : MonoBehaviour, ISaveable
 
     public Difficulty difficulty;
 
-
     void Awake()
     {
         Instance = this;  
@@ -98,6 +97,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         // int temp = currentPlayerResources;
         currentPlayerResources += (resourceAmount * resourceMultiplier);
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
+        TowerButton.Instance.UpdateButtonInteractable();
 
     }
 
