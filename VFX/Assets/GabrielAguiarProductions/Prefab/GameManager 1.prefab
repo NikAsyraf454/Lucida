@@ -872,60 +872,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9038136315321274815, guid: 161c4afe87a24004fae43a03baf0d429,
-        type: 3}
-      propertyPath: spellButton.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038136315321274815, guid: 161c4afe87a24004fae43a03baf0d429,
-        type: 3}
-      propertyPath: spellButton.Array.data[0]
-      value: 
-      objectReference: {fileID: 5772912803807709874}
-    - target: {fileID: 9038136315321274815, guid: 161c4afe87a24004fae43a03baf0d429,
-        type: 3}
-      propertyPath: spellButton.Array.data[1]
-      value: 
-      objectReference: {fileID: 1742091581310587804}
-    - target: {fileID: 9038136315321274815, guid: 161c4afe87a24004fae43a03baf0d429,
-        type: 3}
-      propertyPath: spellButton.Array.data[2]
-      value: 
-      objectReference: {fileID: 3829358304137700191}
-    - target: {fileID: 9038136315321274815, guid: 161c4afe87a24004fae43a03baf0d429,
-        type: 3}
-      propertyPath: spellButton.Array.data[3]
-      value: 
-      objectReference: {fileID: 7225870341076178846}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 161c4afe87a24004fae43a03baf0d429, type: 3}
 --- !u!4 &1140729610541967283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3790385340100822790, guid: 161c4afe87a24004fae43a03baf0d429,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273503639782383797}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1742091581310587804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2550075307493569321, guid: 161c4afe87a24004fae43a03baf0d429,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273503639782383797}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3829358304137700191 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1038666843121812458, guid: 161c4afe87a24004fae43a03baf0d429,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273503639782383797}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5772912803807709874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7733535365085145607, guid: 161c4afe87a24004fae43a03baf0d429,
-    type: 3}
-  m_PrefabInstance: {fileID: 4273503639782383797}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7225870341076178846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6848279729702778667, guid: 161c4afe87a24004fae43a03baf0d429,
     type: 3}
   m_PrefabInstance: {fileID: 4273503639782383797}
   m_PrefabAsset: {fileID: 0}
@@ -1048,6 +999,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea7a558ba025a74b990aa64b30fcbab, type: 3}
+--- !u!1 &2477620479379170520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7673778808046685019, guid: cea7a558ba025a74b990aa64b30fcbab,
+    type: 3}
+  m_PrefabInstance: {fileID: 5196304708170149763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &28535881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477620479379170520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f6098a77450dd28449f0dd5c6743ebcc,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 4013fb4f-698a-456a-a6ab-9ae69ceaaae4
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!224 &2477620479379170523 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7673778808046685016, guid: cea7a558ba025a74b990aa64b30fcbab,

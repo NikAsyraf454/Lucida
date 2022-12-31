@@ -72,6 +72,10 @@ public class TowerButton : MonoBehaviour
         //shopItemInstance.transform.parent = gameObject.transform;
         shopItemInstance.transform.SetParent(gameObject.transform, false);
         shopItemInstance.GetComponent<Button>().onClick.AddListener(delegate{PurchaseTower(towerLevel.towerId);});
+        TMP_Text[] text = shopItemInstance.GetComponentsInChildren<TMP_Text>();
+        text[2].text = towerLevel.inputKey;
+        Image[] img = shopItemInstance.GetComponentsInChildren<Image>();
+        img[1].sprite = towerLevel.icon.sprite;
         SetShopItemText(shopItemInstance, towerLevel);
     }
 
@@ -80,9 +84,6 @@ public class TowerButton : MonoBehaviour
         TMP_Text[] text = shopItem.GetComponentsInChildren<TMP_Text>();
         text[0].text = towerLevel.TowerName;
         text[1].text = $" ${towerLevel.CurrentTowerPrice.ToString()}";
-
-
-
     }
 
     public void UpdateShopItemText(int towerLevelId)

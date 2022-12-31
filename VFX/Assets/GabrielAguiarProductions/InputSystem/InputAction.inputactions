@@ -228,7 +228,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Spell3",
+                    "name": "Tower3",
                     "type": "PassThrough",
                     "id": "cc04e815-fad8-4728-aed6-3f40410223d8",
                     "expectedControlType": "Button",
@@ -237,7 +237,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Spell4",
+                    "name": "Tower4",
                     "type": "PassThrough",
                     "id": "433dd4b5-726f-4e26-84f7-5c9d2fcb3291",
                     "expectedControlType": "Button",
@@ -285,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Spell3",
+                    "action": "Tower3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -296,7 +296,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Spell4",
+                    "action": "Tower4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

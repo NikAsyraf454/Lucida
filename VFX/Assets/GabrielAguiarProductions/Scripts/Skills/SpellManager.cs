@@ -49,7 +49,7 @@ public class SpellManager : MonoBehaviour
     //     OnSpell1();
     // }
 
-    private void OnSpell1(InputValue value)     //Slowdown Enemy
+    public void OnSpell1(/* InputValue value */)     //Slowdown Enemy
     {
         int chargeCost = 1;
         if(!playerManager.CheckCharge(chargeCost)) { return; }
@@ -75,7 +75,7 @@ public class SpellManager : MonoBehaviour
         // Debug.Log("Activated " + );
     }
 
-    private void OnSpell2()     //Increase tower damage
+    public void OnSpell2()     //Increase tower damage
     {
         int chargeCost = 2;
         if(!playerManager.CheckCharge(chargeCost)) { return; }
@@ -97,7 +97,7 @@ public class SpellManager : MonoBehaviour
 
     }
 
-    private void OnSpell3()     //Increase Resource multiplier
+    public void OnSpell3()     //Increase Resource multiplier
     {
         int chargeCost = 1;
         if(!playerManager.CheckCharge(chargeCost)) { return; }
@@ -111,7 +111,7 @@ public class SpellManager : MonoBehaviour
         DeactivateSpell(2);
     }
 
-    private void OnSpell4()     //Damage enemy
+    public void OnSpell4()     //Damage enemy
     {
         int chargeCost = 2;
         if(!playerManager.CheckCharge(chargeCost)) { return; }

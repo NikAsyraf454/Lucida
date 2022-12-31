@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class TowerLevel : MonoBehaviour
@@ -23,6 +24,8 @@ public class TowerLevel : MonoBehaviour
     private SphereCollider sphereCollider;
 
     public Node node;
+    public string inputKey;
+    public Image icon;
     
     
 
