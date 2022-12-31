@@ -142,12 +142,17 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandleChargeUpdated(0, currentCharge);
     }
 
-    public bool ReduceCharge(int chargeAmount)
+    public bool CheckCharge(int chargeAmount)
     {
         if((currentCharge - chargeAmount) < 0) { return false; }
+
+        return true;
+    }
+
+    public void ReduceCharge(int chargeAmount)
+    {
         currentCharge -= chargeAmount;
         ClientHandleChargeUpdated(0, currentCharge);
-        return true;
     }
 
     public void DoIncreaseMultiplier(float increase, float duration)

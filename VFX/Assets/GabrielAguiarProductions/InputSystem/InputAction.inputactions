@@ -204,6 +204,114 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Tower",
+            "id": "4013fb4f-698a-456a-a6ab-9ae69ceaaae4",
+            "actions": [
+                {
+                    "name": "Tower1",
+                    "type": "PassThrough",
+                    "id": "aa32e7c8-4c51-429c-81e9-1238dc5fbb07",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower2",
+                    "type": "PassThrough",
+                    "id": "1fa348e0-a3b7-44f6-82ce-d8748d224f27",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Spell3",
+                    "type": "PassThrough",
+                    "id": "cc04e815-fad8-4728-aed6-3f40410223d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Spell4",
+                    "type": "PassThrough",
+                    "id": "433dd4b5-726f-4e26-84f7-5c9d2fcb3291",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "c655306a-3692-49c4-bb1b-82f3380cdea9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0ff65416-a350-47e4-bab9-b66a8feccd08",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd1df142-6b8c-4567-a698-ef59ee7d23db",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "289cc81c-acb6-4a84-8727-47a5bbbbeaef",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e0a5b0b-db6b-4a33-81bf-3972e40fddcb",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spell4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4da4266d-b68d-443d-95a9-ea6f238d5a1d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

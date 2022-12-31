@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class SpellManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SpellManager : MonoBehaviour
     public Color slowedColor;
     [SerializeField] private GameObject lightning;
     private bool isHold = false;
+    [SerializeField] private GameObject[] spellButton;
     [SerializeField] private bool[] isActivated = {false, false, false, false};
     private bool preview = false;
 
@@ -49,11 +51,12 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell1(InputValue value)     //Slowdown Enemy
     {
-        
+        int chargeCost = 1;
+        if(!playerManager.CheckCharge(chargeCost)) { return; }
         // Debug.Log("Q or Spell1 is activated");
         if(!ActivatedSpell(0)) { return; }
         if(!isActivated[0]) { isActivated[0] = true; preview = true; return;} 
-        if(!playerManager.ReduceCharge(1)) { return; }
+        playerManager.ReduceCharge(chargeCost);
         
         Collider[] colliders = AreaDetection();
 
@@ -66,7 +69,7 @@ public class SpellManager : MonoBehaviour
             }
         }
 
-        isActivated[0] = false;
+        DeactivateSpell(0);
         preview = false;
         // float temp = value.Get<int>;
         // Debug.Log("Activated " + );
@@ -74,10 +77,11 @@ public class SpellManager : MonoBehaviour
 
     private void OnSpell2()     //Increase tower damage
     {
-        
+        int chargeCost = 2;
+        if(!playerManager.CheckCharge(chargeCost)) { return; }
         if(!ActivatedSpell(1)) { return; }
         if(!isActivated[1]) { isActivated[1] = true; return;}
-        if(!playerManager.ReduceCharge(2)) { return; }
+        playerManager.ReduceCharge(chargeCost);
 
         //decide on all tower or area selection
         //if all tower
@@ -89,29 +93,31 @@ public class SpellManager : MonoBehaviour
             towerLevel.DoIncreaseDamage(50f, 10f);
         }
 
-        isActivated[1] = false;
+        DeactivateSpell(1);
 
     }
 
     private void OnSpell3()     //Increase Resource multiplier
     {
-        
+        int chargeCost = 1;
+        if(!playerManager.CheckCharge(chargeCost)) { return; }
         if(!ActivatedSpell(2)) { return; }
         if(!isActivated[2]) { isActivated[2] = true; return;} 
-        if(!playerManager.ReduceCharge(1)) { return; }
+        playerManager.ReduceCharge(chargeCost);
 
         
         PlayerManager.Instance.DoIncreaseMultiplier(50f, 15f);
 
-        isActivated[2] = false;
+        DeactivateSpell(2);
     }
 
     private void OnSpell4()     //Damage enemy
     {
-        
+        int chargeCost = 2;
+        if(!playerManager.CheckCharge(chargeCost)) { return; }
         if(!ActivatedSpell(3)) { return; }
         if(!isActivated[3]) { isActivated[3] = true; preview = true; return;} 
-        if(!playerManager.ReduceCharge(2)) { return; }
+        playerManager.ReduceCharge(chargeCost);
 
         
         Collider[] colliders = AreaDetection();
@@ -131,7 +137,7 @@ public class SpellManager : MonoBehaviour
             }
         }
 
-        isActivated[3] = false;
+        DeactivateSpell(3);
         preview = false;
     }
 
@@ -161,10 +167,18 @@ public class SpellManager : MonoBehaviour
         {
             if(isActivated[i] && i != spell)
             {
+                
                 return false;
             }
         }
+        spellButton[spell].GetComponent<Image>().color = spellButton[spell].GetComponent<Button>().colors.pressedColor;
         return true;
+    }
+
+    private void DeactivateSpell(int spell)
+    {
+        isActivated[spell] = false;
+        spellButton[spell].GetComponent<Image>().color = spellButton[spell].GetComponent<Button>().colors.normalColor;
     }
 
     private void OnDrawGizmos()

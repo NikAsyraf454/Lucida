@@ -45,8 +45,6 @@ public class TowerButton : MonoBehaviour
 
     public void PurchaseTower(int towerId)      //function for UI button
     {
-        
-
         if(buttonActivated[towerId] == true)
         {
             //deactivate button, cancel tower instance purchase;
