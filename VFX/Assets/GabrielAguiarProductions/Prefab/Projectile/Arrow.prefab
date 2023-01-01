@@ -5019,8 +5019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 25
   fireRate: 4
-  muzzlePrefab: {fileID: 8967523002408650009, guid: b8f8618ee1e644f41a362538c576244f,
-    type: 3}
+  muzzlePrefab: {fileID: 0}
   hitPrefab: {fileID: 2669308023129377722, guid: a1975a8df22f7534faf0f17c8d57455f,
     type: 3}
   shotSFX: {fileID: 0}

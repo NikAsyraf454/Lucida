@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class TowerManager : MonoBehaviour, ISaveable
 {
@@ -148,6 +150,32 @@ public class TowerManager : MonoBehaviour, ISaveable
     public void CancelPurchaseSelection()
     {
         towerInstance = null;
+    }
+
+    public void OnTower1(InputValue value)
+    {
+        // Debug.Log(value);
+        if(towerLevelList[0].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
+        TowerButton.Instance.PurchaseTower(towerLevelList[0].towerId);
+    }
+
+    public void OnTower2(InputValue value)
+    {
+        // Debug.Log("2 is pressed");
+        if(towerLevelList[1].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
+        TowerButton.Instance.PurchaseTower(towerLevelList[1].towerId);
+    }
+
+    public void OnTower3(InputValue value)
+    {
+        if(towerLevelList[2].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
+        TowerButton.Instance.PurchaseTower(towerLevelList[2].towerId);
+    }
+
+    public void OnTower4(InputValue value)
+    {
+        if(towerLevelList[3].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
+        TowerButton.Instance.PurchaseTower(towerLevelList[3].towerId);
     }
 
 

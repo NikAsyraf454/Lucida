@@ -80,8 +80,8 @@ public class TowerAim : MonoBehaviour
 		if(isMortar && enemyMovement != null)
 		{
 		int temmp =  enemyMovement.pathIndex - (int)(enemyMovement.enemySpeed * predictionMultiplier);
-		if(temmp <= 0)
-			temmp = 0;
+		if(temmp <= 1)
+			temmp = 1;
 
         Vector3 temp = waypoints[temmp].transform.position;
         temp.y += mortarOffset;

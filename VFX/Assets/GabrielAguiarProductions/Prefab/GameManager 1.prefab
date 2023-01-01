@@ -222,7 +222,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Debug
+  m_DefaultActionMap: PlayerInput
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1980469183953629363
@@ -871,6 +871,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306063846886482786, guid: 161c4afe87a24004fae43a03baf0d429,
+        type: 3}
+      propertyPath: m_DefaultActionMap
+      value: f2fa0710-bbf4-4875-8f88-2f1c5b6f81b2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 161c4afe87a24004fae43a03baf0d429, type: 3}

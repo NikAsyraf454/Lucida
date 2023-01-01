@@ -2,14 +2,14 @@
     "name": "InputAction",
     "maps": [
         {
-            "name": "Debug",
+            "name": "PlayerInput",
             "id": "7e63205c-78f3-49f0-bf9b-6bbf601659b7",
             "actions": [
                 {
                     "name": "Toggle Debug",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "e8ee2ea5-50fd-4f86-ac0c-47dfe1da8052",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
@@ -18,6 +18,42 @@
                     "name": "Return",
                     "type": "Button",
                     "id": "80c0b303-16cd-445a-890b-46974573e842",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower1",
+                    "type": "Button",
+                    "id": "94b78300-4979-451d-97e6-b72d0ba25aa0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower2",
+                    "type": "Button",
+                    "id": "debefdd3-fe1c-47e6-ad82-dc9c312acaf5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower3",
+                    "type": "Button",
+                    "id": "b497a186-fdc3-481a-88a9-e9cfc7284e61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tower4",
+                    "type": "Button",
+                    "id": "0aca4db8-7d71-486f-bcf4-0b6cd2ad3b90",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -44,6 +80,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92c5e213-a6d1-4c0d-87f3-da0cba411a8c",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8bec2aef-dbaa-462b-99fb-4a0db637ae90",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e930d0ff-9aa4-47f1-88ba-33d9faf75d6f",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d965121-ee77-4157-adfb-9005d3502335",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tower4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -195,114 +275,6 @@
                 {
                     "name": "",
                     "id": "980bef7d-0379-45a9-812d-8900df1f1023",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Tower",
-            "id": "4013fb4f-698a-456a-a6ab-9ae69ceaaae4",
-            "actions": [
-                {
-                    "name": "Tower1",
-                    "type": "PassThrough",
-                    "id": "aa32e7c8-4c51-429c-81e9-1238dc5fbb07",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Tower2",
-                    "type": "PassThrough",
-                    "id": "1fa348e0-a3b7-44f6-82ce-d8748d224f27",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Tower3",
-                    "type": "PassThrough",
-                    "id": "cc04e815-fad8-4728-aed6-3f40410223d8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Tower4",
-                    "type": "PassThrough",
-                    "id": "433dd4b5-726f-4e26-84f7-5c9d2fcb3291",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Click",
-                    "type": "Button",
-                    "id": "c655306a-3692-49c4-bb1b-82f3380cdea9",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "0ff65416-a350-47e4-bab9-b66a8feccd08",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Tower1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cd1df142-6b8c-4567-a698-ef59ee7d23db",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Tower2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "289cc81c-acb6-4a84-8727-47a5bbbbeaef",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Tower3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4e0a5b0b-db6b-4a33-81bf-3972e40fddcb",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Tower4",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4da4266d-b68d-443d-95a9-ea6f238d5a1d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
