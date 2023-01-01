@@ -676,6 +676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 2257555884243190871, guid: 69d0b6616d7245849aca12dac41a93eb,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8775901823804857809}
     - target: {fileID: 2317355328264464066, guid: 69d0b6616d7245849aca12dac41a93eb,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1169,11 +1174,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DifficultyMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 5773127311478078543, guid: 47e26087b0d2c6443af0359e3e77e573,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6170814385340372383, guid: 47e26087b0d2c6443af0359e3e77e573,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1320,6 +1320,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4573662842129293922, guid: 626c9b869414d2141af49fa93efc0682,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8775901823804857809}
     - target: {fileID: 5292878257640332411, guid: 626c9b869414d2141af49fa93efc0682,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1356,25 +1361,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2006873609273840572}
     m_Modifications:
-    - target: {fileID: 1324549132160882362, guid: 66d39cefd188bb846a9324448aa1c16e,
-        type: 3}
-      propertyPath: dataId
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2526423220228910670, guid: 66d39cefd188bb846a9324448aa1c16e,
         type: 3}
       propertyPath: m_Name
       value: GraphMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2526423220228910670, guid: 66d39cefd188bb846a9324448aa1c16e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3622554068648640507, guid: 66d39cefd188bb846a9324448aa1c16e,
-        type: 3}
-      propertyPath: m_Name
-      value: ScoreGraph
       objectReference: {fileID: 0}
     - target: {fileID: 6843877845896387095, guid: 66d39cefd188bb846a9324448aa1c16e,
         type: 3}
@@ -1536,12 +1526,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 3592590075948782384, guid: 51d491c47aa3e1f4daec5e479561c5c0,
+    - target: {fileID: 630243882061345967, guid: 51d491c47aa3e1f4daec5e479561c5c0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8775901823804857809}
-    - target: {fileID: 4517739233703714289, guid: 51d491c47aa3e1f4daec5e479561c5c0,
+    - target: {fileID: 1531610521870783814, guid: 51d491c47aa3e1f4daec5e479561c5c0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8775901823804857809}
+    - target: {fileID: 2047001167105236283, guid: 51d491c47aa3e1f4daec5e479561c5c0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1676,11 +1671,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UnlockSectionMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2573566148466056308, guid: 45440aee4ca004b4ab4842696c0ebec7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8115005300008280216, guid: 45440aee4ca004b4ab4842696c0ebec7,
         type: 3}

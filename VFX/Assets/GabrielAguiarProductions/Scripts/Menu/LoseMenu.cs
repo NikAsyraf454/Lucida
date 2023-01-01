@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class LoseMenu : MonoBehaviour
 {
-    // [SerializeField] private GameObject loseMenuPrefab;
+    [SerializeField] private TMP_Text wave;
+
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        
+        wave.text = "Wave: " + WaveManager.Instance.waveIndex;
     }
 
     // Update is called once per frame

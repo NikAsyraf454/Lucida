@@ -107,6 +107,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
     public void PauseGame()
     {
         pause.PauseGame();

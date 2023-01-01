@@ -10,9 +10,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button startBtn;
     [SerializeField] private Button continueBtn;
     [SerializeField] private GameObject settingsMenuPrefab;
+    [SerializeField] private GameObject guideMenuPrefab;
     [SerializeField] private GameObject startConfirmationPrefab;
     [SerializeField] private GameObject quitConfirmationPrefab;
-    private bool settingMenu;
+    private bool settingMenu, guideMenu;
     private bool startConfirmation;
     private bool quitConfirmation;
 
@@ -22,6 +23,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         settingMenu = false;
+        guideMenu = false;
         if(File.Exists(savePath)) 
         {
             continueBtn.interactable = true; 
@@ -62,6 +64,20 @@ public class MainMenu : MonoBehaviour
         {
             settingsMenuPrefab.SetActive(false);
             settingMenu = false;
+        }
+    }
+
+        public void GuideMenu()
+    {
+        if(!guideMenu)
+        {
+            guideMenuPrefab.SetActive(true);
+            guideMenu = true;
+        }
+        else
+        {
+            guideMenuPrefab.SetActive(false);
+            guideMenu = false;
         }
     }
 
