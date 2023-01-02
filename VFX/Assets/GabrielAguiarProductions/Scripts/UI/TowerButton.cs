@@ -52,8 +52,8 @@ public class TowerButton : MonoBehaviour
             // towerManager.CancelPurchaseSelection();
         }
         else{
-            towerManager.SetTowerInstance(towerId);
             DeactivateAllButton();
+            towerManager.SetTowerInstance(towerId);
             ActivateButton(towerId);
         }
     }

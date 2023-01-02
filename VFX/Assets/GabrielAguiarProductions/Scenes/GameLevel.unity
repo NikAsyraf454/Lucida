@@ -2849,11 +2849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2148686330116661250, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2477620479550125248, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_Name
@@ -2913,41 +2908,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677345758581657485, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_text
-      value: Start
-      objectReference: {fileID: 0}
-    - target: {fileID: 4482801725031323585, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695949387004086997, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 3.6594543
-      objectReference: {fileID: 0}
-    - target: {fileID: 4695949387004086997, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -113.999985
-      objectReference: {fileID: 0}
-    - target: {fileID: 6367836095705423321, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 269.58066
-      objectReference: {fileID: 0}
-    - target: {fileID: 6655602606650858929, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_text
-      value: Have Fun!
-      objectReference: {fileID: 0}
-    - target: {fileID: 7795926876202829607, guid: 96d54d242ea184942a06c01b3f327e1c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -189.07242
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96d54d242ea184942a06c01b3f327e1c, type: 3}
