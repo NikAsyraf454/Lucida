@@ -58,7 +58,7 @@ public class CameraManager : MonoBehaviour
 
     void LateUpdate()
     {
-        if(PauseMenu.isPaused || MenuManager.Instance.gameEnded){ return; }
+        if(PauseMenu.Instance.isPaused || MenuManager.Instance.gameEnded){ return; }
             UpdateCameraPosition();
             UpdateCameraZoom();
     }

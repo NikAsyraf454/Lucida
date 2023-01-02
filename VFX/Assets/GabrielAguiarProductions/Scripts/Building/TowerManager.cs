@@ -33,7 +33,7 @@ public class TowerManager : MonoBehaviour, ISaveable
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.isPaused || Input.GetMouseButtonDown(1))
+        if (PauseMenu.Instance.isPaused || Input.GetMouseButtonDown(1))
         {
             towerButton.DeactivateAllButton();
             CancelPurchaseSelection();

@@ -80,13 +80,16 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         damageScreen.PlayerTakeDamage();
 
-        if(currentPlayerHealth <= 3 && !gotLifeline)    //second chance for player (eliminate all enemy in wave or map)
+        if(currentPlayerHealth <= 3)    //second chance for player (eliminate all enemy in wave or map)
         {
             gotLifeline = true;
-            int temp = lifeline.GaveLifeline();
-            // Debug.Log("Temp: " + temp);
-            currentPlayerHealth += temp;
-            ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+            if(!gotLifeline)
+            {
+                int temp = lifeline.GaveLifeline();
+                // Debug.Log("Temp: " + temp);
+                currentPlayerHealth += temp;
+                ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+            }
         } 
 
 

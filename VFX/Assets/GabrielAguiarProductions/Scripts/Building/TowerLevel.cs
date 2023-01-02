@@ -189,6 +189,7 @@ public class TowerLevel : MonoBehaviour
         _damageDeal = temp;
         ServerOnTowerXp.Invoke(this);
         _powerUpVFX.SetActive(false);
+        _powerUpVFX.SetActive(false);
         StopCoroutine("IncreaseDamage");
     }
 }

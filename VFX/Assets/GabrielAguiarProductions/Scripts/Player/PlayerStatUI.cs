@@ -14,6 +14,7 @@ public class PlayerStatUI : MonoBehaviour
     // [SerializeField] private GameObject[] healthBar;
     [SerializeField] private Image healthBar;
     [SerializeField] private GameObject[] chargeBar;
+    public TMP_Text waveText = null;
 
     private void Start()
     {
@@ -77,6 +78,11 @@ public class PlayerStatUI : MonoBehaviour
         {
             chargeBar[i].gameObject.SetActive(false);
         }
+    }
+
+    public void waveTextUpdate()
+    {
+        waveText.text = "Wave: " + (WaveManager.Instance.waveIndex+1);
     }
 
 }

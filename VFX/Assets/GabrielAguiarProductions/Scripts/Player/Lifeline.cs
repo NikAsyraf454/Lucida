@@ -5,6 +5,7 @@ using UnityEngine;
 public class Lifeline : MonoBehaviour
 {
     [SerializeField] private bool isTriggered = false;
+    [SerializeField] private GameObject lifelineMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,8 @@ public class Lifeline : MonoBehaviour
             int temp = UnityEngine.Random.Range(2,5);
             Debug.Log("Lifeline intiatied: " + temp);
             WaveManager.Instance.EliminateEnemy();
+            PauseMenu.Instance.HaltGame();
+            LifeLineMenu();
             return temp;
         }
         else
@@ -35,7 +38,18 @@ public class Lifeline : MonoBehaviour
             Debug.Log("Lifeline denied");
             return 0;
         }
+    }
 
+    public void LifeLineMenu()
+    {
+        lifelineMenu.SetActive(true);
+    }
+
+    public void ContinueAfterLifeline()
+    {
+        WaveManager.Instance.SetTimer(10f);
+        PauseMenu.Instance.ResumeGame();
+        lifelineMenu.SetActive(false);
 
     }
 }

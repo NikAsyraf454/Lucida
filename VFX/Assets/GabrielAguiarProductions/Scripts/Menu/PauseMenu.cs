@@ -5,7 +5,13 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     // [SerializeField] private GameObject pauseMenuPrefab;
-    public static bool isPaused = false;
+    public static PauseMenu Instance;
+    public bool isPaused = false;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

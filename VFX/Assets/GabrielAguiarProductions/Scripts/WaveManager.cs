@@ -23,6 +23,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public int Unlocked = 0;
     public List<EnemyHealth> enemyHealthList;
     [SerializeField] private int wavesEnded;
+    private PlayerStatUI playerStatUI;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void Start()
     {
+        playerStatUI = GetComponentInChildren<PlayerStatUI>();
         LeanTween.delayedCall(gameObject, 1f, () =>{
             SetSpawnPoint();
         });
@@ -60,7 +62,8 @@ public class WaveManager : MonoBehaviour, ISaveable
 
     void SpawnWave()
     {
-        Debug.Log("Spawning the wave: " + waveIndex+1);
+        Debug.Log("Spawning the wave: " + (waveIndex+1));
+        playerStatUI.waveTextUpdate();
         PlayerManager.Instance.IncreaseCharge(1);
         wavesEnded = waves[waveIndex].enemyGroup.Count;
         for(groupIndex = 0; groupIndex < waves[waveIndex].enemyGroup.Count; groupIndex++)
@@ -230,6 +233,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         TowerManager.Instance.RestartTower();
         PathManager.Instance.NextSection();
         SetSpawnPoint();
+        SetTimer(10f);
     }
 
     private void SetSpawnPoint()
@@ -245,6 +249,11 @@ public class WaveManager : MonoBehaviour, ISaveable
 			enemyHealthList.Remove(enemyHealth);
 		}
 	}
+
+    public void SetTimer(float time)
+    {
+        timer = time;
+    }
 
     #region Save and Load
 
