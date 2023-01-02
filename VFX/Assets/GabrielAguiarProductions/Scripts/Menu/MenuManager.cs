@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     public static MenuManager Instance;
 
+    public GameObject tipsMenuPrefab;
     public GameObject difficultyMenuPrefab;
     public GameObject pauseMenuPrefab;
     public GameObject winMenuPrefab;
@@ -36,7 +37,7 @@ public class MenuManager : MonoBehaviour
         if(!SaveManager.Instance.saveFileExist)
         {
             pause.HaltGame();
-            ChooseDifficulty();
+            GameTips();
         }
         else
         {
@@ -48,6 +49,16 @@ public class MenuManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void GameTips()
+    {
+        tipsMenuPrefab.SetActive(true);
+    }
+
+    public void DoneTips()
+    {
+        ChooseDifficulty();
     }
 
     public void ChooseDifficulty()
