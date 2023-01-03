@@ -3040,6 +3040,11 @@ PrefabInstance:
       propertyPath: waveText
       value: 
       objectReference: {fileID: 467033906}
+    - target: {fileID: 2148686330116661250, guid: 96d54d242ea184942a06c01b3f327e1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2477620479550125248, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_Name
@@ -3098,6 +3103,11 @@ PrefabInstance:
     - target: {fileID: 2477620479550125250, guid: 96d54d242ea184942a06c01b3f327e1c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578761739581586071, guid: 96d54d242ea184942a06c01b3f327e1c,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7018835829157724039, guid: 96d54d242ea184942a06c01b3f327e1c,

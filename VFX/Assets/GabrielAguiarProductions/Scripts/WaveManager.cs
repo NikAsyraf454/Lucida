@@ -78,6 +78,9 @@ public class WaveManager : MonoBehaviour, ISaveable
     {
         for(int j = 0; j < waves[waveIndex].enemyGroup[groupNum].amount; j++)        //j is for enemy amount, i is for enemyGroup index
         {
+            while (timer > 0f) {
+                yield return new WaitForSeconds (0.2f);
+            }
             //SpawnEnemy(waves[waveNum].enemyGroup[i].enemyPrefab);
 
             SpawnEnemy(waves[waveIndex].enemyGroup[groupNum].enemyId, spawnPoint.transform.position, spawnPoint.transform.rotation);

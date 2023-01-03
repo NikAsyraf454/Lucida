@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button startBtn;
     [SerializeField] private Button continueBtn;
+    [SerializeField] private GameObject ButtonsPrefab;
     [SerializeField] private GameObject settingsMenuPrefab;
     [SerializeField] private GameObject guideMenuPrefab;
     [SerializeField] private GameObject startConfirmationPrefab;
@@ -58,11 +59,13 @@ public class MainMenu : MonoBehaviour
         if(!settingMenu)
         {
             settingsMenuPrefab.SetActive(true);
+            ButtonsPrefab.SetActive(false);
             settingMenu = true;
         }
         else
         {
             settingsMenuPrefab.SetActive(false);
+            ButtonsPrefab.SetActive(true);
             settingMenu = false;
         }
     }
@@ -72,11 +75,13 @@ public class MainMenu : MonoBehaviour
         if(!guideMenu)
         {
             guideMenuPrefab.SetActive(true);
+            ButtonsPrefab.SetActive(false);
             guideMenu = true;
         }
         else
         {
             guideMenuPrefab.SetActive(false);
+            ButtonsPrefab.SetActive(true);
             guideMenu = false;
         }
     }
