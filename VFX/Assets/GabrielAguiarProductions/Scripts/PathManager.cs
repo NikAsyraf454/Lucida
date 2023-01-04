@@ -104,7 +104,7 @@ public class PathManager : MonoBehaviour, ISaveable
             }
         }
 
-        SpawnTile(basePrefab, new Vector3(2,0.1f,height/2));   //base
+        SpawnTile(basePrefab, new Vector3(1,0.8f,height/2));   //base
         tilePlacement[1,height/2] = 1;
         tilePlacement[2,height/2] = 1;
 

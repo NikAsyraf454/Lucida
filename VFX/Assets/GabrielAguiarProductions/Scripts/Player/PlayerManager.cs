@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     //public int chargeCapacity;
 
     private DamageScreen damageScreen;
+    // public FractureForce castleFracture;
 
     private Lifeline lifeline;
     [SerializeField] private bool gotLifeline = false;
@@ -57,6 +58,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandleChargeUpdated(0, currentCharge);
         lifeline = GetComponent<Lifeline>();
         damageScreen = GetComponent<DamageScreen>();
+        // castleFracture = GetComponentInChildren<FractureForce>();
     }
 
     // Update is called once per frame
@@ -68,6 +70,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
     public void ReducePlayerHealth(int damageAmount)
     {
         currentPlayerHealth -= damageAmount;
+        FractureForce.Instance.explodeFracture();
 
         if(currentPlayerHealth <= 0) 
         {
@@ -245,6 +248,10 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         ClientHandleScoreUpdated(0, currentPlayerScore);
+        for(int i = 0; i < (20-currentPlayerHealth); i++)
+        {
+            FractureForce.Instance.explodeFracture();
+        }
         ClientHandleChargeUpdated(0, currentCharge);
         SetDifficulty(difficulty);
     }

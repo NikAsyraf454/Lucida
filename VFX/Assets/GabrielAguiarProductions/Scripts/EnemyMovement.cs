@@ -52,6 +52,7 @@ public class EnemyMovement : MonoBehaviour
             pathIndex--;
             // if(pathIndex > waypoints.Count)
             // {
+                if(pathIndex < 0) { return; }
                 target = waypoints[pathIndex];
                 transform.LookAt(target.transform);
                 //target = pathManager.GetWaypoint(pathIndex);
@@ -74,7 +75,7 @@ public class EnemyMovement : MonoBehaviour
     {
         // Debug.Log("Collided with" + co.gameObject.tag);
         if (co.gameObject.tag == "Base") {
-            // Debug.Log("in");
+            // Debug.Log("Enemy collided with base");
 			if(!isDead)
             {
                 isDead = true;
