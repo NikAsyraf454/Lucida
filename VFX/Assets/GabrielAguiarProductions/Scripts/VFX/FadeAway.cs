@@ -36,7 +36,11 @@ public class FadeAway : MonoBehaviour
             Debug.Log("Destroyed");
             Destroy(gameObject); 
         });
-        
+    }
+
+    public void DeleteFractureInstant()
+    {
+        Destroy(gameObject);
     }
 }
 //damageplayer 1

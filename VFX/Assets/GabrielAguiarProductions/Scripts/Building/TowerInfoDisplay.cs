@@ -73,11 +73,11 @@ public class TowerInfoDisplay : MonoBehaviour
 
     void UpdateStats(TowerLevel towerLevel)
     {
-        damageDeal.SetText((towerLevel.DamageDeal * towerLevel.Level).ToString());
+        damageDeal.SetText((towerLevel.DamageDeal * towerLevel.level).ToString());
         fireRate.SetText(towerLevel.FireRate.ToString() + "/s");
-        level.SetText("Level " + towerLevel.Level);
-        xpBarImage.fillAmount = (float)towerLevel.TowerXp / (towerLevel.Level*10);
-        cost.SetText("Cost: -$" + ((towerLevel.Level * 10) - towerLevel.TowerXp).ToString());
+        level.SetText("Level " + towerLevel.level);
+        xpBarImage.fillAmount = (float)towerLevel.TowerXp / (towerLevel.level*10);
+        cost.SetText("Cost: -$" + ((towerLevel.level * 10) - towerLevel.TowerXp).ToString());
     }
 
     void TowerDestroyed(TowerLevel towerLevel)

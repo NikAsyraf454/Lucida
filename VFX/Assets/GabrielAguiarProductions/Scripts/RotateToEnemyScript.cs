@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RotateToEnemyScript : MonoBehaviour
 {
+	[SerializeField] private AudioClip _clip_ShootArcher;
+
 	public bool useLaser = false;
 	private bool laserOn = false;
 	[SerializeField] private LineRenderer lineRenderer;
@@ -156,6 +158,7 @@ public class RotateToEnemyScript : MonoBehaviour
 		if (Time.time >= timeToFire) {
 			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			SpawnVFX();
+			SoundManager.Instance.PlaySound(_clip_ShootArcher);
 		}
 	}
 

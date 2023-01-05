@@ -11,7 +11,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private int _maxTowerPrice;
     [SerializeField] private int _currentTowerPrice;
     [SerializeField] private int purchasePriceIncrement;
-    [SerializeField] private int _level;
+    public int level;
     [SerializeField] private int _damageDeal;
     private int originalDamage;
     [SerializeField] private float _fireRate;
@@ -29,7 +29,7 @@ public class TowerLevel : MonoBehaviour
     
     
 
-    public int Level { get{return _level; } set{ _level = Level; } }
+    // public int Level { get{return _level; } set{ _level = Level; } }
     public int DamageDeal { get{return _damageDeal; } set{ _damageDeal = DamageDeal; } }
     public float FireRate { get{return _fireRate; } set{ _fireRate = FireRate; } }
     public string TowerName { get{return _towerName; } set{ _towerName = TowerName; } }
@@ -102,7 +102,7 @@ public class TowerLevel : MonoBehaviour
     {
         SetSpawnedStatus(false);
         _currentTowerPrice = 0;
-        _level = 1;
+        level = 1;
         _towerXp = 0;
         //isUnlocked might change
     }
@@ -112,11 +112,11 @@ public class TowerLevel : MonoBehaviour
         _towerXp += increaseAmount;
         // Debug.Log(TowerXp + " " + increaseAmount);
 
-        if(TowerXp >= Level*10) 
+        if(TowerXp >= level*10) 
         {
-            _level++; 
+            level++; 
             _towerXp = 0; 
-            _damageDeal = originalDamage * _level;
+            _damageDeal = originalDamage * level;
         }
 
         

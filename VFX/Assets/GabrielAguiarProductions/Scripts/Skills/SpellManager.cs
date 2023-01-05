@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class SpellManager : MonoBehaviour
 {
+    [SerializeField] private AudioClip clip_lightning, clip_froze, clip_moneymultiplier, clip_towerPowerUp;
     public static SpellManager Instance;
     private PlayerManager playerManager;
     [SerializeField] private GameObject previewProjection;
@@ -18,6 +19,7 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private GameObject[] spellButton;
     [SerializeField] private bool[] isActivated = {false, false, false, false};
     private bool preview = false;
+    [SerializeField] private Color normal, dimmed;
 
     void Awake()
     {
@@ -58,6 +60,8 @@ public class SpellManager : MonoBehaviour
         if(!isActivated[0]) { isActivated[0] = true; preview = true; return;} 
         playerManager.ReduceCharge(chargeCost);
         
+        SoundManager.Instance.PlaySound(clip_froze);
+
         Collider[] colliders = AreaDetection();
 
         foreach(Collider co in colliders)
@@ -85,6 +89,8 @@ public class SpellManager : MonoBehaviour
 
         //decide on all tower or area selection
         //if all tower
+
+        SoundManager.Instance.PlaySound(clip_towerPowerUp);
         
         List<TowerLevel> towerList = TowerManager.Instance.spawnedTowerList;
 
@@ -105,7 +111,8 @@ public class SpellManager : MonoBehaviour
         if(!isActivated[2]) { isActivated[2] = true; return;} 
         playerManager.ReduceCharge(chargeCost);
 
-        
+        SoundManager.Instance.PlaySound(clip_moneymultiplier);
+
         PlayerManager.Instance.DoIncreaseMultiplier(50f, 15f);
 
         DeactivateSpell(2);
@@ -119,6 +126,7 @@ public class SpellManager : MonoBehaviour
         if(!isActivated[3]) { isActivated[3] = true; preview = true; return;} 
         playerManager.ReduceCharge(chargeCost);
 
+        SoundManager.Instance.PlaySound(clip_lightning);
         
         Collider[] colliders = AreaDetection();
 
@@ -152,7 +160,7 @@ public class SpellManager : MonoBehaviour
         // Debug.DrawRay(ray.origin, ray.direction * 20, Color.yellow);
         if(Physics.Raycast(ray, out RaycastHit hit, float.MaxValue, layerMask))
         {
-            return(Physics.OverlapSphere(hit.point, 5f));
+            return(Physics.OverlapSphere(hit.point, areaRadius));
         }
         else
         {
@@ -179,6 +187,27 @@ public class SpellManager : MonoBehaviour
     {
         isActivated[spell] = false;
         spellButton[spell].GetComponent<Image>().color = spellButton[spell].GetComponent<Button>().colors.normalColor;
+        SpellIconChecker();
+    }
+
+    public void SpellIconChecker()
+    {
+        spellButton[0].GetComponent<Image>().color = dimmed;
+        spellButton[1].GetComponent<Image>().color = dimmed;
+        spellButton[2].GetComponent<Image>().color = dimmed;
+        spellButton[3].GetComponent<Image>().color = dimmed;
+
+        if(PlayerManager.Instance.currentCharge >= 1)
+        {
+            spellButton[0].GetComponent<Image>().color = normal;
+            spellButton[2].GetComponent<Image>().color = normal;
+
+            if(PlayerManager.Instance.currentCharge >= 2)
+            {
+                spellButton[1].GetComponent<Image>().color = normal;
+                spellButton[3].GetComponent<Image>().color = normal;
+            }
+        }
     }
 
     private void OnDrawGizmos()

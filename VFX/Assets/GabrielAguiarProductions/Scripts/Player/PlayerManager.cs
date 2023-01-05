@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, ISaveable
 {
+    [SerializeField] private AudioClip _clip_towerDestroy;
     public static PlayerManager Instance;
     public int currentPlayerHealth = 0;
     public int maxPlayerHealth;
@@ -81,6 +82,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         CameraShake.Shake(0.25f, 0.2f);
         // int temp = currentPlayerHealth;
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
+        SoundManager.Instance.PlaySound(_clip_towerDestroy);
         damageScreen.PlayerTakeDamage();
 
         if(currentPlayerHealth <= 3)    //second chance for player (eliminate all enemy in wave or map)
@@ -146,6 +148,7 @@ public class PlayerManager : MonoBehaviour, ISaveable
         }
         
         ClientHandleChargeUpdated(0, currentCharge);
+        SpellManager.Instance.SpellIconChecker();
     }
 
     public bool CheckCharge(int chargeAmount)
@@ -193,6 +196,13 @@ public class PlayerManager : MonoBehaviour, ISaveable
             
         }
         WaveManager.Instance.PopulateWavesList();
+    }
+
+    public void LoadBaseFractures()
+    {
+        int temp = 20-currentPlayerHealth;
+        FractureForce.Instance.removeFracture(temp);
+        // Debug.Log("temp: " + temp);
     }
 
     private void ClientHandleResourcesUpdated(int oldResources, int newResources)
@@ -248,10 +258,6 @@ public class PlayerManager : MonoBehaviour, ISaveable
         ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         ClientHandleScoreUpdated(0, currentPlayerScore);
-        for(int i = 0; i < (20-currentPlayerHealth); i++)
-        {
-            FractureForce.Instance.explodeFracture();
-        }
         ClientHandleChargeUpdated(0, currentCharge);
         SetDifficulty(difficulty);
     }

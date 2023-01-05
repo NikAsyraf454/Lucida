@@ -14,13 +14,15 @@ public class FractureForce : MonoBehaviour
     void Awake()
     {
         Instance = this; 
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
         // PlayerManager.Instance.castleFracture = this;
-        fracturedParts = GetComponentsInChildren<Rigidbody>();
+        if(fracturedParts == null)
+            Initfractures();
     }
 
     // Update is called once per frame
@@ -54,5 +56,29 @@ public class FractureForce : MonoBehaviour
             index++;
         }
 
+    }
+
+    public void Initfractures()
+    {
+        fracturedParts = GetComponentsInChildren<Rigidbody>();
+        // Debug.Log("initfractured parts");
+    }
+
+    public void removeFracture(int loop)
+    {
+        Initfractures();
+        loop = loop * 3;
+        for(int i = 0; i < loop; i++)
+        {
+
+            if(index > fracturedParts.Length-1) { return; }   
+            Destroy(fracturedParts[index].gameObject);
+            index++;
+        }
+    }
+
+    public void setIndex(int healthLost)
+    {
+        index += healthLost;
     }
 }

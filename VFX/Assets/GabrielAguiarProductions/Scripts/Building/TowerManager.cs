@@ -98,7 +98,7 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public void ImproveTower(TowerLevel towerLevel)
     {
-        int cost = (towerLevel.Level * 10) - towerLevel.TowerXp;
+        int cost = (towerLevel.level * 10) - towerLevel.TowerXp;
         if(PlayerManager.Instance.GetResources() < cost) {return;}
         PlayerManager.Instance.ReduceResource(cost);
         towerLevel.XpIncrease(cost);
@@ -197,7 +197,7 @@ public class TowerManager : MonoBehaviour, ISaveable
             tempPosition.Add(towerLevel.gameObject.transform.position.x);
             tempPosition.Add(towerLevel.gameObject.transform.position.y);
             tempPosition.Add(towerLevel.gameObject.transform.position.z);
-            levels.Add(towerLevel.Level);
+            levels.Add(towerLevel.level);
             damageDeal.Add(towerLevel.DamageDeal);
             exps.Add(towerLevel.TowerXp);
 
@@ -240,7 +240,9 @@ public class TowerManager : MonoBehaviour, ISaveable
         {
             SetTowerInstance(i);
             SpawnTower(new Vector3(towerPosition[(j*3)],towerPosition[(j*3)+1],towerPosition[(j*3)+2]));
-            spawnedTowerList[j].Level = levels[j];
+            
+            spawnedTowerList[j].level = levels[j];
+            Debug.Log("tower level: " + levels[j] + " lever is: " + spawnedTowerList[j].level);
             spawnedTowerList[j].DamageDeal = damageDeal[j];
             spawnedTowerList[j].TowerXp = exps[j];
             j++;

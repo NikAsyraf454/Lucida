@@ -294,6 +294,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc8180a9e3d7c84cb3210b44cd1e8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip_lightning: {fileID: 8300000, guid: 67db9eeecf483294385ed43662232667, type: 3}
+  clip_froze: {fileID: 8300000, guid: 660a05ea6f9bb55449cf1c1b9a7952ee, type: 3}
+  clip_moneymultiplier: {fileID: 0}
+  clip_towerPowerUp: {fileID: 8300000, guid: f080c56807607c4449f828a7cba179a6, type: 3}
   previewProjection: {fileID: 1814051635472109618}
   enemyMovements: []
   layerMask:
@@ -309,6 +313,8 @@ MonoBehaviour:
   - {fileID: 1038666843121812458}
   - {fileID: 6848279729702778667}
   isActivated: 00000000
+  normal: {r: 0, g: 0, b: 0, a: 0}
+  dimmed: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &973207068765896129
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerArcane : MonoBehaviour
 {
+    [SerializeField] private AudioClip _clip_ShootArcane;
+
     [SerializeField] private TowerAim towerAim;
     [SerializeField] private TowerLevel towerLevel;
     public GameObject effectToSpawn;
@@ -24,6 +26,7 @@ public class TowerArcane : MonoBehaviour
             timeToFire = Time.time + (1f / towerLevel.FireRate);
             if(towerAim.enemyMovement != null)
             Shoot();
+            SoundManager.Instance.PlaySound(_clip_ShootArcane);
         }
     }
 

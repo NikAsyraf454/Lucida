@@ -350,7 +350,7 @@ MonoBehaviour:
   _maxTowerPrice: 75
   _currentTowerPrice: 0
   purchasePriceIncrement: 15
-  _level: 1
+  level: 0
   _damageDeal: 10
   _fireRate: 0.5
   isUnlocked: 1
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d784a7aa96659429e352150aa89b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _clip_ShootArcane: {fileID: 8300000, guid: 250f3187011b92042980b5995eafa34b, type: 3}
   towerAim: {fileID: 0}
   towerLevel: {fileID: 0}
   effectToSpawn: {fileID: 5715791299733181590, guid: a8664726e3c699643a9fd0f0962a43c0,
