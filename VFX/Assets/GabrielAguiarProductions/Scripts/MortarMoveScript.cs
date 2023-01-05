@@ -59,8 +59,9 @@ public class MortarMoveScript : MonoBehaviour
 		}
 		
 
-					if (shotSFX != null && GetComponent<AudioSource>()) {
-			GetComponent<AudioSource> ().PlayOneShot (hitSFX);
+		if (shotSFX != null && GetComponent<AudioSource>()) {
+			// GetComponent<AudioSource> ().PlayOneShot(hitSFX);
+			SoundManager.Instance.PlaySound(hitSFX);
 		}
 
 		if (trails.Count > 0) {

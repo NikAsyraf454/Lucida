@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 424797121563705807}
   - component: {fileID: 7025722667317161017}
   - component: {fileID: 3670892017532412770}
+  - component: {fileID: 8932722807267817145}
   m_Layer: 5
   m_Name: ShopItem
   m_TagString: TowerShop
@@ -526,6 +527,18 @@ MonoBehaviour:
   cancelElement:
   - {fileID: 1604562887}
   - {fileID: 584923934}
+--- !u!114 &8932722807267817145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2790977666851249346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7302409844935695882
 GameObject:
   m_ObjectHideFlags: 0

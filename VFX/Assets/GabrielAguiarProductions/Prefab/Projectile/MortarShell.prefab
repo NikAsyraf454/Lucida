@@ -134,7 +134,7 @@ MonoBehaviour:
   hitPrefab: {fileID: 758271212001578196, guid: ecdd71d6e50fce8499628baa9d56d8e9,
     type: 3}
   shotSFX: {fileID: 0}
-  hitSFX: {fileID: 0}
+  hitSFX: {fileID: 8300000, guid: 6418ad02424b66e4caf7add53a1c9458, type: 3}
   trails: []
   enemyHealthInRange: []
   damageDeal: 0

@@ -115,11 +115,13 @@ public class MenuManager : MonoBehaviour
     public void RestartGame()
     {
         File.Delete(savePath);
+        MusicController.Instance.PlayLevelBgM();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void MainMenu()
     {
+        MusicController.Instance.PlayMainMenuBgM();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 

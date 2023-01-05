@@ -1705,6 +1705,7 @@ GameObject:
   - component: {fileID: 5172644799874433060}
   - component: {fileID: 6576955918920326405}
   - component: {fileID: 7063364842088261666}
+  - component: {fileID: 2289654049295304417}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -1731,7 +1732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -65.70349, y: -68.13684}
+  m_AnchoredPosition: {x: -65.70361, y: -68.13684}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5172644799874433060
@@ -1828,6 +1829,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2289654049295304417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4824474820741009105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4896574349982525749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,6 +2651,7 @@ GameObject:
   - component: {fileID: 4964169903860007174}
   - component: {fileID: 5675367855120629500}
   - component: {fileID: 5193196345302794874}
+  - component: {fileID: 1539382511673092632}
   m_Layer: 5
   m_Name: ScoreGraphButton
   m_TagString: Untagged
@@ -2760,6 +2774,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1539382511673092632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778109830325305778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8128420887098048107
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,6 +3488,7 @@ GameObject:
   - component: {fileID: 3824783416192260891}
   - component: {fileID: 3396221660977390496}
   - component: {fileID: 5110111808042951000}
+  - component: {fileID: 5612843884884019519}
   m_Layer: 5
   m_Name: HealthGraphButton
   m_TagString: Untagged
@@ -3584,6 +3611,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5612843884884019519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8799986229421318552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9187707728694632145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3635,7 @@ GameObject:
   - component: {fileID: 421541415270832403}
   - component: {fileID: 8105379641685837431}
   - component: {fileID: 4693830767826928320}
+  - component: {fileID: 9150332746408491729}
   m_Layer: 5
   m_Name: LevelGraphButton
   m_TagString: Untagged
@@ -3718,3 +3758,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9150332746408491729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187707728694632145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

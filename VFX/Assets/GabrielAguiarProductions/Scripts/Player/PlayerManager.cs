@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour, ISaveable
 {
-    [SerializeField] private AudioClip _clip_towerDestroy;
+    [SerializeField] private AudioClip _clip_towerDestroy, _clip_coinDropped;
     public static PlayerManager Instance;
     public int currentPlayerHealth = 0;
     public int maxPlayerHealth;
@@ -104,9 +104,9 @@ public class PlayerManager : MonoBehaviour, ISaveable
     {
         // int temp = currentPlayerResources;
         currentPlayerResources += (resourceAmount * resourceMultiplier);
+        SoundManager.Instance.PlaySound(_clip_coinDropped);
         ClientHandleResourcesUpdated(0, (int)currentPlayerResources);
         TowerButton.Instance.UpdateButtonInteractable();
-
     }
 
     public void ScoreIncrease(int ScoreAmount)

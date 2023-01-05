@@ -45,11 +45,13 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        MusicController.Instance.PlayLevelBgM();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void ContinueGame()
     {
+        MusicController.Instance.PlayLevelBgM();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         //playerprefs, set continue = true;
     }
