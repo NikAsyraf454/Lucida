@@ -8925,7 +8925,7 @@ MonoBehaviour:
     spawnTimeRange: {x: 10, y: 12}
     amount: 1
     spawnAfterLevel: 4
-    health: 300
+    health: 600
     isBoss: 1
   - enemyId: 3
     prefab: {fileID: 6425153401542437377, guid: f80ff1b4831c5d44d9213961cb182735,
@@ -8933,7 +8933,7 @@ MonoBehaviour:
     spawnTimeRange: {x: 10, y: 12}
     amount: 1
     spawnAfterLevel: 9
-    health: 600
+    health: 1500
     isBoss: 1
   - enemyId: 4
     prefab: {fileID: 6425153401542437377, guid: 20d1de6383279834abbd18808d8b6c3d,
@@ -8949,7 +8949,7 @@ MonoBehaviour:
     spawnTimeRange: {x: 10, y: 12}
     amount: 1
     spawnAfterLevel: 14
-    health: 1000
+    health: 1500
     isBoss: 1
   - enemyId: 6
     prefab: {fileID: 6425153401542437377, guid: 7d8dd590c0f14c644b4a33834922f00a,
@@ -8959,14 +8959,22 @@ MonoBehaviour:
     spawnAfterLevel: 16
     health: 250
     isBoss: 0
-  - enemyId: 6
+  - enemyId: 7
     prefab: {fileID: 6425153401542437377, guid: 7e0b37b365af35a4aa03fbc3e0c6e088,
       type: 3}
     spawnTimeRange: {x: 10, y: 12}
     amount: 1
     spawnAfterLevel: 19
-    health: 1200
+    health: 2000
     isBoss: 1
+  - enemyId: 8
+    prefab: {fileID: 6425153401542437377, guid: 816032091852e6e4d87608be650462e3,
+      type: 3}
+    spawnTimeRange: {x: 10, y: 12}
+    amount: 1
+    spawnAfterLevel: 10
+    health: 300
+    isBoss: 0
   enemyList: []
   waves: []
   timeBetweenWave: 10

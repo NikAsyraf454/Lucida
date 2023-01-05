@@ -349,10 +349,10 @@ MonoBehaviour:
   _towerName: Tower Arcane
   _maxTowerPrice: 75
   _currentTowerPrice: 0
-  purchasePriceIncrement: 40
+  purchasePriceIncrement: 50
   level: 0
   _damageDeal: 5
-  _fireRate: 0.5
+  _fireRate: 0.3
   isUnlocked: 1
   isSpawned: 0
   _towerXp: 0

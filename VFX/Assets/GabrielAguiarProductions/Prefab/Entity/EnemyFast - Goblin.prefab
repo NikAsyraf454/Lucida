@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
-  maxHealth: 50
+  maxHealth: 80
   _currentHealth: 0
   resourceDrop: 5
   scoreValue: 40

@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerId: 0
   _towerName: Tower
-  _maxTowerPrice: 50
+  _maxTowerPrice: 75
   _currentTowerPrice: 0
   purchasePriceIncrement: 30
   level: 0
