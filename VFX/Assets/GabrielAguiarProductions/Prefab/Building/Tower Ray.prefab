@@ -500,11 +500,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerId: 2
   _towerName: Tower Ray
-  _maxTowerPrice: 50
+  _maxTowerPrice: 75
   _currentTowerPrice: 0
-  purchasePriceIncrement: 15
-  _level: 1
-  _damageDeal: 10
+  purchasePriceIncrement: 40
+  level: 0
+  _damageDeal: 5
   _fireRate: 1
   isUnlocked: 1
   isSpawned: 0
@@ -1325,6 +1325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 494525811222541724, guid: 831d8eb224bca7744b903bec110607c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 494525811222541726, guid: 831d8eb224bca7744b903bec110607c1,
         type: 3}

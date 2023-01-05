@@ -64,7 +64,7 @@ public class TowerRay : MonoBehaviour
         {
             timeToFire = Time.time + (1f / towerLevel.FireRate);
             // SpawnVFX();
-            towerAim.targetedEnemyHealth.DealDamage(towerLevel.DamageDeal);
+            towerAim.targetedEnemyHealth.DealDamage(towerLevel._damageDeal);
             towerLevel.XpIncrease(1);
         }
 
@@ -74,7 +74,7 @@ public class TowerRay : MonoBehaviour
         {
             // Debug.Log("Particle laser");
             if(!laserHit.isPlaying)
-                laserHit.Play();
+                // laserHit.Play();
             
             laserHit.transform.position = hit.point;
             // Debug.Log(hit.point);

@@ -20,6 +20,7 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private bool[] isActivated = {false, false, false, false};
     private bool preview = false;
     [SerializeField] private Color normal, dimmed;
+    [SerializeField] private GameObject coinEffect;
 
     void Awake()
     {
@@ -147,6 +148,16 @@ public class SpellManager : MonoBehaviour
 
         DeactivateSpell(3);
         preview = false;
+    }
+
+    public void ShowCoinIcon()
+    {
+        coinEffect.SetActive(true);
+    }
+
+    public void HideCoinIcon()
+    {
+        coinEffect.SetActive(false);
     }
 
     private void DamageEnemy()

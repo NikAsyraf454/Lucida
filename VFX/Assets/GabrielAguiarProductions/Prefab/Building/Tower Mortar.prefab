@@ -296,8 +296,8 @@ MonoBehaviour:
   _towerName: Mortar
   _maxTowerPrice: 200
   _currentTowerPrice: 0
-  purchasePriceIncrement: 75
-  _level: 1
+  purchasePriceIncrement: 100
+  level: 0
   _damageDeal: 30
   _fireRate: 0.1
   isUnlocked: 1

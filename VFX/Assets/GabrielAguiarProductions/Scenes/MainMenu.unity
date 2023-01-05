@@ -1414,7 +1414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.26, y: 0}
+  m_AnchoredPosition: {x: -8.26001, y: 0}
   m_SizeDelta: {x: 16.52, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &186829991
@@ -4692,6 +4692,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonHoverClip: {fileID: 8300000, guid: 4278d1f888116f64da68860ae529276b, type: 3}
   buttonClickClip: {fileID: 8300000, guid: 1aa8e112b8453824d8eea0f970922405, type: 3}
+  placeTowerClip: {fileID: 8300000, guid: 4b75f016d84e1414cb8a2e8466a2520d, type: 3}
+  winClip: {fileID: 8300000, guid: e8360b29479b3914ab9e7440658bfa4e, type: 3}
+  loseClip: {fileID: 8300000, guid: ae8e706eb2423f24e9e2924f04b8d0c8, type: 3}
 --- !u!1 &733966130
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,7 +7268,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Toggle
 
-    Music'
+    Effect'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d155906ad05531438be8e40d9f5fc8a, type: 2}
   m_sharedMaterial: {fileID: -149888805958220092, guid: 1d155906ad05531438be8e40d9f5fc8a,
@@ -10056,7 +10059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.26, y: 0}
+  m_AnchoredPosition: {x: -8.26001, y: 0}
   m_SizeDelta: {x: 16.52, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1555005810
@@ -12035,7 +12038,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0

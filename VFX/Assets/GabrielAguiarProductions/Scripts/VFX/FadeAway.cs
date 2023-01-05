@@ -24,7 +24,7 @@ public class FadeAway : MonoBehaviour
         
         LeanTween.delayedCall(gameObject, 1f, ()=>{    
             co.enabled = false;
-            Debug.Log("collider disabled");
+            // Debug.Log("collider disabled");
         });
 
         RemoveFacture();
@@ -33,7 +33,7 @@ public class FadeAway : MonoBehaviour
     private void RemoveFacture()
     {
         LeanTween.delayedCall(gameObject, 2f, ()=>{    
-            Debug.Log("Destroyed");
+            // Debug.Log("Destroyed");
             Destroy(gameObject); 
         });
     }

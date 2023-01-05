@@ -39,7 +39,7 @@ public class TowerMortar : MonoBehaviour
 			vfx = Instantiate (effectToSpawn);
 
 		
-        vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel.DamageDeal;
+        vfx.GetComponent<MortarMoveScript>().damageDeal = towerLevel._damageDeal;
         towerLevel.XpIncrease(3);		//increase xp of tower every shot
 		
 		var ps = vfx.GetComponent<ParticleSystem> ();

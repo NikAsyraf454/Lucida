@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyId: 1
+  damageAmount: 1
   pathManager: {fileID: 0}
   pathIndex: 0
   enemySpeed: 3
@@ -132,7 +133,7 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   maxHealth: 50
   _currentHealth: 0
-  resourceDrop: 15
+  resourceDrop: 5
   scoreValue: 40
   _renderer: {fileID: 3032383968426993686}
 --- !u!1001 &3169635995867884876

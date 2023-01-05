@@ -10,9 +10,9 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private string _towerName;
     [SerializeField] private int _maxTowerPrice;
     [SerializeField] private int _currentTowerPrice;
-    [SerializeField] private int purchasePriceIncrement;
+    public int purchasePriceIncrement;
     public int level;
-    [SerializeField] private int _damageDeal;
+    public int _damageDeal;
     private int originalDamage;
     [SerializeField] private float _fireRate;
     [SerializeField] private bool isUnlocked;
@@ -30,7 +30,7 @@ public class TowerLevel : MonoBehaviour
     
 
     // public int Level { get{return _level; } set{ _level = Level; } }
-    public int DamageDeal { get{return _damageDeal; } set{ _damageDeal = DamageDeal; } }
+    // public int DamageDeal { get{return _damageDeal; } set{ _damageDeal = DamageDeal; } }
     public float FireRate { get{return _fireRate; } set{ _fireRate = FireRate; } }
     public string TowerName { get{return _towerName; } set{ _towerName = TowerName; } }
     public int MaxTowerPrice { get{return _maxTowerPrice; } set{ _maxTowerPrice = MaxTowerPrice; } }
@@ -54,6 +54,7 @@ public class TowerLevel : MonoBehaviour
         originalDamage = _damageDeal;
         sphereCollider = GetComponent<SphereCollider>();
         sphereCollider.radius = _towerRange;
+        EffectController.Instance.PlaceTowerSound();
     }
 
     // Update is called once per frame
@@ -112,15 +113,13 @@ public class TowerLevel : MonoBehaviour
         _towerXp += increaseAmount;
         // Debug.Log(TowerXp + " " + increaseAmount);
 
-        if(TowerXp >= level*10) 
+        if(TowerXp >= level*15) 
         {
             level++; 
             _towerXp = 0; 
-            _damageDeal = originalDamage * level;
+            _damageDeal = originalDamage + (level * 10);
         }
-
         
-
         ServerOnTowerXp.Invoke(this);
     }
 

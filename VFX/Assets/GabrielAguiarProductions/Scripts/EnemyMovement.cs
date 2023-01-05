@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public int enemyId;
+    [SerializeField] private int damageAmount;
     [SerializeField] private PathManager pathManager;
     [SerializeField] public int pathIndex = 0;
     [SerializeField]
@@ -79,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
 			if(!isDead)
             {
                 isDead = true;
-                playerManager.ReducePlayerHealth(1);
+                playerManager.ReducePlayerHealth(damageAmount);
                 enemyHealth.EnemyDeath();
             }
 		}

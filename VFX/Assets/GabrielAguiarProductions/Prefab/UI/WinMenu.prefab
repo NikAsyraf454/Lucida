@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 6299217513902284451}
   - component: {fileID: 7039111197799771017}
   - component: {fileID: 2317355328264464066}
+  - component: {fileID: 1774746454299414671}
   m_Layer: 5
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -748,7 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.8392157}
+  m_Color: {r: 0.94509804, g: 0.8862745, b: 0.78039217, a: 0.8392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -821,6 +822,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1774746454299414671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2745515694912668977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3994284070983766947
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +846,7 @@ GameObject:
   - component: {fileID: 4685696839165445115}
   - component: {fileID: 4386652480027988770}
   - component: {fileID: 2257555884243190871}
+  - component: {fileID: 1505641501482648588}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -882,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.8392157}
+  m_Color: {r: 0.94509804, g: 0.8862745, b: 0.78039217, a: 0.8392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -955,6 +969,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1505641501482648588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3994284070983766947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4259203215413311246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,6 +1612,7 @@ GameObject:
   - component: {fileID: 5557599458849502022}
   - component: {fileID: 4324807995209676535}
   - component: {fileID: 9020214879666932676}
+  - component: {fileID: 4015066616013663482}
   m_Layer: 5
   m_Name: GraphButton
   m_TagString: Untagged
@@ -1635,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0.8392157}
+  m_Color: {r: 0.94509804, g: 0.8862745, b: 0.78039217, a: 0.8392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1708,6 +1735,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4015066616013663482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7682161825332493429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7695044170738478615
 GameObject:
   m_ObjectHideFlags: 0

@@ -299,7 +299,7 @@ public class PathManager : MonoBehaviour, ISaveable
     {
         randomSeed = originalSeed;
         InitPath();
-        PlayerManager.Instance.LoadBaseFractures();
+        
         if(sectionUnlocked <= 0) { return; }
 
         for(int i = 0; i < sectionUnlocked; i++)

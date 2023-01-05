@@ -207,7 +207,7 @@ public class RotateToEnemyScript : MonoBehaviour
 		// else
 		// {
 			vfx.GetComponent<ProjectileMoveScript>().target = enemyMovement.gameObject;			//pass enemy and damage value to projectile
-			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;
+			vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel._damageDeal;
 			towerLevel.XpIncrease(1);		//increase xp of tower every shot
 		// }
 
@@ -235,7 +235,7 @@ public class RotateToEnemyScript : MonoBehaviour
 		{
 			timeToFire = Time.time + (1f / towerLevel.FireRate);
 			// SpawnVFX();
-			targetedEnemyHealth.DealDamage(towerLevel.DamageDeal);
+			targetedEnemyHealth.DealDamage(towerLevel._damageDeal);
 			towerLevel.XpIncrease(1);
 		}
 

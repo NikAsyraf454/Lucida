@@ -7,7 +7,7 @@ public class FractureForce : MonoBehaviour
     public static FractureForce Instance;
     [SerializeField] private Rigidbody[] fracturedParts;
     [SerializeField] private int fracturePerLoop;
-    [SerializeField] private int index = 0;
+    // [SerializeField] private int index = 0;
     [SerializeField] private float breakForce;
     [SerializeField] private float breakRadius;
 
@@ -21,8 +21,9 @@ public class FractureForce : MonoBehaviour
     void Start()
     {
         // PlayerManager.Instance.castleFracture = this;
-        if(fracturedParts == null)
-            Initfractures();
+        // if(fracturedParts == null)
+        if(SaveManager.Instance.checkSaveFile())
+            PlayerManager.Instance.LoadBaseFractures();
     }
 
     // Update is called once per frame
@@ -39,21 +40,21 @@ public class FractureForce : MonoBehaviour
 
     public void explodeFracture()
     {
-        
+        Initfractures();
         for(int i = 0; i < fracturePerLoop; i++)
         {
-            if(index > fracturedParts.Length-1) { return; }
+            if(fracturedParts.Length <= 0) { return; }
 
-            Vector3 force = (fracturedParts[index].transform.position - transform.position).normalized * breakForce;
-            fracturedParts[index].constraints = RigidbodyConstraints.None;
-            fracturedParts[index].AddForce(force);
+            Vector3 force = (fracturedParts[i].transform.position - transform.position).normalized * breakForce;
+            fracturedParts[i].constraints = RigidbodyConstraints.None;
+            fracturedParts[i].AddForce(force);
             // fracturedParts[index].gameObject.GetComponent<MeshCollider>().enabled = false;
             // LeanTween.delayedCall(gameObject, 3f, ()=>{    
-            fracturedParts[index].gameObject.GetComponent<FadeAway>().Fade();
+            fracturedParts[i].gameObject.GetComponent<FadeAway>().Fade();
             //     fracturedParts[index].gameObject.GetComponent<MeshCollider>().enabled = false;
             //     Debug.Log(fracturedParts[index].name);
             // });
-            index++;
+            // index++;
         }
 
     }
@@ -70,15 +71,14 @@ public class FractureForce : MonoBehaviour
         loop = loop * 3;
         for(int i = 0; i < loop; i++)
         {
-
-            if(index > fracturedParts.Length-1) { return; }   
-            Destroy(fracturedParts[index].gameObject);
-            index++;
+            if(fracturedParts.Length <= 0) { return; }   
+            Destroy(fracturedParts[i].gameObject);
+            Debug.Log("destroy fractures");
         }
     }
 
-    public void setIndex(int healthLost)
-    {
-        index += healthLost;
-    }
+    // public void setIndex(int healthLost)
+    // {
+    //     index += healthLost;
+    // }
 }

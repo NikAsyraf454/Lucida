@@ -24,6 +24,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public List<EnemyHealth> enemyHealthList;
     [SerializeField] private int wavesEnded;
     private PlayerStatUI playerStatUI;
+    private int difficulty;
 
     void Awake()
     {
@@ -112,7 +113,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         enemyList.Add(enemy.GetComponent<EnemyMovement>());
         enemyHealthList.Add(enemyHealth);
         enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
-        if(enemyDetailsList[id].isBoss) { enemyHealth.SetCurrentHealth(enemyDetailsList[id].health); }
+        if(enemyDetailsList[id].isBoss) { enemyHealth.SetCurrentHealth(enemyDetailsList[id].health*difficulty); }
     }
 
     public void PopulateWavesList()
@@ -126,24 +127,27 @@ public class WaveManager : MonoBehaviour, ISaveable
         {
             case PlayerManager.Difficulty.Easy:
                 // Debug.Log("easy");
-                amount[0] = 0;
+                amount[0] = 1;
                 amount[1] = 3;
                 spawnSpeed[0] = 1f;
-                spawnSpeed[1] = 0.95f;
+                spawnSpeed[1] = 0.98f;
+                difficulty = 1;
                 break;
             case PlayerManager.Difficulty.Normal:
                 // Debug.Log("Normal");
-                amount[0] = 3;
-                amount[1] = 5;
-                spawnSpeed[0] = 0.95f;
-                spawnSpeed[1] = 0.9f;
+                amount[0] = 2;
+                amount[1] = 3;
+                spawnSpeed[0] = 0.98f;
+                spawnSpeed[1] = 0.95f;
+                difficulty = 2;
                 break;
             case PlayerManager.Difficulty.Hard:
                 // Debug.Log("Hard");
-                amount[0] = 5;
-                amount[1] = 7;
-                spawnSpeed[0] = 0.94f;
-                spawnSpeed[1] = 0.85f;
+                amount[0] = 2;
+                amount[1] = 4;
+                spawnSpeed[0] = 0.95f;
+                spawnSpeed[1] = 0.9f;
+                difficulty = 3;
                 break;
         }
 

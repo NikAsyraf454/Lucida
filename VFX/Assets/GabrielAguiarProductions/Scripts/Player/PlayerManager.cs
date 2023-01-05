@@ -174,8 +174,10 @@ public class PlayerManager : MonoBehaviour, ISaveable
         float temp = resourceMultiplier;
         float calcu = resourceMultiplier*(1+(increase/100));
         resourceMultiplier = calcu;
+        SpellManager.Instance.ShowCoinIcon();
         yield return new WaitForSeconds (duration);
         resourceMultiplier = temp;
+        SpellManager.Instance.HideCoinIcon();
         StopCoroutine("IncreaseMultiplier");
     }
 

@@ -98,7 +98,7 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public void ImproveTower(TowerLevel towerLevel)
     {
-        int cost = (towerLevel.level * 10) - towerLevel.TowerXp;
+        int cost = (towerLevel.level * (towerLevel.purchasePriceIncrement/2)) - towerLevel.TowerXp;
         if(PlayerManager.Instance.GetResources() < cost) {return;}
         PlayerManager.Instance.ReduceResource(cost);
         towerLevel.XpIncrease(cost);
@@ -154,9 +154,10 @@ public class TowerManager : MonoBehaviour, ISaveable
 
     public void OnTower1(InputValue value)
     {
-        // Debug.Log(value);
+        
         if(towerLevelList[0].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
         TowerButton.Instance.PurchaseTower(towerLevelList[0].towerId);
+        EffectController.Instance.ButtonClickSound();
     }
 
     public void OnTower2(InputValue value)
@@ -164,18 +165,21 @@ public class TowerManager : MonoBehaviour, ISaveable
         // Debug.Log("2 is pressed");
         if(towerLevelList[1].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
         TowerButton.Instance.PurchaseTower(towerLevelList[1].towerId);
+        EffectController.Instance.ButtonClickSound();
     }
 
     public void OnTower3(InputValue value)
     {
         if(towerLevelList[2].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
         TowerButton.Instance.PurchaseTower(towerLevelList[2].towerId);
+        EffectController.Instance.ButtonClickSound();
     }
 
     public void OnTower4(InputValue value)
     {
         if(towerLevelList[3].CurrentTowerPrice > PlayerManager.Instance.currentPlayerResources) { return; }
         TowerButton.Instance.PurchaseTower(towerLevelList[3].towerId);
+        EffectController.Instance.ButtonClickSound();
     }
 
 
@@ -198,7 +202,7 @@ public class TowerManager : MonoBehaviour, ISaveable
             tempPosition.Add(towerLevel.gameObject.transform.position.y);
             tempPosition.Add(towerLevel.gameObject.transform.position.z);
             levels.Add(towerLevel.level);
-            damageDeal.Add(towerLevel.DamageDeal);
+            damageDeal.Add(towerLevel._damageDeal);
             exps.Add(towerLevel.TowerXp);
 
         }
@@ -243,7 +247,7 @@ public class TowerManager : MonoBehaviour, ISaveable
             
             spawnedTowerList[j].level = levels[j];
             Debug.Log("tower level: " + levels[j] + " lever is: " + spawnedTowerList[j].level);
-            spawnedTowerList[j].DamageDeal = damageDeal[j];
+            spawnedTowerList[j]._damageDeal = damageDeal[j];
             spawnedTowerList[j].TowerXp = exps[j];
             j++;
         }

@@ -58,7 +58,7 @@ public class PlayerStatUI : MonoBehaviour
     private void ClientHandleResourcesUpdated(int resources)
     {
         //resourcesText.text = $"Coin: {resources}";
-        resourcesText.text = $"{resources}";
+        resourcesText.text = $"${resources}";
     }
 
     private void ClientHandleScoreUpdated(int score)

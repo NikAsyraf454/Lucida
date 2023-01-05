@@ -42,7 +42,7 @@ public class TowerArcane : MonoBehaviour
 
 		
         vfx.GetComponent<ProjectileMoveScript>().target = towerAim.enemyMovement.gameObject;			//pass enemy and damage value to projectile
-        vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel.DamageDeal;/* = towerLevel.DamageDeal * towerLevel.Level; */
+        vfx.GetComponent<ProjectileMoveScript>().damageDeal = towerLevel._damageDeal;/* = towerLevel.DamageDeal * towerLevel.Level; */
         towerLevel.XpIncrease(1);		//increase xp of tower every shot
 		
 		var ps = vfx.GetComponent<ParticleSystem> ();

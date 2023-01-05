@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 4736420952331012296}
   - component: {fileID: 7665104453425602969}
   - component: {fileID: 630243882061345967}
+  - component: {fileID: 2992663305044982607}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -201,6 +202,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2992663305044982607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051283242395223352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1408564720753013361
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +499,7 @@ GameObject:
   - component: {fileID: 4860013792456923217}
   - component: {fileID: 5131344869627691485}
   - component: {fileID: 2047001167105236283}
+  - component: {fileID: 6427676334082050999}
   m_Layer: 5
   m_Name: GraphButton (1)
   m_TagString: Untagged
@@ -608,6 +622,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6427676334082050999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210410033137489851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3091770645766456060
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5529412}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1857,6 +1883,7 @@ GameObject:
   - component: {fileID: 2071103781504173420}
   - component: {fileID: 5024688976143644719}
   - component: {fileID: 1531610521870783814}
+  - component: {fileID: 4530901146348491849}
   m_Layer: 5
   m_Name: ReplayButton
   m_TagString: Untagged
@@ -1979,3 +2006,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4530901146348491849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9082619754636772975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6368742a21942d4c8d8ad047004e354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -333,7 +333,7 @@ MonoBehaviour:
   _towerName: Tower
   _maxTowerPrice: 50
   _currentTowerPrice: 0
-  purchasePriceIncrement: 15
+  purchasePriceIncrement: 30
   level: 0
   _damageDeal: 10
   _fireRate: 0.5

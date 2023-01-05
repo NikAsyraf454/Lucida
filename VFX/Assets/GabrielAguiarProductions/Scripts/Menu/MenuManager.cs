@@ -68,6 +68,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayerLose()
     {
+        EffectController.Instance.LoseMenuSound();
         if(gameEnded) { return; }
         pauseMenuPrefab.SetActive(false);
         gameEnded = true;
@@ -79,6 +80,7 @@ public class MenuManager : MonoBehaviour
 
     public void PlayerWin()
     {
+        EffectController.Instance.WinMenuSound();
         if(gameEnded) { return; }
         pauseMenuPrefab.SetActive(false);
         gameEnded = true;
