@@ -100,7 +100,7 @@ MonoBehaviour:
   damageAmount: 3
   pathManager: {fileID: 0}
   pathIndex: 0
-  enemySpeed: 0.3
+  enemySpeed: 1
   target: {fileID: 0}
   enemyHealth: {fileID: 634981978}
   anim: {fileID: 0}

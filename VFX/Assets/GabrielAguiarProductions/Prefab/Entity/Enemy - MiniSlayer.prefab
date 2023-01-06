@@ -103,7 +103,7 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   maxHealth: 700
   _currentHealth: 0
-  resourceDrop: 10
+  resourceDrop: 5
   scoreValue: 50
   _renderer: {fileID: 137920548176443305}
 --- !u!114 &8703917682637275458
