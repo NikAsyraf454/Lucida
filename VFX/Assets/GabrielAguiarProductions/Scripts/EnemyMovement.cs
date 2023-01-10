@@ -27,18 +27,14 @@ public class EnemyMovement : MonoBehaviour
         waypoints = pathManager.GetWaypointList();
         pathIndex = PathManager.Instance.GetWaypointsAmount()-1;
         target = waypoints[pathIndex];
-        //target = pathManager.GetWaypoint(pathIndex);
         pathsAmount = pathManager.GetWaypointsAmount();
-        // pathsAmount++;  //waypointIndex calculation is still bizzarre
         originalSpeed = enemySpeed;
-        // _material = GetComponent<Renderer>().material;
         anim = GetComponentInChildren<Animator>();
         SetAnimationSpeed(enemySpeed);
     }
 
     void FixedUpdate()
     {
-        // if(pathIndex < pathsAmount)
             Move();
     }
 
@@ -51,19 +47,9 @@ public class EnemyMovement : MonoBehaviour
         if(Vector3.Distance(transform.position, target.transform.position) <= 0.15f)
         {
             pathIndex--;
-            // if(pathIndex > waypoints.Count)
-            // {
-                if(pathIndex < 0) { return; }
-                target = waypoints[pathIndex];
-                transform.LookAt(target.transform);
-                //target = pathManager.GetWaypoint(pathIndex);
-            // }
-            // else if(!isDead)
-            // {
-            //     isDead = true;
-            //     playerManager.ReducePlayerHealth(1);
-            //     enemyHealth.EnemyDeath();
-            // }
+            if(pathIndex < 0) { return; }
+            target = waypoints[pathIndex];
+            transform.LookAt(target.transform);
         }
     }
 

@@ -32,47 +32,11 @@ public class TowerAim : MonoBehaviour
 		InvokeRepeating("CheckEnemy", 1f, 0.2f);
 	}
 
+	// Update is called once per frame
 	void Update()
 	{
 		if(enemyList.Count <= 0) { return; }
 		StartRotation();
-	}
-
-	private void OnDisable()
-    {
-		foreach(EnemyHealth enemyHealth in enemyHealthList.ToArray())
-		{
-			enemyHealth.ServerOnDie -= RemoveEnemy;
-			enemyHealthList.Remove(enemyHealth);
-		}
-	}
-
-	void OnTriggerEnter (Collider co)
-    {
-        if (co.gameObject.tag == "Enemy") {
-			enemyList.Add(co.gameObject);
-			enemyHealthList.Add(co.gameObject.GetComponent<EnemyHealth>());
-			enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
-		}
-	}
-
-	private void OnTriggerExit(Collider other)
-    {
-		if (other.gameObject.tag == "Enemy") {
-			RemoveEnemy(other.gameObject);
-		}
-
-		foreach(EnemyHealth health in enemyHealthList)
-		{
-			if(health == null)
-				enemyHealthList.Remove(health);
-		}
-	}
-
-	private void RemoveEnemy(GameObject other)
-	{
-		enemyList.Remove(other);
-		enemyHealthList.Remove(other.GetComponent<EnemyHealth>());
 	}
 
 	private void StartRotation ()
@@ -92,11 +56,43 @@ public class TowerAim : MonoBehaviour
 			if(enemyMovement != null)
 				partsToRotate.transform.LookAt(enemyMovement.transform.position);
 		}
+	}
 
-		// if (Time.time >= timeToFire) {
-		// 	timeToFire = Time.time + (1f / towerLevel.FireRate);
-		// 	SpawnVFX();
-		// }
+	void OnTriggerEnter (Collider co)		//Check enemy presense in tower's range 
+    {
+        if (co.gameObject.tag == "Enemy") {		//if enemy enters, add to list
+			enemyList.Add(co.gameObject);
+			enemyHealthList.Add(co.gameObject.GetComponent<EnemyHealth>());
+			enemyHealthList[enemyHealthList.Count-1].ServerOnDie += RemoveEnemy;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)		//check if enemy leaves tower's range
+    {
+		if (other.gameObject.tag == "Enemy") {		//if enemy leaves, remove from list
+			RemoveEnemy(other.gameObject);
+		}
+
+		foreach(EnemyHealth health in enemyHealthList)
+		{
+			if(health == null)
+				enemyHealthList.Remove(health);
+		}
+	}
+
+	private void OnDisable()
+    {
+		foreach(EnemyHealth enemyHealth in enemyHealthList.ToArray())
+		{
+			enemyHealth.ServerOnDie -= RemoveEnemy;
+			enemyHealthList.Remove(enemyHealth);
+		}
+	}
+
+	private void RemoveEnemy(GameObject other)
+	{
+		enemyList.Remove(other);
+		enemyHealthList.Remove(other.GetComponent<EnemyHealth>());
 	}
 
 	private void CheckEnemy()

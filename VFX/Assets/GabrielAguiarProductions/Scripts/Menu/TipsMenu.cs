@@ -37,10 +37,6 @@ public class TipsMenu : MonoBehaviour
     private void UpdateTextPanelIndex()
     {
         TMP_Text[] text = tipPanels[panelIndex].GetComponentsInChildren<TMP_Text>();
-        // foreach(TMP_Text t in text)
-        // {
-        //     Debug.Log(t.text);
-        // }
         text[1].text = (panelIndex+1) + "/" + tipPanels.Length;
     }
 }

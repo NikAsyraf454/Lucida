@@ -12,7 +12,7 @@ public class LoseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wave.text = "Wave: " + (WaveManager.Instance.waveIndex+1);
+        wave.text = "Wave: " + WaveManager.Instance.waveIndex;
     }
 
     // Update is called once per frame
