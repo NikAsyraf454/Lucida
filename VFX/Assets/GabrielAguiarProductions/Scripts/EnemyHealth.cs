@@ -62,15 +62,12 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
             HandleHealthUpdated(maxHealth, val);
         } );
 
-        // HandleHealthUpdated(maxHealth, _currentHealth);
-
         if (_currentHealth > 0) { return; }
 
         //death of enemy
         playerManager.IncreaseResource(resourceDrop);
         playerManager.ScoreIncrease(scoreValue);
         EnemyDeath();
-        //ServerOnDie?.Invoke();
     }
 
     public void DoDelayedDealDamage(float damageAmount, float duration)
@@ -92,8 +89,6 @@ public class EnemyHealth : MonoBehaviour//NetworkBehaviour
             Destroy(this.gameObject, 0.15f);         //place this first, so if invoke errors, it will still be destroyed
             ServerOnDie?.Invoke(this.gameObject);
         }
-        
-         
     }
 
     public void SetCurrentHealth(float health)

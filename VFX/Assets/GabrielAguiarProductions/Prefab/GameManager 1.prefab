@@ -10844,7 +10844,7 @@ MonoBehaviour:
   currentPlayerHealth: 0
   maxPlayerHealth: 20
   currentPlayerResources: 0
-  maxPlayerResources: 200
+  maxPlayerResources: 300
   currentPlayerScore: 0
   maxPlayerScore: 0
   currentCharge: 0

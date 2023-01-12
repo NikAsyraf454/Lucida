@@ -83,6 +83,7 @@ public class PlayerStatUI : MonoBehaviour
     public void waveTextUpdate()
     {
         waveText.text = "Wave: " + (WaveManager.Instance.waveIndex+1);
+        MenuManager.Instance.accurateWaveIndex = WaveManager.Instance.waveIndex+1;
     }
 
 }

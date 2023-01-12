@@ -502,7 +502,7 @@ MonoBehaviour:
   _towerName: Tower Ray
   _maxTowerPrice: 75
   _currentTowerPrice: 0
-  purchasePriceIncrement: 40
+  purchasePriceIncrement: 50
   level: 0
   _damageDeal: 5
   _fireRate: 1

@@ -20,8 +20,6 @@ public class Lifeline : MonoBehaviour
 
     public int GaveLifeline()
     {
-        // UnityEngine.Random.InitState(randomSeed);
-        // randomSeed++;
         int i = UnityEngine.Random.Range(1,2);
         // int i = 1;
         if(i == 1)

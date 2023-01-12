@@ -76,8 +76,8 @@ public class TowerInfoDisplay : MonoBehaviour
         damageDeal.SetText((towerLevel._damageDeal).ToString());
         fireRate.SetText(towerLevel.FireRate.ToString() + "/s");
         level.SetText("Level " + towerLevel.level);
-        xpBarImage.fillAmount = (float)towerLevel.TowerXp / (towerLevel.level * (towerLevel.purchasePriceIncrement/2));
-        cost.SetText("Cost: $" + ((towerLevel.level * (towerLevel.purchasePriceIncrement/2)) - towerLevel.TowerXp).ToString());
+        xpBarImage.fillAmount = (float)towerLevel._towerXp / (towerLevel.level * (towerLevel.purchasePriceIncrement/2));
+        cost.SetText("Cost: $" + ((towerLevel.level * (towerLevel.purchasePriceIncrement/2)) - towerLevel._towerXp).ToString());
     }
 
     void TowerDestroyed(TowerLevel towerLevel)

@@ -90,14 +90,11 @@ public class PlayerManager : MonoBehaviour, ISaveable
             if(!gotLifeline)
             {
                 int temp = lifeline.GaveLifeline();
-                // Debug.Log("Temp: " + temp);
                 currentPlayerHealth += temp;
                 ClientHandlePlayerHealthUpdated(0, currentPlayerHealth);
             }
             gotLifeline = true;
-        } 
-
-
+        }
     }
 
     public void IncreaseResource(int resourceAmount)

@@ -22,7 +22,7 @@ public class WinMenu : MonoBehaviour
 
     public void UpdateText()
     {
-        wave.text = "Wave: " + WaveManager.Instance.waveIndex;
+        wave.text = "Wave: " + MenuManager.Instance.accurateWaveIndex;
         score.text = "Score: " + PlayerManager.Instance.currentPlayerScore;
     }
 }

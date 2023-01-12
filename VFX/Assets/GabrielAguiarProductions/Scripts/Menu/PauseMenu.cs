@@ -36,6 +36,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         MenuManager.Instance.pauseMenuPrefab.SetActive(true);
         isPaused = true;
+        SoundManager.Instance.ResumeMusic();
     }
 
     public void HaltGame()         //pause game only
@@ -49,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         MenuManager.Instance.pauseMenuPrefab.SetActive(false);
         isPaused = false;
+        SoundManager.Instance.StopMusic();
     }
 
     // public void QuitLevel(){}

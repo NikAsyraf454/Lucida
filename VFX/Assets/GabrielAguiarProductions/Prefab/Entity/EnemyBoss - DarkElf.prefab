@@ -121,7 +121,7 @@ MonoBehaviour:
   _currentHealth: 0
   resourceDrop: 200
   scoreValue: 50
-  _renderer: {fileID: 0}
+  _renderer: {fileID: 1776194175719841325}
 --- !u!114 &8703917682637275458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +215,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d0be22bfdf719904e8b7213324f3194d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d2d21ead9f817446aa6c299b76f7e89, type: 3}
+--- !u!137 &1776194175719841325 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 137573765958716202, guid: 9d2d21ead9f817446aa6c299b76f7e89,
+    type: 3}
+  m_PrefabInstance: {fileID: 1823550674735453447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1819940348107945875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4283388011225748, guid: 9d2d21ead9f817446aa6c299b76f7e89,

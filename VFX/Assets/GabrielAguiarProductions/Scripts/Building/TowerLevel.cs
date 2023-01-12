@@ -17,7 +17,7 @@ public class TowerLevel : MonoBehaviour
     [SerializeField] private float _fireRate;
     [SerializeField] private bool isUnlocked;
     [SerializeField] private bool isSpawned = false;        //for UI]
-    [SerializeField] private int _towerXp;
+    public int _towerXp;
     [SerializeField] private float _towerRange;
     [SerializeField] private GameObject _powerUpVFX;
     [SerializeField] private float _spawnHeight;
@@ -35,7 +35,7 @@ public class TowerLevel : MonoBehaviour
     public string TowerName { get{return _towerName; } set{ _towerName = TowerName; } }
     public int MaxTowerPrice { get{return _maxTowerPrice; } set{ _maxTowerPrice = MaxTowerPrice; } }
     public int CurrentTowerPrice { get{return _currentTowerPrice; } set{ _currentTowerPrice = CurrentTowerPrice; } }
-    public int TowerXp { get{return _towerXp; } set{ _towerXp = TowerXp; } }
+    // public int TowerXp { get{return _towerXp; } set{ _towerXp = TowerXp; } }
     public float TowerRange { get{return _towerRange; } set{ _towerRange = TowerRange; } }
     public float SpawnHeight { get{return _spawnHeight; } set{ _spawnHeight = SpawnHeight; } }
 
@@ -113,7 +113,7 @@ public class TowerLevel : MonoBehaviour
         _towerXp += increaseAmount;
         // Debug.Log(TowerXp + " " + increaseAmount);
 
-        if(TowerXp >= level*15) 
+        if(_towerXp >= (level * (purchasePriceIncrement/2)))
         {
             level++; 
             _towerXp = 0; 

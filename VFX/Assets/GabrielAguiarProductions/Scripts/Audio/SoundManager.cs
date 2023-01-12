@@ -44,4 +44,14 @@ public class SoundManager : MonoBehaviour
     {
         _effectSource.mute = !_effectSource.mute;
     }
+
+    public void StopMusic()
+    {
+        _musicSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        _musicSource.Play();
+    }
 }

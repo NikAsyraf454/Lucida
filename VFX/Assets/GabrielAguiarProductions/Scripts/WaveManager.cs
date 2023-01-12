@@ -57,7 +57,7 @@ public class WaveManager : MonoBehaviour, ISaveable
         }
 
         timer -= Time.deltaTime;
-        if (timer <= 0.00f) { return; }
+        if (timer <= 0.00f) { SoundManager.Instance.StopMusic(); return; }
         TimerUI.Instance.SetTimer(timer,timeBetweenWave);
     }
 
@@ -71,8 +71,6 @@ public class WaveManager : MonoBehaviour, ISaveable
         {
             StartCoroutine(SpawnGroup(groupIndex));
         }
-
-        
     }
 
     IEnumerator SpawnGroup(int groupNum)
@@ -213,6 +211,7 @@ public class WaveManager : MonoBehaviour, ISaveable
             }
 
             timer = timeBetweenWave;
+            SoundManager.Instance.ResumeMusic();
             canSpawnNext = true;
             // TimerUI.Instance.SetTimer(timer);
             Debug.Log("Saving...");
@@ -260,6 +259,7 @@ public class WaveManager : MonoBehaviour, ISaveable
     public void SetTimer(float time)
     {
         timer = time;
+        SoundManager.Instance.ResumeMusic();
     }
 
     #region Save and Load

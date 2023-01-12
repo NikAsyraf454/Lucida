@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private CSVReader cSVReader;
     [SerializeField] private CSVWriter cSVWriter;
     private PauseMenu pause;
+    public int accurateWaveIndex;
 
     public bool gameEnded;
 
